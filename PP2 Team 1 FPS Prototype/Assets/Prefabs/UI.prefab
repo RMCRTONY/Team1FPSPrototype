@@ -265,6 +265,7 @@ MonoBehaviour:
   menuPause: {fileID: 1057464793541757984}
   menuWin: {fileID: 0}
   menuLose: {fileID: 0}
+  player: {fileID: 0}
   isPaused: 0
 --- !u!114 &6981635731868674754
 MonoBehaviour:

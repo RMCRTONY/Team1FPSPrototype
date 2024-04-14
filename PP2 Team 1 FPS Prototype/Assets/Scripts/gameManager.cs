@@ -27,11 +27,18 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && menuActive == null)
+        if (Input.GetButtonDown("Cancel"))
         {
-            statePaused();
-            menuActive = menuPause;
-            menuActive.SetActive(isPaused);
+            if (!isPaused) // should allow for esc to toggle menu. 
+            {
+                statePaused();
+                menuActive = menuPause;
+                menuActive.SetActive(isPaused);
+            } else
+            {
+                stateUnpaused();
+            }
+           
         }
     }
 
