@@ -1225,22 +1225,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8872309287483853455, guid: 95102793873227746805c24fb13cba9e, type: 3}
-      propertyPath: dashRate
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872309287483853455, guid: 95102793873227746805c24fb13cba9e, type: 3}
-      propertyPath: dashTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872309287483853455, guid: 95102793873227746805c24fb13cba9e, type: 3}
-      propertyPath: dashSpeed
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872309287483853455, guid: 95102793873227746805c24fb13cba9e, type: 3}
-      propertyPath: dashCooldown
-      value: 0.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

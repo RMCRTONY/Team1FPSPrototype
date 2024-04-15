@@ -248,6 +248,10 @@ MonoBehaviour:
   jumpSpeed: 8
   gravityMultiplier: 2
   maxJumps: 2
+  dashSpeed: 16
+  dashRate: 0.15
+  dashTime: 0.1
+  dashCooldown: 0.25
   spellDamage: 1
   spellRate: 0.25
   spellDist: 50
