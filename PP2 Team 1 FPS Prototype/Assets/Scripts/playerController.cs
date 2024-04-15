@@ -6,6 +6,9 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
 {
     // components like charController etc
     [SerializeField] CharacterController controller;
+    [SerializeField] new GameObject camera;
+    [SerializeField] GameObject fireball;
+    [SerializeField] Transform abilityFirePos;
 
     // attributes (HP, Speed, Jumpspeed, gravity, maxJumps etc.)
     [SerializeField] int HP;
@@ -22,6 +25,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     [SerializeField] int spellDamage;
     [SerializeField] float spellRate;
     [SerializeField] int spellDist;
+    [SerializeField] float fbRate;
 
     private Vector3 moveDir;
     private Vector3 playerVel;
@@ -32,11 +36,11 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
 
     private readonly int gravity = -10;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    //// Start is called before the first frame update
+    //void Start()
+    //{
         
-    }
+    //}
 
     // Update is called once per frame
     void Update()
@@ -68,6 +72,11 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         if (Input.GetButton("Fire1") && !isShooting && !gameManager.instance.isPaused)
         {
             StartCoroutine(castSpell());
+        }
+
+        if (Input.GetButtonDown("Fire2") && !isShooting && !gameManager.instance.isPaused)
+        {
+            StartCoroutine(castFireball());
         }
 
         // check for dash key, make dash happen
@@ -102,6 +111,17 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         }
 
         yield return new WaitForSeconds(spellRate);
+        isShooting = false;
+    }
+
+    IEnumerator castFireball()
+    {
+        isShooting = true;
+
+        // instance fireballs on camera rotation
+        Instantiate(fireball, abilityFirePos.position, camera.transform.rotation);
+
+        yield return new WaitForSeconds(fbRate);
         isShooting = false;
     }
 
