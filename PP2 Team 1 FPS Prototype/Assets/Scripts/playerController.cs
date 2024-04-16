@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour, IDamage // needs IInteractions
 {
@@ -20,6 +21,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     [SerializeField] float dashRate;
     [SerializeField] float dashTime;
     [SerializeField] float dashCooldown;
+    
 
     // the firing values
     [SerializeField] int spellDamage;
@@ -35,14 +37,15 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     private bool canDash = true;
 
     private readonly int gravity = -10;
-
+    public Slider healthBar;
+    
     //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
+    void Start()
+    {
+        healthBar.value = HP;
+    }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
 
@@ -148,7 +151,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     {
         // take da health away
         HP -= amount;
-
+        healthBar.value = HP;
         if (HP <= 0) 
         {
             // you lose, loser
