@@ -14,12 +14,14 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject arrow;
     [SerializeField] float shootRate;
 
+    Color goblinSkin; // holding the og gobbo flesh
     bool isShooting;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager.instance.updateGameGoal(1);
+        goblinSkin = model.material.color; // storing that sweet, lush, green hue
     }
 
     // Update is called once per frame
@@ -47,7 +49,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = Color.white;
+        model.material.color = goblinSkin;
     }
 
     IEnumerator shoot()
