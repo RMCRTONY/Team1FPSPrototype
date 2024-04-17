@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     [SerializeField] new GameObject camera;
     [SerializeField] GameObject fireball;
     [SerializeField] Transform abilityFirePos;
+    [SerializeField] GameObject testLantern;
 
     // attributes (HP, Speed, Jumpspeed, gravity, maxJumps etc.)
     [SerializeField] int HP;
@@ -37,14 +38,15 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     private bool canDash = true;
 
     private readonly int gravity = -10;
-    public Slider healthBar;
-    
-    //// Start is called before the first frame update
+    private int HPOrig;
+
+    public bool spawnLanternsOnFire; // if you dont think the player is firing, trigger bool
+
+    // Start is called before the first frame update
     void Start()
     {
-        //healthBar.value = HP;
-        //HPOrig = HP;
-        //updatePlayerUI();
+        HPOrig = HP;
+        updatePlayerUI();
     }
 
     //Update is called once per frame
@@ -107,6 +109,11 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         // TODO: fire a projectile, eventually with variable attributes
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, spellDist))
         {
+            if (spawnLanternsOnFire) // if you dont think the player is firing, trigger bool
+            {
+                Instantiate(testLantern, hit.point, transform.rotation);
+            }
+
             IDamage dmg = hit.collider.GetComponent<IDamage>();
 
             if (hit.transform != transform && dmg != null)
@@ -170,7 +177,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
 
     void updatePlayerUI()
     {
-        //gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 
     private Vector3 getDirection()
