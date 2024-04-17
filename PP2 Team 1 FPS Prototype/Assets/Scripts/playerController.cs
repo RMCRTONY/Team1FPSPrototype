@@ -44,9 +44,9 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
 
     // Start is called before the first frame update
     void Start()
-    {
-        HPOrig = HP;
-        updatePlayerUI();
+    { 
+        //HPOrig = HP;
+        //updatePlayerUI();
     }
 
     //Update is called once per frame
@@ -177,7 +177,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
 
     void updatePlayerUI()
     {
-        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        //gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 
     private Vector3 getDirection()

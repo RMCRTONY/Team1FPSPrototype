@@ -292,7 +292,7 @@ MonoBehaviour:
   spellRate: 0.25
   spellDist: 50
   fbRate: 0.5
-  spawnLanternsOnFire: 1
+  spawnLanternsOnFire: 0
 --- !u!143 &1990995417799884302
 CharacterController:
   m_ObjectHideFlags: 0
