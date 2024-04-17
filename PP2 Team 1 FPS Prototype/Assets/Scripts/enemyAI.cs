@@ -18,11 +18,13 @@ public class enemyAI : MonoBehaviour, IDamage
     bool isShooting;
     bool playerInRange;
     Vector3 playerDir;
+    Animator enemyAnim;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager.instance.updateGameGoal(1);
+        enemyAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,8 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerDir = gameManager.instance.player.transform.position - transform.position;
             agent.SetDestination(gameManager.instance.player.transform.position);
+            enemyAnim.SetFloat("Speed", agent.velocity.magnitude);
+            //enemyAnim.SetBool("Run", true);
 
             if (!isShooting)
                 StartCoroutine(shoot());
@@ -89,6 +93,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
+        //enemyAnim.SetBool("castFB", true);
         Instantiate(bullet, shootPos.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
