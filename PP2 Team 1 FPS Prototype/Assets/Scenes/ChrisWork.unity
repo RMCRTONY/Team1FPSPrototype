@@ -492,6 +492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6938799326932295870, guid: a05f84a05b656794990db05d891191d8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8002634816304361359, guid: a05f84a05b656794990db05d891191d8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1122,6 +1126,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2390965422656406709, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 7118765615501587130, guid: c5d2a8c5c325bd54daea512781b7e48c, type: 3}
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Ranger_R1
@@ -1179,6 +1187,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4463346371514925427, guid: 21bbd8de82039ea489d32d883659245a, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 7118765615501587130, guid: c5d2a8c5c325bd54daea512781b7e48c, type: 3}
+    - target: {fileID: 4463346371514925427, guid: 21bbd8de82039ea489d32d883659245a, type: 3}
+      propertyPath: faceTargetSpeed
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 4707981591967258906, guid: 21bbd8de82039ea489d32d883659245a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.4
@@ -1197,15 +1213,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4707981591967258906, guid: 21bbd8de82039ea489d32d883659245a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4707981591967258906, guid: 21bbd8de82039ea489d32d883659245a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4707981591967258906, guid: 21bbd8de82039ea489d32d883659245a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4707981591967258906, guid: 21bbd8de82039ea489d32d883659245a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

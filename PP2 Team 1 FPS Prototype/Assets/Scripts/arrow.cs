@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class arrow : MonoBehaviour
+public class bullet : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
 
     [SerializeField] int damage;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
+
+    bool hitHappened;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +21,15 @@ public class arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.isTrigger)
+            return;
+
         IDamage dmg = other.GetComponent<IDamage>();
 
-        if (dmg != null)
+        if (dmg != null && !hitHappened)
         {
             dmg.takeDamage(damage);
+            hitHappened = true;
         }
 
         Destroy(gameObject);

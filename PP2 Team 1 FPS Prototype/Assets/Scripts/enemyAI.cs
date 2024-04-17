@@ -10,33 +10,67 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos;
 
     [SerializeField] int HP;
+    [SerializeField] int faceTargetSpeed;
 
-    [SerializeField] GameObject arrow;
+    [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
 
-    Color goblinSkin; // holding the og gobbo flesh
     bool isShooting;
+    bool playerInRange;
+    Vector3 playerDir;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager.instance.updateGameGoal(1);
-        goblinSkin = model.material.color; // storing that sweet, lush, green hue
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(gameManager.instance.player.transform.position);
+        if (playerInRange)
+        {
+            playerDir = gameManager.instance.player.transform.position - transform.position;
+            agent.SetDestination(gameManager.instance.player.transform.position);
 
-        if (!isShooting)
-            StartCoroutine(shoot());
+            if (!isShooting)
+                StartCoroutine(shoot());
+
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                faceTarget();
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+    }
+
+    void faceTarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(playerDir);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 
     public void takeDamage(int amount)
     {
         HP -= amount;
         StartCoroutine(flashRed());
+
+        agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (HP <= 0)
         {
@@ -49,13 +83,13 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = goblinSkin;
+        model.material.color = Color.white;
     }
 
     IEnumerator shoot()
     {
         isShooting = true;
-        Instantiate(arrow, shootPos.position, transform.rotation);
+        Instantiate(bullet, shootPos.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
     }

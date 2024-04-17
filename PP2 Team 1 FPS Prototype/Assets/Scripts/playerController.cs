@@ -42,7 +42,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     //// Start is called before the first frame update
     void Start()
     {
-        healthBar.value = HP;
+        //healthBar.value = HP;
     }
 
     //Update is called once per frame
@@ -151,7 +151,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     {
         // take da health away
         HP -= amount;
-        healthBar.value = HP;
+        //healthBar.value = HP;
         if (HP <= 0) 
         {
             // you lose, loser
