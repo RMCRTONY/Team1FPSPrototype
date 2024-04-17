@@ -43,6 +43,8 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     void Start()
     {
         //healthBar.value = HP;
+        //HPOrig = HP;
+        //updatePlayerUI();
     }
 
     //Update is called once per frame
@@ -149,14 +151,26 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
 
     public void takeDamage(int amount)
     {
-        // take da health away
         HP -= amount;
-        //healthBar.value = HP;
-        if (HP <= 0) 
+        updatePlayerUI();
+        StartCoroutine(flashDamage());
+
+        if (HP <= 0)
         {
-            // you lose, loser
             gameManager.instance.youLose();
         }
+    }
+
+    IEnumerator flashDamage()
+    {
+        gameManager.instance.playerDamageScreen.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.playerDamageScreen.SetActive(false);
+    }
+
+    void updatePlayerUI()
+    {
+        //gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
     }
 
     private Vector3 getDirection()
