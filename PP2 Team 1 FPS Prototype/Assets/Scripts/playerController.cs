@@ -63,6 +63,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         // onground check for jumps && vel.y for upward movement or a dash
         if ((controller.isGrounded && playerVel.y < 0) || isDashing)
         {
+            // TODO: no reset jumps on dash OR extend dash cooldown
             jumpTimes = 0;
             playerVel = Vector3.zero;
         } // else you are effected by gravity
