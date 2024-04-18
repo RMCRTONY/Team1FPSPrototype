@@ -158,7 +158,7 @@ MonoBehaviour:
   shootPos: {fileID: 5200516020057646669}
   HP: 10
   faceTargetSpeed: 200
-  bullet: {fileID: 7118765615501587130, guid: c5d2a8c5c325bd54daea512781b7e48c, type: 3}
+  bullet: {fileID: 7118765615501587130, guid: 6de55cd9e52926d40957b4c6c755bdcb, type: 3}
   shootRate: 4
 --- !u!195 &8657866869713903052
 NavMeshAgent:
