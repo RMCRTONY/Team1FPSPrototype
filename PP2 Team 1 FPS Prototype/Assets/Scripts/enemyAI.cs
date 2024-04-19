@@ -73,13 +73,15 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         HP -= amount;
         StartCoroutine(flashRed());
-
+        enemyAnim.SetTrigger("damage");
         agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (HP <= 0)
         {
             gameManager.instance.updateGameGoal(-1);
-            Destroy(gameObject);
+            enemyAnim.SetTrigger("die");
+            GetComponent<CapsuleCollider>().enabled = false;
+            //Destroy(gameObject);
         }
     }
 
