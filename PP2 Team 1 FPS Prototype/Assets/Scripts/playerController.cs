@@ -60,17 +60,8 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
 
     void movement()
     {
-        // onground check for jumps && vel.y for upward movement or a dash
-        if ((controller.isGrounded && playerVel.y < 0) || isDashing)
-        {
-            // TODO: no reset jumps on dash OR extend dash cooldown
-            jumpTimes = 0;
-            playerVel = Vector3.zero;
-        } // else you are effected by gravity
-        else
-        {
-            playerVel.y += gravity * gravityMultiplier * Time.deltaTime;
-        }
+        
+        applyGravity();
 
         // tie movement to player axis (vector addition)
         moveDir = getDirection();
@@ -101,6 +92,26 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         }
 
         controller.Move(playerVel * Time.deltaTime); // input the jump
+    }
+
+    void applyGravity() // make sure gravity happens
+    {
+        // onground check for jumps && vel.y for upward movement or a dash
+        if (isDashing)
+        {
+            // no reset jumps on dash
+            playerVel = Vector3.zero;
+        }
+        else if (controller.isGrounded && playerVel.y < 0)
+        {
+            jumpTimes = 0;
+            playerVel = Vector3.zero;
+        }
+        // else you are effected by gravity
+        else
+        {
+            playerVel.y += gravity * gravityMultiplier * Time.deltaTime;
+        }
     }
 
     IEnumerator castSpell() // eventually recieve an enum that indicates kind of spell

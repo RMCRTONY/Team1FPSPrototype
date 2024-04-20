@@ -123,63 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 964bccb6824bf2e48bbd17d73953bbf5, type: 2}
---- !u!1001 &41146650
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 815687600466160035, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 815687600466160035, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 815687600466160035, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 815687600466160035, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 815687600466160035, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 815687600466160035, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 815687600466160035, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 815687600466160035, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 815687600466160035, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 815687600466160035, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5781556563793064357, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
-      propertyPath: m_Name
-      value: Floor
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 835ca22887b2ec34ba1c72561e5dfb53, type: 3}
 --- !u!1001 &56110566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,6 +138,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -253,6 +200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Mage (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.654541
@@ -310,6 +261,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Mage (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.85
@@ -366,6 +321,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -464,6 +423,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -666,6 +629,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.370235
@@ -726,6 +693,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -841,6 +812,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Mage (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.16
@@ -898,6 +873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.04
@@ -954,6 +933,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1015,6 +998,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1081,6 +1068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.54
@@ -1141,6 +1132,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1273,6 +1268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 46.545475
@@ -1333,6 +1332,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
       propertyPath: m_Name
       value: Goblin_Brute (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1395,6 +1398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.28
@@ -1456,6 +1463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.26
@@ -1516,6 +1527,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1582,6 +1597,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.55932
@@ -1639,6 +1658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Mage (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.77
@@ -1695,6 +1718,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1757,6 +1784,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.820236
@@ -1813,6 +1844,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1875,6 +1910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.72
@@ -1935,6 +1974,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1997,6 +2040,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.96355
@@ -2058,6 +2105,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.67
@@ -2114,6 +2165,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2176,6 +2231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Brute
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.18
@@ -2232,6 +2291,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2294,6 +2357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.368824
@@ -2351,6 +2418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Mage (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47.07
@@ -2407,6 +2478,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2543,6 +2618,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.89
@@ -2673,6 +2752,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2805,6 +2888,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.233591
@@ -2866,6 +2953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Brute (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.91
@@ -2926,6 +3017,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3054,6 +3149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Mage (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.109
@@ -3114,6 +3213,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3176,6 +3279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Brute (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.82
@@ -3233,6 +3340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Mage (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.75
@@ -3289,10 +3400,6 @@ PrefabInstance:
     - target: {fileID: 4597387281324562087, guid: a05f84a05b656794990db05d891191d8, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6938799326932295870, guid: a05f84a05b656794990db05d891191d8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8002634816304361359, guid: a05f84a05b656794990db05d891191d8, type: 3}
       propertyPath: m_Pivot.x
@@ -3395,6 +3502,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Brute (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.891254
@@ -3455,6 +3566,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3517,6 +3632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Brute (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.61
@@ -3573,6 +3692,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3631,6 +3754,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Mage (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.654541
@@ -3687,6 +3814,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3749,6 +3880,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.11
@@ -3805,6 +3940,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3937,6 +4076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.3
@@ -3997,6 +4140,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4059,6 +4206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 38.68365
@@ -4115,6 +4266,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4177,6 +4332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Brute (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.04
@@ -4233,6 +4392,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4295,6 +4458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.18
@@ -4355,6 +4522,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
       propertyPath: m_Name
       value: Goblin_Brute (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4487,6 +4658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.42
@@ -4543,6 +4718,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_Name
       value: Goblin_Mage (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4604,6 +4783,10 @@ PrefabInstance:
     - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_Name
       value: Goblin_Acolyte (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4732,6 +4915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Mage (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: ffb26ffde4fff9c4bb046d4f7cd14b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.05
@@ -4793,6 +4980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin_Acolyte (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 5570905162441718295, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5570905162441942647, guid: 5bba4e8e0a92e8742bce8259a7228949, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.64
@@ -4846,10 +5037,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3599504815327049526, guid: 95102793873227746805c24fb13cba9e, type: 3}
-      propertyPath: sensitivity
-      value: 220
-      objectReference: {fileID: 0}
     - target: {fileID: 5536746683237164607, guid: 95102793873227746805c24fb13cba9e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4894,14 +5081,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8872309287483853455, guid: 95102793873227746805c24fb13cba9e, type: 3}
-      propertyPath: dashTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872309287483853455, guid: 95102793873227746805c24fb13cba9e, type: 3}
-      propertyPath: walkSpeed
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4912,7 +5091,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 6163085694894485433}
-  - {fileID: 41146650}
   - {fileID: 130317185}
   - {fileID: 1443867714}
   - {fileID: 269913601}
