@@ -13,6 +13,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     public GameObject playerDamageScreen;
+    public GameObject playerHealScreen;
     public Image playerHPBar;
     public TMP_Text enemyCountText;
 

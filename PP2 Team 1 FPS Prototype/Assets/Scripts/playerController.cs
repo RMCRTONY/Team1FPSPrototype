@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     [SerializeField] GameObject fireball;
     [SerializeField] Transform abilityFirePos;
     [SerializeField] GameObject testLantern;
+    [SerializeField] InventoryObject inventory;
 
     // attributes (HP, Speed, Jumpspeed, gravity, maxJumps etc.)
     [SerializeField] int HP;
@@ -187,6 +189,13 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         gameManager.instance.playerDamageScreen.SetActive(false);
     }
 
+    IEnumerator flashHeal()
+    {
+        gameManager.instance.playerHealScreen.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.playerHealScreen.SetActive(false);
+    }
+
     void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
@@ -198,4 +207,35 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         Vector3 dir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
         return dir;
     }
+
+    // add ability to pick up health objects by walking into them
+    public void OnTriggerEnter(Collider other)
+    {
+        if (HP == HPOrig)
+        {
+            return;
+        }
+
+        if (other.TryGetComponent(out iHeal item)) // team no crash
+        {
+            int healthToRestore = item.RestoreHealth();
+            int healthGap = HPOrig - HP;
+            if (healthToRestore > healthGap) // done this way to provide the posibility of displaying to player on UI
+            {
+                HP += healthGap;  
+            } else
+            {
+                HP += healthToRestore;
+            }
+            Destroy(other.gameObject);
+            updatePlayerUI();
+            StartCoroutine(flashHeal());
+        }
+    }
+
+    //private void OnApplicationQuit()
+    //{
+    //    // cull the entire inventory
+    //    inventory.container.Clear();
+    //}
 }
