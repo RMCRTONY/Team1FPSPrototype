@@ -81,7 +81,7 @@ public class enemyAI : MonoBehaviour, IDamage
             gameManager.instance.updateGameGoal(-1);
             enemyAnim.SetTrigger("die");
             GetComponent<CapsuleCollider>().enabled = false;
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
