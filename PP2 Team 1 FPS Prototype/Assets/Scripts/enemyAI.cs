@@ -8,16 +8,26 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
+    [SerializeField] Animator anim;
+    [SerializeField] Transform headPos;
 
     [SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
+    [SerializeField] int viewCone;
+    [SerializeField] int roamDist;
+    [SerializeField] int roamPauseTimer;
+    [SerializeField] int animSpeedTrans;
 
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
 
     bool isShooting;
     bool playerInRange;
+    bool destinationChosen;
     Vector3 playerDir;
+    Vector3 startingPos;
+    float angleToPlayer;
+    float stoppingDistOrig;
     Animator enemyAnim;
 
     // Start is called before the first frame update
@@ -25,26 +35,80 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         gameManager.instance.updateGameGoal(1);
         enemyAnim = GetComponent<Animator>();
+        startingPos = transform.position;
+        stoppingDistOrig = agent.stoppingDistance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange)
+        //enemyAnim.SetBool("Run", true);
+
+        float animSpeed = agent.velocity.normalized.magnitude;
+        anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+
+        if (playerInRange && !canSeePlayer())
         {
-            playerDir = gameManager.instance.player.transform.position - transform.position;
-            agent.SetDestination(gameManager.instance.player.transform.position);
-            enemyAnim.SetFloat("Speed", agent.velocity.magnitude);
-            //enemyAnim.SetBool("Run", true);
+            StartCoroutine(roam());
+        }
+        else if (!playerInRange)
+        {
+            StartCoroutine(roam());
+        }
+    }
 
-            if (!isShooting)
-                StartCoroutine(shoot());
+    IEnumerator roam()
+    {
+        if(!destinationChosen && agent.remainingDistance < 0.05f)
+        {
+            destinationChosen = true;
+            agent.stoppingDistance = 0;
+            yield return new WaitForSeconds(roamPauseTimer);
 
-            if (agent.remainingDistance <= agent.stoppingDistance)
+            Vector3 randomPos = Random.insideUnitSphere * roamDist;
+            randomPos += startingPos;
+
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+            agent.SetDestination(hit.position);
+
+            destinationChosen = false;
+        }
+    }
+
+    bool canSeePlayer()
+    {
+        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
+        //Debug.Log(angleToPlayer);
+        Debug.DrawRay(headPos.position, playerDir);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        {
+            //Debug.Log(hit.transform.name);
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
-                faceTarget();
+                agent.stoppingDistance = stoppingDistOrig;
+                agent.SetDestination(gameManager.instance.player.transform.position);
+
+                if (!isShooting)
+                {
+                    StartCoroutine(shoot());
+                }
+
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
+
+                return true;
             }
         }
+
+        agent.stoppingDistance = 0;
+        return false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -65,7 +129,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void faceTarget()
     {
-        Quaternion rot = Quaternion.LookRotation(playerDir);
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 
