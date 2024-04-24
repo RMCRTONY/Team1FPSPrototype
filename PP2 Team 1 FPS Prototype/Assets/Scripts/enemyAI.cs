@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
@@ -28,13 +29,13 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     float angleToPlayer;
     float stoppingDistOrig;
-    Animator enemyAnim;
+    //Animator enemyAnim;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager.instance.updateGameGoal(1);
-        enemyAnim = GetComponent<Animator>();
+        //enemyAnim = GetComponent<Animator>();
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
     }
@@ -124,6 +125,7 @@ public class enemyAI : MonoBehaviour, IDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            agent.stoppingDistance = 0;
         }
     }
 
@@ -136,15 +138,16 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
+        anim.SetTrigger("Damage");
         StartCoroutine(flashRed());
-        enemyAnim.SetTrigger("damage");
+        //enemyAnim.SetTrigger("damage");
         agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (HP <= 0)
         {
             gameManager.instance.updateGameGoal(-1);
-            enemyAnim.SetTrigger("die");
-            GetComponent<CapsuleCollider>().enabled = false;
+            //enemyAnim.SetTrigger("die");
+            //GetComponent<CapsuleCollider>().enabled = false;
             Destroy(gameObject);
         }
     }
@@ -159,9 +162,15 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isShooting = true;
+        anim.SetTrigger("Shoot");
         //enemyAnim.SetBool("castFB", true);
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        //Instantiate(bullet, shootPos.position, transform.rotation);
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    public void createBullet()
+    {
+        Instantiate(bullet, shootPos.position, transform.rotation);
     }
 }

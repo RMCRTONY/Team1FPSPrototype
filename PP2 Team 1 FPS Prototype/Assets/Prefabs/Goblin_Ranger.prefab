@@ -53,15 +53,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.659733
+      value: -21.822678
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.9392834
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40.97855
+      value: 5.722934
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -130,6 +130,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2178276620076447097}
   m_SourcePrefab: {fileID: 100100000, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
+--- !u!95 &5570905162432317885 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
+  m_PrefabInstance: {fileID: 5570905162441817309}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &5570905162436507517 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 13700000, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
@@ -155,8 +160,14 @@ MonoBehaviour:
   agent: {fileID: 8657866869713903052}
   model: {fileID: 5570905162436507517}
   shootPos: {fileID: 5200516020057646669}
-  HP: 1
+  anim: {fileID: 5570905162432317885}
+  headPos: {fileID: 5570905162441942621}
+  HP: 3
   faceTargetSpeed: 600
+  viewCone: 90
+  roamDist: 15
+  roamPauseTimer: 3
+  animSpeedTrans: 4
   bullet: {fileID: 7118765615501587130, guid: c5d2a8c5c325bd54daea512781b7e48c, type: 3}
   shootRate: 1
 --- !u!195 &8657866869713903052
@@ -228,6 +239,11 @@ SphereCollider:
 --- !u!4 &5570905162441942615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400010, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
+  m_PrefabInstance: {fileID: 5570905162441817309}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5570905162441942621 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
   m_PrefabInstance: {fileID: 5570905162441817309}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6563634402535565550
