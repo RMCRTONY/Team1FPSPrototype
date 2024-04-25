@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class playerController : MonoBehaviour, IDamage // needs IInteractions
 {
@@ -32,6 +33,9 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     [SerializeField] int spellDist;
     [SerializeField] float fbRate;
 
+    // misc
+    [SerializeField] float pickupRange;
+
     private Vector3 moveDir;
     private Vector3 playerVel;
     private int jumpTimes;
@@ -58,6 +62,10 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         // call movement method for movement / frame
         movement();
 
+        if (Input.GetButtonDown("Interact"))  // game cont interact key
+        {
+            PickUp();
+        }
     }
 
     void movement()
@@ -69,13 +77,14 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         moveDir = getDirection();
         controller.Move(walkSpeed * Time.deltaTime * moveDir);
 
-        // let the man KILL, damn you
-        if (Input.GetButton("Fire1") && !isShooting && !gameManager.instance.isPaused)
+        // protective spell dealy
+        if (Input.GetButton("Fire2") && !isShooting && !gameManager.instance.isPaused)
         {
             StartCoroutine(castSpell());
         }
 
-        if (Input.GetButtonDown("Fire2") && !isShooting && !gameManager.instance.isPaused)
+        // let the man KILL, damn you
+        if (Input.GetButtonDown("Fire1") && !isShooting && !gameManager.instance.isPaused)
         {
             StartCoroutine(castFireball());
         }
@@ -120,7 +129,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     {
         isShooting = true;
 
-        // TODO: fire a projectile, eventually with variable attributes
+        // TODO: Cast a protective shield
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, spellDist))
         {
             if (spawnLanternsOnFire) // if you dont think the player is firing, trigger bool
@@ -233,9 +242,33 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         }
     }
 
-    //private void OnApplicationQuit()
-    //{
-    //    // cull the entire inventory
-    //    inventory.container.Clear();
-    //}
+    public void PickUp()
+    {
+        //Debug.Log("Pickup Called");
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, pickupRange))
+        {
+            //Debug.Log("Fired");
+            // if what is hit is an item
+            if (hit.collider.TryGetComponent(out Item item))
+            {
+                //Debug.Log("Found Item");
+                if (hit.transform != transform) // dont hit yourself
+                {
+                    //Debug.Log("Not Yourself");
+                    inventory.AddItem(item.item, 1);
+                    Destroy(item.gameObject);
+                }
+            }
+        }
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        if (inventory != null)
+        {
+            // cull the entire inventory
+            inventory.container.Clear();
+        }
+    }
 }

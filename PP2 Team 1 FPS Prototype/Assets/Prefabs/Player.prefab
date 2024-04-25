@@ -279,6 +279,7 @@ MonoBehaviour:
   fireball: {fileID: 7118765615501587130, guid: 6fe6997771a019e48951facdbcfcb491, type: 3}
   abilityFirePos: {fileID: 6795272328599103923}
   testLantern: {fileID: 1809581633867787574, guid: 2d35d492ca1d407469bdd0c05ded8e1e, type: 3}
+  inventory: {fileID: 11400000, guid: 035232a7d72a5d0439300fa18dbc583e, type: 2}
   HP: 10
   walkSpeed: 6
   jumpSpeed: 8
@@ -292,6 +293,7 @@ MonoBehaviour:
   spellRate: 0.25
   spellDist: 50
   fbRate: 0.5
+  pickupRange: 5
   spawnLanternsOnFire: 0
 --- !u!143 &1990995417799884302
 CharacterController:
