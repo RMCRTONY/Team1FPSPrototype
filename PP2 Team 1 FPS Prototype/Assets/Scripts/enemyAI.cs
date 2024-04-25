@@ -11,6 +11,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos;
     [SerializeField] Animator anim;
     [SerializeField] Transform headPos;
+    [SerializeField] Collider weaponCol;
 
     [SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
@@ -172,5 +173,15 @@ public class enemyAI : MonoBehaviour, IDamage
     public void createBullet()
     {
         Instantiate(bullet, shootPos.position, transform.rotation);
+    }
+
+    public void weaponColOn()
+    { 
+        weaponCol.enabled = true;
+    }
+
+    public void weaponColOff()
+    {
+        weaponCol.enabled = false;
     }
 }

@@ -88,7 +88,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShootingArrow
+  m_Name: Sword Slash
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -102,7 +102,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 6f808c0a9f1352e40971061163705ff1, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: cb31ccbf5f675894593b216aab7419ad, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -114,7 +114,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Goblin_Ranger
+  m_Name: Goblin_Brute
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Speed
