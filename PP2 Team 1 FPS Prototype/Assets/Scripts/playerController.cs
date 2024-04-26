@@ -57,7 +57,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     void Start()
     {
         HPOrig = HP;
-        updatePlayerUI();
+        spawnPlayer();
     }
 
     //Update is called once per frame
@@ -213,6 +213,16 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+    }
+
+    public void spawnPlayer()
+    {
+        HP = HPOrig;
+        updatePlayerUI();
+
+        controller.enabled = false;
+        transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
     }
 
     private Vector3 getDirection()
