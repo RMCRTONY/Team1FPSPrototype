@@ -8,6 +8,7 @@ using static UnityEditor.Progress;
 public class playerController : MonoBehaviour, IDamage // needs IInteractions
 {
     // components like charController etc
+    [Header("Components")]
     [SerializeField] CharacterController controller;
     [SerializeField] new GameObject camera;
     [SerializeField] GameObject fireball;
@@ -16,6 +17,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     [SerializeField] InventoryObject inventory;
 
     // attributes (HP, Speed, Jumpspeed, gravity, maxJumps etc.)
+    [Header("Attributes")]
     [SerializeField] int HP;
     [SerializeField] int walkSpeed;
     [SerializeField] int jumpSpeed;
@@ -25,15 +27,17 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     [SerializeField] float dashRate;
     [SerializeField] float dashTime;
     [SerializeField] float dashCooldown;
-    
+
 
     // the firing values
+    [Header("Firing Values")]
     [SerializeField] int spellDamage;
     [SerializeField] float spellRate;
     [SerializeField] int spellDist;
     [SerializeField] float fbRate;
 
     // misc
+    [Header("Misc")]
     [SerializeField] float pickupRange;
 
     private Vector3 moveDir;
@@ -46,7 +50,8 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     private readonly int gravity = -10;
     int HPOrig;
 
-    public bool spawnLanternsOnFire; // if you dont think the player is firing, trigger bool
+    [Header("Debug")]
+    [SerializeField] bool spawnLanternsOnFire; // if you dont think the player is firing, trigger bool
 
     // Start is called before the first frame update
     void Start()
@@ -220,26 +225,68 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
     // add ability to pick up health objects by walking into them
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log("TriggerEntered");
+
+        // if Item is health
+        if (other.TryGetComponent(out iHeal item))
+        {
+            Debug.Log("HealItem found");
+            heal(other, item);
+        }
+
+        // if tigger is locked object
+        if (other.TryGetComponent(out LockedObject locked))
+        {
+            Debug.Log("Locked Obj Found");
+            Item search = locked.GetKey(); // get item associated with unlocking the door
+            if (searchInventory(search))
+            {
+                Debug.Log("Item in Inventory");
+                Destroy(other.gameObject);
+            }
+            else // TODO: condition here that prompts the player they don't have the right key
+            {
+                Debug.Log("Item not in inventory");
+            }
+        }
+
+    }
+
+    private void heal(Collider other, iHeal item)
+    {
         if (HP == HPOrig)
         {
             return;
         }
-
-        if (other.TryGetComponent(out iHeal item)) // team no crash
+        
+        int healthToRestore = item.RestoreHealth();
+        int healthGap = HPOrig - HP;
+        if (healthToRestore > healthGap) // done this way to provide the posibility of displaying to player on UI
         {
-            int healthToRestore = item.RestoreHealth();
-            int healthGap = HPOrig - HP;
-            if (healthToRestore > healthGap) // done this way to provide the posibility of displaying to player on UI
-            {
-                HP += healthGap;  
-            } else
-            {
-                HP += healthToRestore;
-            }
-            Destroy(other.gameObject);
-            updatePlayerUI();
-            StartCoroutine(flashHeal());
+           HP += healthGap;
         }
+        else
+        {
+           HP += healthToRestore;
+        }
+        Destroy(other.gameObject);
+        updatePlayerUI();
+        StartCoroutine(flashHeal());
+    }
+
+    private bool searchInventory(Item search) // returns bool if item is in inventory
+    {
+        for (int i = 0; i < inventory.container.Count; i++)
+        {
+            Debug.Log("Searching for item");
+            if (inventory.container[i].item.signature == search.item.signature)
+            {
+                Debug.Log("Inventory item found");
+                return true;
+            }
+        }
+        Debug.Log("Inventory Item not found");
+        return false;
     }
 
     public void PickUp()
@@ -255,8 +302,8 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
                 if (hit.transform != transform) // dont hit yourself
                 {
                     //Debug.Log("Not Yourself");
-                    inventory.AddItem(item.item, 1);
-                    Destroy(item.gameObject);
+                    inventory.AddItem(item.item, item.item.signature, 1);
+                    item.gameObject.SetActive(false); // deactivate rather than destroy??
                 }
             }
         }
@@ -265,7 +312,12 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
 
     private void OnApplicationQuit()
     {
-        if (inventory != null)
+        clearInventory();
+    }
+
+    public void clearInventory()
+    {
+        if (inventory != null) // unless inventory is never used
         {
             // cull the entire inventory
             inventory.container.Clear();

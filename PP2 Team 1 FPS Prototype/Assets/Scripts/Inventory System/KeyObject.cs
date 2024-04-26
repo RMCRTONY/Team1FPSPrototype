@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Key Object", menuName = "Inventory System/Items/Key")] // makes it easy to create new keys
 public class KeyObject : ItemObject
 {
+    //[SerializeField] GameObject lockedObject;
+
     public void Reset()
     {
         type = ItemType.Key; // sets the item as a key

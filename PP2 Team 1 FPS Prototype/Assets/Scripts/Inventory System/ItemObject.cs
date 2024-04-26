@@ -14,6 +14,7 @@ public abstract class ItemObject : ScriptableObject // Inheritable class for all
 {
     public GameObject prefab;
     public ItemType type;
+    public int signature;
     [TextArea(15, 20)]  // for display clarity
     public string description;
 

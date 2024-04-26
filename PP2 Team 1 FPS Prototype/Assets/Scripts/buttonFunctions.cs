@@ -13,6 +13,7 @@ public class buttonFunctions : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameManager.instance.player.SendMessage("clearInventory");
         gameManager.instance.stateUnpaused();
     }
 

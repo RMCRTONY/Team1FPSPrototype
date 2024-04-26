@@ -8,7 +8,7 @@ public class InventoryObject : ScriptableObject
     public List<InventorySlot> container = new List<InventorySlot>(); // the inventory itself
 
     // gotta actually add the items
-    public void AddItem(ItemObject _item, int _amount)
+    public void AddItem(ItemObject _item, int _signature, int _amount)
     {
         // check if it is already here
         bool hasitem = false;
@@ -24,7 +24,7 @@ public class InventoryObject : ScriptableObject
         }
         if (!hasitem) // if no; create new slot
         {
-            container.Add(new InventorySlot(_item, _amount));
+            container.Add(new InventorySlot(_item, _signature, _amount));
         }
     }
 }
@@ -34,12 +34,14 @@ public class InventorySlot // each individual slot
 {
     public ItemObject item; // type
     public int amount; // how many
+    public int signature; // identifier
 
 
-    public InventorySlot(ItemObject _item, int _amount)
+    public InventorySlot(ItemObject _item, int _signature, int _amount)
     {
         item = _item;
         amount = _amount;
+        signature = _signature;
     }
 
     // add the new to the old
