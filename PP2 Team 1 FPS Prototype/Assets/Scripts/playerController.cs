@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
-public class playerController : MonoBehaviour, IDamage // needs IInteractions
+public class playerController : MonoBehaviour, IDamage // Has IInteractions
 {
     // components like charController etc
     [Header("Components")]
@@ -135,7 +135,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         isShooting = true;
 
         // TODO: Cast a protective shield
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, spellDist))
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, spellDist)) // NEEDS CHANGE
         {
             if (spawnLanternsOnFire) // if you dont think the player is firing, trigger bool
             {
@@ -203,7 +203,7 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         gameManager.instance.playerDamageScreen.SetActive(false);
     }
 
-    IEnumerator flashHeal()
+    IEnumerator flashHeal() // flashes the screen green
     {
         gameManager.instance.playerHealScreen.SetActive(true);
         yield return new WaitForSeconds(0.1f);
@@ -221,8 +221,8 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         updatePlayerUI();
 
         controller.enabled = false; // disables the player controller
-        transform.position = gameManager.instance.playerSpawnPos.transform.position;
-        controller.enabled = true; // does not re-enable the player controller
+        transform.position = gameManager.instance.playerSpawnPos.transform.position; // needs Spawn position gameObject in scene
+        controller.enabled = true;
     }
 
     private Vector3 getDirection()
@@ -264,13 +264,13 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
 
     private void heal(Collider other, iHeal item)
     {
-        if (HP == HPOrig)
+        if (HP == HPOrig) // if health is full, item is not consumed
         {
             return;
         }
         
         int healthToRestore = item.RestoreHealth();
-        int healthGap = HPOrig - HP;
+        int healthGap = HPOrig - HP; // no OverHeal
         if (healthToRestore > healthGap) // done this way to provide the posibility of displaying to player on UI
         {
            HP += healthGap;
