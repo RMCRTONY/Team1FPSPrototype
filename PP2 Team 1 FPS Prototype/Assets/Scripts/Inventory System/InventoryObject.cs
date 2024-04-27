@@ -41,7 +41,7 @@ public class InventorySlot // each individual slot
     {
         item = _item;
         amount = _amount;
-        signature = _signature;
+        signature = _signature; // does not allow for identical objects to serve the same purpose. Different sigs, different sub-item.
     }
 
     // add the new to the old

@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
+/* Please comment your code when adding or removing from this script. Thank you. */
+
 public class playerController : MonoBehaviour, IDamage // Has IInteractions
 {
     // components like charController etc
@@ -254,12 +256,21 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
                 Debug.Log("Item in Inventory");
                 Destroy(other.gameObject);
             }
-            else // TODO: condition here that prompts the player they don't have the right key
+            else // prompts the player they don't have the right key
             {
                 Debug.Log("Item not in inventory");
+                gameManager.instance.lockedPopup.SetActive(true); // tells player object is locked
             }
         }
 
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<LockedObject>() && gameManager.instance.lockedPopup.activeInHierarchy) // both locked and informing player
+        {
+            gameManager.instance.lockedPopup.SetActive(false); // deactivate the message
+        }
     }
 
     private void heal(Collider other, iHeal item)

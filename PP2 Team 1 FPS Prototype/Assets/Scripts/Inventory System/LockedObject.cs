@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LockedObject : MonoBehaviour
 {
-    [SerializeField] Item key;
+    [SerializeField] Item key; // this is lookng for the obj itself, not the scriptable atachment
 
     private Item _key;
 

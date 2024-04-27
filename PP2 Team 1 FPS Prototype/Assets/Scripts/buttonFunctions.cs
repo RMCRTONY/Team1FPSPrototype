@@ -19,7 +19,7 @@ public class buttonFunctions : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        gameManager.instance.player.SendMessage("clearInventory");
+        gameManager.instance.player.SendMessage("clearInventory"); // sends the player a message to clear its inventory upon restart
         gameManager.instance.stateUnpaused();
     }
 

@@ -13,6 +13,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     public GameObject checkPointMenu;
+    public GameObject lockedPopup; // informs player that an object is locked
     public GameObject playerDamageScreen;
     public GameObject playerHealScreen;
     public Image playerHPBar;
