@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
+  signature: 202
   description: The entire length of the staff is suprisingly cool to the touch.
