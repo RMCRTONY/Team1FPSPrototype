@@ -220,9 +220,9 @@ public class playerController : MonoBehaviour, IDamage // needs IInteractions
         HP = HPOrig;
         updatePlayerUI();
 
-        controller.enabled = false;
+        controller.enabled = false; // disables the player controller
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
-        controller.enabled = true;
+        controller.enabled = true; // does not re-enable the player controller
     }
 
     private Vector3 getDirection()
