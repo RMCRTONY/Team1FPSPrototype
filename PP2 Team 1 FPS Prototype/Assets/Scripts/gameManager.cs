@@ -39,12 +39,12 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (!isPaused) // should allow for esc to toggle menu. 
+            if (menuActive == null) // should allow for esc to toggle pause menu only. 
             {
                 statePaused();
                 menuActive = menuPause;
                 menuActive.SetActive(isPaused);
-            } else
+            } else if (menuActive == menuPause)
             {
                 stateUnpaused();
             }
