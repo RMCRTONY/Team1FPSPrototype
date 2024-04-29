@@ -46,6 +46,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     private Vector3 playerVel;
     private int jumpTimes;
     private bool isShooting;
+    private bool isShootingAlt; // different rates of fire, can fire at same time
     private bool isDashing;
     private bool canDash = true;
 
@@ -85,7 +86,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         controller.Move(walkSpeed * Time.deltaTime * moveDir);
 
         // protective spell dealy
-        if (Input.GetButton("Fire2") && !isShooting && !gameManager.instance.isPaused)
+        if (Input.GetButton("Fire2") && !isShootingAlt && !gameManager.instance.isPaused)
         {
             StartCoroutine(castSpell());
         }
@@ -134,7 +135,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
 
     IEnumerator castSpell() // eventually recieve an enum that indicates kind of spell
     {
-        isShooting = true;
+        isShootingAlt = true;
 
         // TODO: Cast a protective shield
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, spellDist)) // NEEDS CHANGE
@@ -153,7 +154,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         }
 
         yield return new WaitForSeconds(spellRate);
-        isShooting = false;
+        isShootingAlt = false;
     }
 
     IEnumerator castFireball()
@@ -240,23 +241,27 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         // if Item is health
         if (other.TryGetComponent(out iHeal item))
         {
-            Debug.Log("HealItem found");
+            //Debug.Log("HealItem found");
             heal(other, item);
+        } 
+        else if (other.GetComponent<Item>()) // display interact prompt
+        { 
+            gameManager.instance.interactPrompt.SetActive(true); // "hey, press e to do thing"
         }
 
         // if tigger is locked object
-        if (other.TryGetComponent(out LockedObject locked))
+        if (other.TryGetComponent(out LockedObject locked)) // unlock objects by walking into them
         {
-            Debug.Log("Locked Obj Found");
+            //Debug.Log("Locked Obj Found");
             Item search = locked.GetKey(); // get item associated with unlocking the door
             if (searchInventory(search))
             {
-                Debug.Log("Item in Inventory");
+               // Debug.Log("Item in Inventory");
                 Destroy(other.gameObject);
             }
             else // prompts the player they don't have the right key
             {
-                Debug.Log("Item not in inventory");
+                //Debug.Log("Item not in inventory");
                 gameManager.instance.lockedPopup.SetActive(true); // tells player object is locked
             }
         }
@@ -268,6 +273,10 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         if (other.GetComponent<LockedObject>() && gameManager.instance.lockedPopup.activeInHierarchy) // both locked and informing player
         {
             gameManager.instance.lockedPopup.SetActive(false); // deactivate the message
+        }
+        if (gameManager.instance.interactPrompt.activeInHierarchy) // telling the player to pick the thing up at all
+        {
+            gameManager.instance.interactPrompt.SetActive(false); // deactivate
         }
     }
 
@@ -297,14 +306,14 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     {
         for (int i = 0; i < inventory.container.Count; i++)
         {
-            Debug.Log("Searching for item");
+            //Debug.Log("Searching for item");
             if (inventory.container[i].item.signature == search.item.signature)
             {
-                Debug.Log("Inventory item found");
+                //Debug.Log("Inventory item found");
                 return true;
             }
         }
-        Debug.Log("Inventory Item not found");
+        //Debug.Log("Inventory Item not found");
         return false;
     }
 
@@ -322,6 +331,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
                 {
                     //Debug.Log("Not Yourself");
                     inventory.AddItem(item.item, item.item.signature, 1);
+                    gameManager.instance.interactPrompt.SetActive(false); // stop telling the player to pick up something they already have
                     item.gameObject.SetActive(false); // deactivate rather than destroy??
                 }
             }

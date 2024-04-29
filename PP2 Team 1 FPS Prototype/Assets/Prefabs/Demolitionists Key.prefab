@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8057230924068492545}
   - component: {fileID: 6740572186398448752}
   - component: {fileID: 1488357108576072103}
+  - component: {fileID: 1671504241582633203}
   m_Layer: 0
   m_Name: Demolitionists Key
   m_TagString: Untagged
@@ -91,6 +92,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.037243653
   m_Center: {x: 0, y: 0, z: -0.065}
+--- !u!135 &1671504241582633203
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103090514690966888}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.34
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6813399016180929923
 GameObject:
   m_ObjectHideFlags: 0
