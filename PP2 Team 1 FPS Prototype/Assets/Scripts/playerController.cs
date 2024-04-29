@@ -237,8 +237,6 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     // add ability to pick up health objects by walking into them
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TriggerEntered");
-
         // if Item is health
         if (other.TryGetComponent(out iHeal item))
         {
