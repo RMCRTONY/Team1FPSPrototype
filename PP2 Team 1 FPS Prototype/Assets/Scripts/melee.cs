@@ -29,7 +29,7 @@ public class melee : MonoBehaviour
         if (dmg != null && !hitHappened)
         {
             dmg.takeDamage(damage);
-            hitHappened = true;
+            //hitHappened = true;
         }
 
         //Destroy(gameObject);
