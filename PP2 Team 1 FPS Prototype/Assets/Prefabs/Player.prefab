@@ -276,10 +276,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1990995417799884302}
   camera: {fileID: 5178453130668984876}
-  fireball: {fileID: 7118765615501587130, guid: 6fe6997771a019e48951facdbcfcb491, type: 3}
-  abilityFirePos: {fileID: 6795272328599103923}
+  projectile: {fileID: 7118765615501587130, guid: 6fe6997771a019e48951facdbcfcb491, type: 3}
+  primaryFirePos: {fileID: 6795272328599103923}
+  altProjectile: {fileID: 0}
+  altFirePos: {fileID: 0}
   testLantern: {fileID: 1809581633867787574, guid: 2d35d492ca1d407469bdd0c05ded8e1e, type: 3}
   inventory: {fileID: 11400000, guid: 035232a7d72a5d0439300fa18dbc583e, type: 2}
+  primaryModel: {fileID: 0}
+  activePrimary: []
+  altModel: {fileID: 0}
+  activeAlt: []
   HP: 10
   walkSpeed: 6
   jumpSpeed: 8
@@ -289,10 +295,12 @@ MonoBehaviour:
   dashRate: 0.15
   dashTime: 0.2
   dashCooldown: 0.25
-  spellDamage: 1
-  spellRate: 0.25
-  spellDist: 50
-  fbRate: 0.5
+  primaryDamage: 0
+  primaryRate: 0
+  primaryDist: 0
+  altDamage: 0
+  altRate: 0
+  altDist: 0
   pickupRange: 2
   spawnLanternsOnFire: 0
 --- !u!143 &1990995417799884302

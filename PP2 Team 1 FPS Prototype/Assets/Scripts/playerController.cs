@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -13,10 +14,16 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     [Header("Components")]
     [SerializeField] CharacterController controller;
     [SerializeField] new GameObject camera;
-    [SerializeField] GameObject fireball;
-    [SerializeField] Transform abilityFirePos;
+    [SerializeField] GameObject projectile;
+    [SerializeField] Transform primaryFirePos;
+    [SerializeField] GameObject altProjectile;
+    [SerializeField] Transform altFirePos;
     [SerializeField] GameObject testLantern;
     [SerializeField] InventoryObject inventory;
+    [SerializeField] GameObject primaryModel;
+    public List<AbilityObject> activePrimary; // odd naming convention to allow for player decided loadouts once inventory menu exists
+    [SerializeField] GameObject altModel;
+    public List<AbilityObject> activeAlt; // see line 23
 
     // attributes (HP, Speed, Jumpspeed, gravity, maxJumps etc.)
     [Header("Attributes")]
@@ -33,10 +40,12 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
 
     // the firing values
     [Header("Firing Values")]
-    [SerializeField] int spellDamage;
-    [SerializeField] float spellRate;
-    [SerializeField] int spellDist;
-    [SerializeField] float fbRate;
+    [SerializeField] int primaryDamage;
+    [SerializeField] float primaryRate;
+    [SerializeField] int primaryDist;
+    [SerializeField] int altDamage;
+    [SerializeField] float altRate;
+    [SerializeField] int altDist;
 
     // misc
     [Header("Misc")]
@@ -47,6 +56,8 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     private int jumpTimes;
     private bool isShooting;
     private bool isShootingAlt; // different rates of fire, can fire at same time
+    private int selectedPrimary; // see line 23
+    private int selectedAlt; // see line 23
     private bool isDashing;
     private bool canDash = true;
 
@@ -66,13 +77,23 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     //Update is called once per frame
     void Update()
     {
-
-        // call movement method for movement / frame
-        movement();
-
-        if (Input.GetButtonDown("Interact"))  // game cont interact key
+        if (!gameManager.instance.isPaused) // can't do nun
         {
-            PickUp();
+            if (activePrimary.Count > 0)
+            {
+                SelectPrimary();
+            }
+            if (activeAlt.Count > 0)
+            {
+                SelectAlt();
+            }
+            // call movement method for movement / frame
+            movement();
+
+            if (Input.GetButtonDown("Interact"))  // game cont interact key
+            {
+                PickUp();
+            }
         }
     }
 
@@ -88,13 +109,13 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         // protective spell dealy
         if (Input.GetButton("Fire2") && !isShootingAlt && !gameManager.instance.isPaused)
         {
-            StartCoroutine(castSpell());
+            StartCoroutine(castAlt());
         }
 
         // let the man KILL, damn you
         if (Input.GetButtonDown("Fire1") && !isShooting && !gameManager.instance.isPaused)
         {
-            StartCoroutine(castFireball());
+            StartCoroutine(castPrimary());
         }
 
         // check for dash key, make dash happen
@@ -133,12 +154,12 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         }
     }
 
-    IEnumerator castSpell() // eventually recieve an enum that indicates kind of spell
+    IEnumerator castAlt() // eventually recieve an enum that indicates kind of spell
     {
         isShootingAlt = true;
 
         // TODO: Cast a protective shield
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, spellDist)) // NEEDS CHANGE
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, altDist)) // NEEDS CHANGE
         {
             if (spawnLanternsOnFire) // if you dont think the player is firing, trigger bool
             {
@@ -149,22 +170,22 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
 
             if (hit.transform != transform && dmg != null)
             { 
-                dmg.takeDamage(spellDamage);
+                dmg.takeDamage(altDamage);
             }
         }
 
-        yield return new WaitForSeconds(spellRate);
+        yield return new WaitForSeconds(altRate);
         isShootingAlt = false;
     }
 
-    IEnumerator castFireball()
+    IEnumerator castPrimary()
     {
         isShooting = true;
 
         // instance fireballs on camera rotation
-        Instantiate(fireball, abilityFirePos.position, camera.transform.rotation);
+        Instantiate(projectile, primaryFirePos.position, camera.transform.rotation);
 
-        yield return new WaitForSeconds(fbRate);
+        yield return new WaitForSeconds(primaryRate);
         isShooting = false;
     }
 
@@ -236,7 +257,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     }
 
     // add ability to pick up health objects by walking into them
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         // if Item is health
         if (other.TryGetComponent(out iHeal item))
@@ -268,7 +289,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
 
     }
 
-    public void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<LockedObject>() && gameManager.instance.lockedPopup.activeInHierarchy) // both locked and informing player
         {
@@ -335,8 +356,108 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
                     item.gameObject.SetActive(false); // deactivate rather than destroy??
                 }
             }
+
+            // if what is hit is an ability
+            else if (hit.collider.TryGetComponent(out AbilityObject ability))
+            {
+                GetAbilityStats(ability);
+                gameManager.instance.interactPrompt.SetActive(false); // shut tf up
+                Destroy(ability); // eliminate it
+            }
         }
 
+    }
+
+    public void GetAbilityStats(AbilityObject ability)
+    {
+        if (ability.isPrimary) // if the ability is a primary ability
+        {
+            activePrimary.Add(ability); // push to ability wheel
+            selectedPrimary = activePrimary.Count - 1;
+            ChangePrimary();
+        }
+        else // secondary/alt ability
+        {
+            activeAlt.Add(ability); // push to ability wheel
+            selectedAlt = activeAlt.Count - 1;
+            ChangeAlt();
+        }
+    }
+
+    void SelectPrimary() // scroll wheel primary rotation
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedPrimary < activePrimary.Count - 1)
+        {
+            selectedPrimary++;
+            ChangePrimary();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedPrimary > 0)
+        {
+            selectedPrimary--;
+            ChangePrimary();
+        }
+    }
+
+    void ChangePrimary()
+    {
+        if (activePrimary[selectedPrimary].shootsProjectile) // if the thing fires a projectile prefab
+        {
+            projectile = activePrimary[selectedPrimary].projectile; // no need to assign unique damage 
+        }
+        else
+        {
+            primaryDamage = activePrimary[selectedPrimary].shootDamage; // needs unique damage
+            primaryDist = activePrimary[selectedPrimary].shootDist;
+        }
+        primaryRate = activePrimary[selectedPrimary].shootRate;
+
+        primaryModel.GetComponent<MeshFilter>().sharedMesh = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshFilter>().sharedMesh;
+        primaryModel.GetComponent<MeshRenderer>().sharedMaterial = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+
+    void SelectAlt() // Q/E ability selection, infinite scroll
+    {
+        if (Input.GetAxis("Depth") > 0) // should be E
+        {
+            if (selectedAlt >= activeAlt.Count - 1)
+            {
+                selectedAlt = 0;
+            }
+            else
+            {
+                selectedAlt++;
+            }
+            ChangeAlt();
+        }
+        else if (Input.GetAxis("Depth") < 0) // should be Q
+        {
+            if (selectedAlt <= 0)
+            {
+                selectedAlt = activeAlt.Count - 1;
+            }
+            else
+            {
+                selectedAlt--;
+            }
+            ChangeAlt();
+        }
+    }
+
+    void ChangeAlt()
+    {
+        if (activeAlt[selectedAlt].shootsProjectile) // if the thing fires a projectile prefab
+        {
+            altProjectile = activeAlt[selectedAlt].projectile; // no need to assign unique damage 
+        }
+        else
+        {
+            altDamage = activeAlt[selectedAlt].shootDamage; // needs unique damage
+            altDist = activeAlt[selectedAlt].shootDist;
+        }
+        altRate = activeAlt[selectedAlt].shootRate;
+
+        altModel.GetComponent<MeshFilter>().sharedMesh = activeAlt[selectedAlt].abilityModel.GetComponent<MeshFilter>().sharedMesh;
+        altModel.GetComponent<MeshRenderer>().sharedMaterial = activeAlt[selectedAlt].abilityModel.GetComponent<MeshRenderer>().sharedMaterial;
     }
 
     private void OnApplicationQuit()
