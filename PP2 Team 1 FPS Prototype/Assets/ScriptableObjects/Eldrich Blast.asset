@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e32869d50f064574487d303886308f11, type: 3}
-  m_Name: Bangle of Warding
+  m_Name: Eldrich Blast
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  signature: 201
-  description: Fits so perfectly, you would barely notice if it fell off.
+  signature: 203
+  description: Legally Distinct from DnD 5e
   isPrimary: 0
-  abilityModel: {fileID: 0}
-  manaDrain: 1
-  shootRate: 0.1
-  shootDamage: 0
-  shootDist: 0
+  abilityModel: {fileID: 2303205409579412723, guid: 32a5bab1f34cb2f488603cc1f415eb92, type: 3}
+  manaDrain: 20
+  shootRate: 1
+  shootDamage: 3
+  shootDist: 60
   shootsProjectile: 0
   projectile: {fileID: 0}
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 4529804811838174369, guid: 4db3634de54463a42b164d4e8d10b1bd, type: 3}
   shootSound: {fileID: 0}
   shootSoundVol: 0

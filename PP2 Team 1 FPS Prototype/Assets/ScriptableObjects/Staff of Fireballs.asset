@@ -17,8 +17,8 @@ MonoBehaviour:
   signature: 202
   description: The entire length of the staff is suprisingly cool to the touch.
   isPrimary: 1
-  abilityModel: {fileID: 0}
-  manaDrain: 1
+  abilityModel: {fileID: 3102872132118464444, guid: 6e23627d16519534f95260b78a6c4247, type: 3}
+  manaDrain: 0
   shootRate: 0.25
   shootDamage: 0
   shootDist: 0
