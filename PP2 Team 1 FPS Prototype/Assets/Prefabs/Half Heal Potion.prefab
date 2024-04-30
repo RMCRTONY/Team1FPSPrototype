@@ -50,7 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1276765132964732378, guid: 87191227f0f69c241ac8475791f6ea11, type: 3}
       propertyPath: m_Height
-      value: 1.62
+      value: 2.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276765132964732378, guid: 87191227f0f69c241ac8475791f6ea11, type: 3}
+      propertyPath: m_Radius
+      value: 1.27
       objectReference: {fileID: 0}
     - target: {fileID: 1276765132964732378, guid: 87191227f0f69c241ac8475791f6ea11, type: 3}
       propertyPath: m_Center.x
@@ -58,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3818482061241413525, guid: 87191227f0f69c241ac8475791f6ea11, type: 3}
       propertyPath: m_Name
-      value: Half Heal Potion Variant
+      value: Half Heal Potion
       objectReference: {fileID: 0}
     - target: {fileID: 4078607343118428977, guid: 87191227f0f69c241ac8475791f6ea11, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7528416608899173671, guid: 87191227f0f69c241ac8475791f6ea11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.36
+      value: -45.309
       objectReference: {fileID: 0}
     - target: {fileID: 7528416608899173671, guid: 87191227f0f69c241ac8475791f6ea11, type: 3}
       propertyPath: m_LocalPosition.y
@@ -78,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7528416608899173671, guid: 87191227f0f69c241ac8475791f6ea11, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.873
+      value: -4.336
       objectReference: {fileID: 0}
     - target: {fileID: 7528416608899173671, guid: 87191227f0f69c241ac8475791f6ea11, type: 3}
       propertyPath: m_LocalRotation.w
