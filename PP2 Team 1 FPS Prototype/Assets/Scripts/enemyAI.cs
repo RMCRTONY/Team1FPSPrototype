@@ -30,11 +30,13 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     float angleToPlayer;
     float stoppingDistOrig;
+    
     //Animator enemyAnim;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         gameManager.instance.updateGameGoal(1);
         //enemyAnim = GetComponent<Animator>();
         startingPos = transform.position;
@@ -139,6 +141,7 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
+        
         anim.SetTrigger("Damage");
         StartCoroutine(flashRed());
         //enemyAnim.SetTrigger("damage");
@@ -184,4 +187,6 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         weaponCol.enabled = false;
     }
+
+    
 }
