@@ -36,6 +36,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     [SerializeField] float dashRate;
     [SerializeField] float dashTime;
     [SerializeField] float dashCooldown;
+    [SerializeField] public int manaPool;
 
 
     // the firing values
@@ -50,6 +51,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     // misc
     [Header("Misc")]
     [SerializeField] float pickupRange;
+    [SerializeField] float manaTrans;
 
     private Vector3 moveDir;
     private Vector3 playerVel;
@@ -63,6 +65,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
 
     private readonly int gravity = -10;
     int HPOrig;
+    public int manaOrig;
 
     [Header("Debug")]
     [SerializeField] bool spawnLanternsOnFire; // if you dont think the player is firing, trigger bool
@@ -71,6 +74,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     void Start()
     {
         HPOrig = HP;
+        manaOrig = manaPool;
         spawnPlayer();
     }
 
@@ -79,6 +83,8 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     {
         if (!gameManager.instance.isPaused) // can't do nun
         {
+            updateManaBar();
+
             if (activePrimary.Count > 0)
             {
                 SelectPrimary();
@@ -106,26 +112,26 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         moveDir = getDirection();
         controller.Move(walkSpeed * Time.deltaTime * moveDir);
 
-        // protective spell dealy
-        if (Input.GetButton("Fire2") && !isShootingAlt && !gameManager.instance.isPaused)
-        {
-            StartCoroutine(castAlt());
-        }
-
-        // let the man KILL, damn you
-        if (Input.GetButtonDown("Fire1") && !isShooting && !gameManager.instance.isPaused)
+        // Primary fire
+        if (Input.GetButtonDown("Fire1") && !isShooting && activePrimary.Count > 0 && manaPool > activePrimary[selectedPrimary].manaDrain)
         {
             StartCoroutine(castPrimary());
         }
 
+        // Alt fire
+        if (Input.GetButton("Fire2") && !isShootingAlt && manaPool > 0 && activeAlt.Count > 0 && manaPool > activeAlt[selectedAlt].manaDrain)
+        {
+            StartCoroutine(castAlt());
+        }
+
         // check for dash key, make dash happen
-        if (Input.GetButtonDown("Fire3") && canDash && !gameManager.instance.isPaused)
+        if (Input.GetButtonDown("Fire3") && canDash)
         {
             StartCoroutine(dash());
         }
 
         // check for jump key, make jump happen
-        if (Input.GetButtonDown("Jump") && jumpTimes < maxJumps && !gameManager.instance.isPaused)
+        if (Input.GetButtonDown("Jump") && jumpTimes < maxJumps)
         {
             jumpTimes++;
             playerVel.y = jumpSpeed;
@@ -158,35 +164,86 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     {
         isShootingAlt = true;
 
-        // TODO: Cast a protective shield
-        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, altDist)) // NEEDS CHANGE
+        if (activeAlt[selectedAlt].manaDrain > 0) // if the ability drains mana
         {
-            if (spawnLanternsOnFire) // if you dont think the player is firing, trigger bool
+            gameManager.instance.manaInUse = true;
+            manaPool -= activeAlt[selectedAlt].manaDrain; // drain the mana
+        }
+
+        if (activeAlt[selectedAlt].shootsProjectile)
+        {
+            // instance projectiles on camera rotation
+            Instantiate(altProjectile, altFirePos.position, camera.transform.rotation);
+        }
+        else
+        {
+            // its a raycast so do the raycast stuff
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, altDist))
             {
-                Instantiate(testLantern, hit.point, transform.rotation);
-            }
+                if (spawnLanternsOnFire) // if you dont think the player is firing, trigger bool
+                {
+                    Instantiate(testLantern, hit.point, transform.rotation);
+                }
 
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
 
-            if (hit.transform != transform && dmg != null)
-            { 
-                dmg.takeDamage(altDamage);
+                if (hit.transform != transform && dmg != null)
+                {
+                    dmg.takeDamage(altDamage);
+                }
+                else
+                {
+                    Instantiate(activeAlt[selectedAlt].hitEffect, hit.point, Quaternion.identity); // need those hit effects
+                }
             }
         }
 
         yield return new WaitForSeconds(altRate);
         isShootingAlt = false;
+        gameManager.instance.manaInUse = false;
     }
 
     IEnumerator castPrimary()
     {
         isShooting = true;
 
-        // instance fireballs on camera rotation
-        Instantiate(projectile, primaryFirePos.position, camera.transform.rotation);
+        if (activePrimary[selectedPrimary].manaDrain > 0) // if the ability drains mana
+        {
+            gameManager.instance.manaInUse = true;
+            manaPool -= activePrimary[selectedPrimary].manaDrain; // drain the mana
+        }
+
+        if (activePrimary[selectedPrimary].shootsProjectile)
+        {
+            // instance projectiles on camera rotation
+            Instantiate(projectile, primaryFirePos.position, camera.transform.rotation);
+        }
+        else
+        {
+            // its a raycast so do the raycast stuff
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, primaryDist))
+            {
+                if (spawnLanternsOnFire) // if you dont think the player is firing, trigger bool
+                {
+                    Instantiate(testLantern, hit.point, transform.rotation);
+                }
+
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+                if (hit.transform != transform && dmg != null)
+                {
+                    dmg.takeDamage(primaryDamage);
+                }
+                else
+                {
+                    Instantiate(activePrimary[selectedPrimary].hitEffect, hit.point, Quaternion.identity); // need those hit effects
+                }
+            }
+        }
 
         yield return new WaitForSeconds(primaryRate);
         isShooting = false;
+        gameManager.instance.manaInUse = false;
     }
 
     IEnumerator dash()
@@ -237,11 +294,19 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+
+        updateManaBar();
+    }
+    
+    public void updateManaBar()
+    {
+        gameManager.instance.playerManaBar.fillAmount = (float)manaPool / manaOrig;
     }
 
     public void spawnPlayer()
     {
         HP = HPOrig;
+        manaPool = manaOrig;
         updatePlayerUI();
 
         controller.enabled = false; // disables the player controller
@@ -356,14 +421,14 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
                     item.gameObject.SetActive(false); // deactivate rather than destroy??
                 }
             }
-
+            /* great Idea, needlessly complicated. Doing this different.
             // if what is hit is an ability
             else if (hit.collider.TryGetComponent(out AbilityObject ability))
             {
                 GetAbilityStats(ability);
                 gameManager.instance.interactPrompt.SetActive(false); // shut tf up
                 Destroy(ability); // eliminate it
-            }
+            }*/
         }
 
     }
@@ -417,7 +482,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
 
     void SelectAlt() // Q/E ability selection, infinite scroll
     {
-        if (Input.GetAxis("Depth") > 0) // should be E
+        if (Input.GetButtonDown("Depth Up")) // should be E
         {
             if (selectedAlt >= activeAlt.Count - 1)
             {
@@ -429,7 +494,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
             }
             ChangeAlt();
         }
-        else if (Input.GetAxis("Depth") < 0) // should be Q
+        else if (Input.GetButtonDown("Depth Down")) // should be Q
         {
             if (selectedAlt <= 0)
             {
@@ -447,11 +512,11 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     {
         if (activeAlt[selectedAlt].shootsProjectile) // if the thing fires a projectile prefab
         {
-            altProjectile = activeAlt[selectedAlt].projectile; // no need to assign unique damage 
+            altProjectile = activeAlt[selectedAlt].projectile; // no need to assign unique damage, all stored in projectile 
         }
         else
         {
-            altDamage = activeAlt[selectedAlt].shootDamage; // needs unique damage
+            altDamage = activeAlt[selectedAlt].shootDamage; // needs unique damage, not stored in projectile
             altDist = activeAlt[selectedAlt].shootDist;
         }
         altRate = activeAlt[selectedAlt].shootRate;

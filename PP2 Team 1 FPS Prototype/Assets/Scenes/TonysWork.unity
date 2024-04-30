@@ -1325,7 +1325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7614859256466478925, guid: 95102793873227746805c24fb13cba9e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.42
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 7614859256466478925, guid: 95102793873227746805c24fb13cba9e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1364,6 +1364,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95102793873227746805c24fb13cba9e, type: 3}
+--- !u!1001 &7295914698634667766
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4259392006934754252, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_Name
+      value: Staff of Fireballs
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710918836636104787, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -48.106773
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710918836636104787, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.99398774
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710918836636104787, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.243432
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710918836636104787, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.79488754
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710918836636104787, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.40527213
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710918836636104787, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.44101867
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710918836636104787, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.097009644
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710918836636104787, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 33.968
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710918836636104787, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -70.084
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710918836636104787, guid: c73505d821c0946478669a3c5563890e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -38.095
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c73505d821c0946478669a3c5563890e, type: 3}
 --- !u!1001 &7926840684592304315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1421,6 +1478,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afe352f5dd3d72540b564bccf4267d0b, type: 3}
+--- !u!1001 &7962212462758279671
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 387513390743880378, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -47.927868
+      objectReference: {fileID: 0}
+    - target: {fileID: 387513390743880378, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.141
+      objectReference: {fileID: 0}
+    - target: {fileID: 387513390743880378, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.418099
+      objectReference: {fileID: 0}
+    - target: {fileID: 387513390743880378, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.4363029
+      objectReference: {fileID: 0}
+    - target: {fileID: 387513390743880378, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.34028813
+      objectReference: {fileID: 0}
+    - target: {fileID: 387513390743880378, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.8118984
+      objectReference: {fileID: 0}
+    - target: {fileID: 387513390743880378, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.18618467
+      objectReference: {fileID: 0}
+    - target: {fileID: 387513390743880378, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -36.817
+      objectReference: {fileID: 0}
+    - target: {fileID: 387513390743880378, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 133.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 387513390743880378, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -29.162
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397070973162123885, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
+      propertyPath: m_Name
+      value: Eldrich Blast
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5153ac8e647d17d4db12eebe7eef2339, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1435,3 +1549,5 @@ SceneRoots:
   - {fileID: 3455888288773952971}
   - {fileID: 5015950485145561122}
   - {fileID: 7926840684592304315}
+  - {fileID: 7295914698634667766}
+  - {fileID: 7962212462758279671}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class gameManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class gameManager : MonoBehaviour
     public GameObject playerDamageScreen;
     public GameObject playerHealScreen;
     public Image playerHPBar;
+    public Image playerManaBar;
     public TMP_Text enemyCountText;
 
     public GameObject player;
@@ -25,6 +27,10 @@ public class gameManager : MonoBehaviour
     public playerController playerScript;
 
     public bool isPaused;
+    [SerializeField] float manaRegenStutter;
+    [SerializeField] float manaRegenDelay;
+    public bool manaInUse;
+    bool manaCool;
     int enemyCount;
     
     // Start is called before the first frame update
@@ -39,6 +45,11 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isPaused && !manaCool && !manaInUse && CanFillMana()) // regenerates mana over time
+        {
+            StartCoroutine(Refill());
+        }
+
         if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == null) // should allow for esc to toggle pause menu only. 
@@ -90,5 +101,24 @@ public class gameManager : MonoBehaviour
         statePaused();
         menuActive = menuLose;
         menuActive.SetActive(true);
+    }
+
+    public bool CanFillMana()
+    {
+        if (playerScript.manaPool < playerScript.manaOrig)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    IEnumerator Refill()
+    {
+        manaCool = true;
+
+        playerScript.manaPool++;
+        // playerScript.updateManaBar();
+        yield return new WaitForSeconds(manaRegenStutter);
+        manaCool = false;
     }
 }
