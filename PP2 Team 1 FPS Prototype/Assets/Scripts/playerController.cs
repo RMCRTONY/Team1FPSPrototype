@@ -14,6 +14,9 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     [Header("Components")]
     [SerializeField] CharacterController controller;
     [SerializeField] new GameObject camera;
+    [SerializeField] AudioSource aud;
+
+    [Header("Inventories, Models, and Objects")]
     [SerializeField] GameObject projectile;
     [SerializeField] Transform primaryFirePos;
     [SerializeField] GameObject altProjectile;
@@ -27,16 +30,17 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
 
     // attributes (HP, Speed, Jumpspeed, gravity, maxJumps etc.)
     [Header("Attributes")]
-    [SerializeField] int HP;
-    [SerializeField] int walkSpeed;
+    [Range(1,20)][SerializeField] int HP;
+    [Range(1,20)][SerializeField] int walkSpeed;
+    [Range(2, 4)][SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed;
     [SerializeField] int gravityMultiplier; // IMPORTANT: gravity is negative downward force
     [SerializeField] int maxJumps;
-    [SerializeField] int dashSpeed;
+    [Range(10, 20)][SerializeField] int dashSpeed;
     [SerializeField] float dashRate;
     [SerializeField] float dashTime;
     [SerializeField] float dashCooldown;
-    [SerializeField] public int manaPool;
+    [Range(1, 200)][SerializeField] public int manaPool;
 
 
     // the firing values
@@ -48,20 +52,30 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     [SerializeField] float altRate;
     [SerializeField] int altDist;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+    [SerializeField] AudioClip[] audHurt;
+    [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip[] audSteps;
+    [Range(0, 1)][SerializeField] float audStepsVol;
+
     // misc
     [Header("Misc")]
-    [SerializeField] float pickupRange;
+    [Range(1, 5)][SerializeField] float pickupRange;
     [SerializeField] float manaTrans;
 
     private Vector3 moveDir;
     private Vector3 playerVel;
     private int jumpTimes;
+    bool playingSteps;
+    bool isSprinting;
     private bool isShooting;
     private bool isShootingAlt; // different rates of fire, can fire at same time
     private int selectedPrimary; // see line 23
     private int selectedAlt; // see line 23
     private bool isDashing;
-    private bool canDash = true;
+    private bool canDash = false;
 
     private readonly int gravity = -10;
     int HPOrig;
@@ -101,6 +115,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
                 PickUp();
             }
         }
+        Sprint();
     }
 
     void movement()
@@ -119,13 +134,13 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         }
 
         // Alt fire
-        if (Input.GetButton("Fire2") && !isShootingAlt && manaPool > 0 && activeAlt.Count > 0 && manaPool > activeAlt[selectedAlt].manaDrain)
+        if (Input.GetButtonDown("Fire2") && !isShootingAlt && activeAlt.Count > 0 && manaPool > activeAlt[selectedAlt].manaDrain)
         {
             StartCoroutine(castAlt());
         }
 
         // check for dash key, make dash happen
-        if (Input.GetButtonDown("Fire3") && canDash)
+        if (canDash && Input.GetButtonDown("Dash"))
         {
             StartCoroutine(dash());
         }
@@ -133,11 +148,17 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         // check for jump key, make jump happen
         if (Input.GetButtonDown("Jump") && jumpTimes < maxJumps)
         {
+            aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             jumpTimes++;
             playerVel.y = jumpSpeed;
         }
 
         controller.Move(playerVel * Time.deltaTime); // input the jump
+
+        if (controller.isGrounded && moveDir.normalized.magnitude > 0.3f && !playingSteps)
+        {
+            StartCoroutine(PlaySteps());
+        }
     }
 
     void applyGravity() // make sure gravity happens
@@ -158,6 +179,33 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         {
             playerVel.y += gravity * gravityMultiplier * Time.deltaTime;
         }
+    }
+
+    void Sprint()
+    {
+        if (Input.GetButtonDown("Fire3"))
+        {
+            walkSpeed *= sprintMod;
+            isSprinting = true;
+        }
+        else if (Input.GetButtonUp("Fire3"))
+        {
+            walkSpeed /= sprintMod;
+            isSprinting = false;
+        }
+    }
+
+    IEnumerator PlaySteps()
+    {
+        playingSteps = true;
+
+        aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
+
+        if (!isSprinting)
+            yield return new WaitForSeconds(0.4f);
+        else
+            yield return new WaitForSeconds(0.2f);
+        playingSteps = false;
     }
 
     IEnumerator castAlt() // eventually recieve an enum that indicates kind of spell
@@ -191,10 +239,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
                 {
                     dmg.takeDamage(altDamage);
                 }
-                else
-                {
-                    Instantiate(activeAlt[selectedAlt].hitEffect, hit.point, Quaternion.identity); // need those hit effects
-                }
+                Instantiate(activeAlt[selectedAlt].hitEffect, hit.point, Quaternion.identity); // need those hit effects ALWAYS
             }
         }
 
@@ -234,10 +279,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
                 {
                     dmg.takeDamage(primaryDamage);
                 }
-                else
-                {
-                    Instantiate(activePrimary[selectedPrimary].hitEffect, hit.point, Quaternion.identity); // need those hit effects
-                }
+                Instantiate(activePrimary[selectedPrimary].hitEffect, hit.point, Quaternion.identity); // need those hit effects ALWAYS
             }
         }
 
@@ -268,6 +310,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     public void takeDamage(int amount)
     {
         HP -= amount;
+        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         updatePlayerUI();
         StartCoroutine(flashDamage());
 
@@ -477,7 +520,8 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         primaryRate = activePrimary[selectedPrimary].shootRate;
 
         primaryModel.GetComponent<MeshFilter>().sharedMesh = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshFilter>().sharedMesh;
-        primaryModel.GetComponent<MeshRenderer>().sharedMaterial = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshRenderer>().sharedMaterial;
+        // big Tony blunder: assets have more than one material
+        primaryModel.GetComponent<MeshRenderer>().sharedMaterials = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
     }
 
     void SelectAlt() // Q/E ability selection, infinite scroll
@@ -519,10 +563,18 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
             altDamage = activeAlt[selectedAlt].shootDamage; // needs unique damage, not stored in projectile
             altDist = activeAlt[selectedAlt].shootDist;
         }
+
+        if (activeAlt[selectedAlt].isMovement) // only alt weapons can be Movement abilites currently, sorry
+        {
+            canDash = true;
+            dashSpeed = activeAlt[selectedAlt].dashSpeed;
+        }
+
         altRate = activeAlt[selectedAlt].shootRate;
 
         altModel.GetComponent<MeshFilter>().sharedMesh = activeAlt[selectedAlt].abilityModel.GetComponent<MeshFilter>().sharedMesh;
-        altModel.GetComponent<MeshRenderer>().sharedMaterial = activeAlt[selectedAlt].abilityModel.GetComponent<MeshRenderer>().sharedMaterial;
+        // big Tony blunder: assets have more than one material
+        altModel.GetComponent<MeshRenderer>().sharedMaterials = activeAlt[selectedAlt].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
     }
 
     private void OnApplicationQuit()

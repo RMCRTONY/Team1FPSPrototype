@@ -7,6 +7,7 @@ using UnityEngine;
 public class AbilityObject : ItemObject
 {
     public bool isPrimary;
+    public bool isMovement;
     public GameObject abilityModel;
     public int manaDrain;
     public float shootRate;
@@ -18,6 +19,10 @@ public class AbilityObject : ItemObject
     [Header("Projectile Abilities")]
     public bool shootsProjectile;
     public GameObject projectile;
+
+    [Header("Movement Abilities")]
+    public bool canDash;
+    public int dashSpeed;
 
     [Header("Effects and Feedback")]
     public ParticleSystem hitEffect;
