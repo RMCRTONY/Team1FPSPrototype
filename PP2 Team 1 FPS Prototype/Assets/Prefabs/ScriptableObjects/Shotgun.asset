@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e32869d50f064574487d303886308f11, type: 3}
-  m_Name: Eldrich Blast
+  m_Name: Shotgun
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  signature: 203
-  description: Legally Distinct from DnD 5e
-  isPrimary: 0
+  signature: 206
+  description: Loud
+  isPrimary: 1
   isMovement: 0
-  abilityModel: {fileID: 2303205409579412723, guid: 32a5bab1f34cb2f488603cc1f415eb92, type: 3}
-  preferredHardpoint: 0
-  manaDrain: 10
-  shootRate: 1
-  numOfShots: 0
-  shootDamage: 8
-  shootDist: 100
+  abilityModel: {fileID: 2157057424441964123, guid: 8acd0c8ceca6bb34982a6434c41f9f3c, type: 3}
+  preferredHardpoint: 1
+  manaDrain: 0
+  shootRate: 0.75
+  numOfShots: 8
+  shootDamage: 2
+  shootDist: 20
   shootsProjectile: 0
   projectile: {fileID: 0}
   canDash: 0
@@ -32,6 +32,6 @@ MonoBehaviour:
   makesImmune: 0
   spawnsSomething: 0
   objToSpawn: {fileID: 0}
-  hitEffect: {fileID: 4529804811838174369, guid: 4db3634de54463a42b164d4e8d10b1bd, type: 3}
+  hitEffect: {fileID: 7032496126852738943, guid: 0db7f0c487adb6e4f8113f953e99fcf5, type: 3}
   shootSound: {fileID: 0}
   shootSoundVol: 0

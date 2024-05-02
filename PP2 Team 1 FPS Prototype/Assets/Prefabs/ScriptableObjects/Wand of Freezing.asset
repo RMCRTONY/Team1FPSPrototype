@@ -15,12 +15,14 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   signature: 205
-  description: 
+  description: Way warmer than it ever should be
   isPrimary: 1
   isMovement: 0
   abilityModel: {fileID: 6795007840556696025, guid: 40826149322f81b46924cb63c01297f5, type: 3}
+  preferredHardpoint: 0
   manaDrain: 0
   shootRate: 0.5
+  numOfShots: 0
   shootDamage: 0
   shootDist: 0
   shootsProjectile: 1
