@@ -18,9 +18,13 @@ public class gameManager : MonoBehaviour
     public GameObject interactPrompt; // informs player that an object can be picked up
     public GameObject playerDamageScreen;
     public GameObject playerHealScreen;
+    public GameObject objectiveCompleteMenu;
     public Image playerHPBar;
     public Image playerManaBar;
     public TMP_Text enemyCountText;
+    
+    
+
 
     public GameObject player;
     public GameObject playerSpawnPos;
@@ -32,6 +36,7 @@ public class gameManager : MonoBehaviour
     public bool manaInUse;
     bool manaCool;
     int enemyCount;
+    
     
     // Start is called before the first frame update
     void Awake()
@@ -88,6 +93,8 @@ public class gameManager : MonoBehaviour
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
 
+        
+
         if (enemyCount <= 0)
         {
             statePaused();
@@ -121,4 +128,8 @@ public class gameManager : MonoBehaviour
         yield return new WaitForSeconds(manaRegenStutter);
         manaCool = false;
     }
+
+    
+
+    
 }

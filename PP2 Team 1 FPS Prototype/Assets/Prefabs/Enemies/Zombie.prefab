@@ -604,9 +604,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7188316208001104504}
   model: {fileID: 3065269426952717581}
-  shootPos: {fileID: 4972467820754384356}
   anim: {fileID: 2763905053218114223}
+  shootPos: {fileID: 4972467820754384356}
   headPos: {fileID: 6341525096496643511}
+  aud: {fileID: 0}
   weaponCol: {fileID: 7138166656040583200}
   HP: 5
   faceTargetSpeed: 6
@@ -616,6 +617,9 @@ MonoBehaviour:
   animSpeedTrans: 3
   bullet: {fileID: 7118765615501587130, guid: 6fe6997771a019e48951facdbcfcb491, type: 3}
   shootRate: 1
+  audHurt:
+  - {fileID: 8300000, guid: cf9b9a6d34f81d14b8be932b9033732b, type: 3}
+  audHurtVol: 0.57
 --- !u!195 &7188316208001104504
 NavMeshAgent:
   m_ObjectHideFlags: 0
