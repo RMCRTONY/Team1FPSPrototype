@@ -1282,13 +1282,17 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 5252661335112275667, guid: f700048493c2ae74297775d0707eb11a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 95.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5530994004358296491, guid: f700048493c2ae74297775d0707eb11a, type: 3}
       propertyPath: m_Name
       value: Spawner - Dragon
       objectReference: {fileID: 0}
     - target: {fileID: 7666660891396649360, guid: f700048493c2ae74297775d0707eb11a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 150.47984
+      value: 75.6
       objectReference: {fileID: 0}
     - target: {fileID: 7666660891396649360, guid: f700048493c2ae74297775d0707eb11a, type: 3}
       propertyPath: m_LocalPosition.y
