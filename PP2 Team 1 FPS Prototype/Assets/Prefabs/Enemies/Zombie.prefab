@@ -618,8 +618,10 @@ MonoBehaviour:
   bullet: {fileID: 7118765615501587130, guid: 6fe6997771a019e48951facdbcfcb491, type: 3}
   shootRate: 1
   audHurt:
+  - {fileID: 8300000, guid: ad867b174ceee56459f7b095ec1af69b, type: 3}
+  - {fileID: 8300000, guid: d4d7d6f556077124aa07061727b6a1cd, type: 3}
   - {fileID: 8300000, guid: cf9b9a6d34f81d14b8be932b9033732b, type: 3}
-  audHurtVol: 0.57
+  audHurtVol: 0.4
 --- !u!195 &7188316208001104504
 NavMeshAgent:
   m_ObjectHideFlags: 0
