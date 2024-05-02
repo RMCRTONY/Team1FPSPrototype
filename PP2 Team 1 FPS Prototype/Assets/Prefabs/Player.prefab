@@ -232,6 +232,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9014503067322749800}
+  - {fileID: 4246621566101521703}
   - {fileID: 995989984548442918}
   - {fileID: 6708852844698644916}
   m_Father: {fileID: 7614859256466478925}
@@ -5233,6 +5234,7 @@ MonoBehaviour:
   altFirePos: {fileID: 8657556218955492470}
   testLantern: {fileID: 1809581633867787574, guid: 2d35d492ca1d407469bdd0c05ded8e1e, type: 3}
   inventory: {fileID: 11400000, guid: 035232a7d72a5d0439300fa18dbc583e, type: 2}
+  shotGunModel: {fileID: 7905080251934625008}
   primaryModel: {fileID: 6602776243985436131}
   activePrimary: []
   altModel: {fileID: 4924142403867857532}
@@ -5254,6 +5256,7 @@ MonoBehaviour:
   altDamage: 0
   altRate: 0
   altDist: 0
+  numOfShots: 1
   audJump:
   - {fileID: 8300000, guid: 3703d675ce5cc744c8f7997044135364, type: 3}
   - {fileID: 8300000, guid: c9be6ea075e5ceb4cac03632006d82d7, type: 3}
@@ -5282,7 +5285,6 @@ MonoBehaviour:
   manaTrans: 0.5
   wardVol: {fileID: 0}
   manaOrig: 0
-  spawnLanternsOnFire: 0
 --- !u!143 &1990995417799884302
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5541,6 +5543,89 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 0}
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7905080251934625008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4246621566101521703}
+  - component: {fileID: 6368199580786673527}
+  - component: {fileID: 938887076914590696}
+  m_Layer: 0
+  m_Name: Shotgun Hardpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4246621566101521703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7905080251934625008}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.705378, z: -0, w: 0.7088314}
+  m_LocalPosition: {x: -0.42586046, y: -0.32299992, z: 0.31215954}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4428191819708188297}
+  m_LocalEulerAnglesHint: {x: 0, y: -23.716, z: 0}
+--- !u!33 &6368199580786673527
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7905080251934625008}
+  m_Mesh: {fileID: 0}
+--- !u!23 &938887076914590696
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7905080251934625008}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

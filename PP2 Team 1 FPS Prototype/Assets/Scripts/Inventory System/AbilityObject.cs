@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,8 +10,10 @@ public class AbilityObject : ItemObject
     public bool isPrimary;
     public bool isMovement;
     public GameObject abilityModel;
+    public bool preferredHardpoint;
     public int manaDrain;
     public float shootRate;
+    public int numOfShots;
 
     [Header("HitScan Abilities")]
     public int shootDamage;

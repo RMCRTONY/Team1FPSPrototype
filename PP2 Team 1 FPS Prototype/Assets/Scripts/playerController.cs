@@ -24,6 +24,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     [SerializeField] Transform altFirePos;
     [SerializeField] GameObject testLantern;
     [SerializeField] InventoryObject inventory;
+    [SerializeField] GameObject shotGunModel;
     [SerializeField] GameObject primaryModel;
     public List<AbilityObject> activePrimary; // odd naming convention to allow for player decided loadouts once inventory menu exists
     [SerializeField] GameObject altModel;
@@ -52,6 +53,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     [SerializeField] int altDamage;
     [SerializeField] float altRate;
     [SerializeField] int altDist;
+    [Range(1,100)][SerializeField]int numOfShots;
     int manaDrain;
     int altManaDrain;
 
@@ -87,8 +89,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     int HPOrig;
     public int manaOrig;
 
-    [Header("Debug")]
-    [SerializeField] bool spawnLanternsOnFire; // if you dont think the player is firing, trigger bool
+    //[Header("Debug")]
 
     // Start is called before the first frame update
     void Start()
@@ -236,13 +237,11 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         }
         else
         {
+            Vector3 camDir = camera.transform.forward; // initial aim
             // its a raycast so do the raycast stuff
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, altDist))
+            if (Physics.Raycast(camera.transform.position, camDir, out RaycastHit hit, altDist))
             {
-                if (spawnLanternsOnFire) // if you dont think the player is firing, trigger bool
-                {
-                    Instantiate(testLantern, hit.point, transform.rotation);
-                }
+                Debug.DrawLine(camera.transform.position, hit.point, Color.green, 1f);
 
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
 
@@ -251,6 +250,10 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
                     dmg.takeDamage(altDamage);
                 }
                 Instantiate(activeAlt[selectedAlt].hitEffect, hit.point, Quaternion.identity); // need those hit effects ALWAYS
+            }
+            else
+            {
+                Debug.DrawLine(camera.transform.position, camera.transform.position + camDir * altDist, Color.red, 1f);
             }
         }
 
@@ -279,12 +282,31 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         else
         {
             // its a raycast so do the raycast stuff
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, primaryDist))
+            for (int i = 1; i <= numOfShots; i++)
             {
-                if (spawnLanternsOnFire) // if you dont think the player is firing, trigger bool
-                {
-                    Instantiate(testLantern, hit.point, transform.rotation);
-                }
+                FireRaycast(i);
+            }
+        }
+
+        yield return new WaitForSeconds(primaryRate);
+        isShooting = false;
+        gameManager.instance.manaInUse = false;
+    }
+
+    private void FireRaycast(int loop)
+    {
+        if (loop > 1)
+        {
+            float maxOffset = 1.0f;
+            Vector3 pelletSpread = Vector3.zero;
+            Vector3 camDir = camera.transform.forward; // initial aim 
+            pelletSpread += camera.transform.right * Random.Range(-maxOffset, maxOffset);
+            pelletSpread += camera.transform.up * Random.Range(-maxOffset, maxOffset);
+
+            camDir += pelletSpread.normalized * Random.Range(0f, 0.2f);
+            if (Physics.Raycast(camera.transform.position, camDir, out RaycastHit hit, primaryDist))
+            {
+                Debug.DrawLine(camera.transform.position, hit.point, Color.green, 1f);
 
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
 
@@ -294,11 +316,31 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
                 }
                 Instantiate(activePrimary[selectedPrimary].hitEffect, hit.point, Quaternion.identity); // need those hit effects ALWAYS
             }
+            else
+            {
+                Debug.DrawLine(camera.transform.position, camera.transform.position + camDir * altDist, Color.red, 1f);
+            }
         }
+        else
+        {
+            Vector3 camDir = camera.transform.forward; // initial aim 
+            if (Physics.Raycast(camera.transform.position, camDir, out RaycastHit hit, primaryDist))
+            {
+                Debug.DrawLine(camera.transform.position, hit.point, Color.green, 1f);
 
-        yield return new WaitForSeconds(primaryRate);
-        isShooting = false;
-        gameManager.instance.manaInUse = false;
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+                if (hit.transform != transform && dmg != null)
+                {
+                    dmg.takeDamage(primaryDamage);
+                }
+                Instantiate(activePrimary[selectedPrimary].hitEffect, hit.point, Quaternion.identity); // need those hit effects ALWAYS
+            }
+            else
+            {
+                Debug.DrawLine(camera.transform.position, camera.transform.position + camDir * altDist, Color.red, 1f);
+            }
+        }
     }
 
     IEnumerator dash()
@@ -533,13 +575,29 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         {
             primaryDamage = activePrimary[selectedPrimary].shootDamage; // needs unique damage
             primaryDist = activePrimary[selectedPrimary].shootDist;
+            numOfShots = activePrimary[selectedPrimary].numOfShots;
         }
         primaryRate = activePrimary[selectedPrimary].shootRate;
         manaDrain = activePrimary[selectedPrimary].manaDrain;
 
-        primaryModel.GetComponent<MeshFilter>().sharedMesh = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshFilter>().sharedMesh;
-        // big Tony blunder: assets have more than one material
-        primaryModel.GetComponent<MeshRenderer>().sharedMaterials = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
+        if (activePrimary[selectedPrimary].preferredHardpoint) // the shotgun is just completely fucked
+        {
+            //previousHardpoint = activeAlt[selectedAlt].preferredHardpoint;
+            //primaryModel.GetComponent<MeshFilter>().sharedMesh = null;
+            shotGunModel.GetComponent<MeshFilter>().sharedMesh = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshFilter>().sharedMesh;
+            primaryModel.GetComponent<MeshRenderer>().enabled = false;
+            shotGunModel.GetComponent<MeshRenderer>().enabled = true;
+            shotGunModel.GetComponent<MeshRenderer>().sharedMaterials = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
+        }
+        else
+        {
+            //shotGunModel.GetComponent<MeshFilter>().sharedMesh = null;
+            shotGunModel.GetComponent<MeshRenderer>().enabled = false;
+            primaryModel.GetComponent<MeshRenderer>().enabled = true;
+            primaryModel.GetComponent<MeshFilter>().sharedMesh = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshFilter>().sharedMesh;
+            // big Tony blunder: assets have more than one material
+            primaryModel.GetComponent<MeshRenderer>().sharedMaterials = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
+        }
     }
 
     void SelectAlt() // Q/E ability selection, infinite scroll
@@ -598,6 +656,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         altModel.GetComponent<MeshFilter>().sharedMesh = activeAlt[selectedAlt].abilityModel.GetComponent<MeshFilter>().sharedMesh;
         // big Tony blunder: assets have more than one material
         altModel.GetComponent<MeshRenderer>().sharedMaterials = activeAlt[selectedAlt].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
+        
     }
 
     private void OnApplicationQuit()
