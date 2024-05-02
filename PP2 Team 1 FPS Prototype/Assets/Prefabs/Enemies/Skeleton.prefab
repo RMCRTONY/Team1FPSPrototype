@@ -680,8 +680,11 @@ MonoBehaviour:
   bullet: {fileID: 7118765615501587130, guid: c5d2a8c5c325bd54daea512781b7e48c, type: 3}
   shootRate: 0.5
   audHurt:
-  - {fileID: 8300000, guid: cf9b9a6d34f81d14b8be932b9033732b, type: 3}
-  audHurtVol: 0
+  - {fileID: 8300000, guid: 6dfeb305ecbead4478aa2e27d9578d9e, type: 3}
+  - {fileID: 8300000, guid: e803112d86f35564989206439f2f54fd, type: 3}
+  - {fileID: 8300000, guid: 502023a33258d664b840dcb915f22dfa, type: 3}
+  - {fileID: 8300000, guid: 09356f78cbefb5f4fa5627e210b2e1e9, type: 3}
+  audHurtVol: 0.5
 --- !u!95 &1617229008846193083
 Animator:
   serializedVersion: 5
