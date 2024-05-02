@@ -588,6 +588,10 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
             canDash = true;
             dashSpeed = activeAlt[selectedAlt].dashSpeed;
         }
+        else
+        {
+            canDash = false;
+        }
 
         altRate = activeAlt[selectedAlt].shootRate;
         altManaDrain = activeAlt[selectedAlt].manaDrain;

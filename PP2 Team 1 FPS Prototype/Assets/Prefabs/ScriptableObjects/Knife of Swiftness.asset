@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e32869d50f064574487d303886308f11, type: 3}
-  m_Name: Bangle of Warding
+  m_Name: Knife of Swiftness
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  signature: 201
-  description: Fits so perfectly, you would barely notice if it fell off.
+  signature: 204
+  description: You feel lighter on your feet
   isPrimary: 0
-  isMovement: 0
-  abilityModel: {fileID: 4258226227562952737, guid: 63eff5c88b4a5424e8577cb5f8b2a1c3, type: 3}
-  manaDrain: 50
-  shootRate: 5
+  isMovement: 1
+  abilityModel: {fileID: 7070716701692480845, guid: 1d4535486310c2b48b58822b49615dd0, type: 3}
+  manaDrain: 25
+  shootRate: 1
   shootDamage: 0
   shootDist: 0
   shootsProjectile: 0
   projectile: {fileID: 0}
-  canDash: 0
-  dashSpeed: 0
-  makesImmune: 1
+  canDash: 1
+  dashSpeed: 16
+  makesImmune: 0
   spawnsSomething: 0
   objToSpawn: {fileID: 0}
   hitEffect: {fileID: 0}

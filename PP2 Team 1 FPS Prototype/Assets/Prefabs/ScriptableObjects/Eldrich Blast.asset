@@ -19,7 +19,7 @@ MonoBehaviour:
   isPrimary: 0
   isMovement: 0
   abilityModel: {fileID: 2303205409579412723, guid: 32a5bab1f34cb2f488603cc1f415eb92, type: 3}
-  manaDrain: 20
+  manaDrain: 10
   shootRate: 1
   shootDamage: 8
   shootDist: 60
