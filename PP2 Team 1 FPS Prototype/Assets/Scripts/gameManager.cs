@@ -13,6 +13,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject keyComplete;
+    [SerializeField] GameObject dragonComplete;
     public GameObject checkPointMenu;
     public GameObject lockedPopup; // informs player that an object is locked
     public GameObject interactPrompt; // informs player that an object can be picked up
@@ -22,8 +24,8 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public Image playerManaBar;
     public TMP_Text enemyCountText;
-    
-    
+
+    public Item item;
 
 
     public GameObject player;
@@ -93,6 +95,15 @@ public class gameManager : MonoBehaviour
 
     public void updateGameGoal(int amount)
     {
+        if (amount == 0)
+        {
+            if (playerScript.searchInventory(item))
+            {
+                keyComplete.SetActive(true);
+            }
+            return;
+        }
+
         enemyCount += amount;
         enemyCountText.text = enemyCount.ToString("F0");
 

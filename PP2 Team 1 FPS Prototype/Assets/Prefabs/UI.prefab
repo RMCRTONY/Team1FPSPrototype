@@ -1369,6 +1369,8 @@ MonoBehaviour:
   menuPause: {fileID: 1057464793541757984}
   menuWin: {fileID: 8465994575445328549}
   menuLose: {fileID: 4442183441020760372}
+  keyComplete: {fileID: 4931584115565625263}
+  dragonComplete: {fileID: 2050469401300282215}
   checkPointMenu: {fileID: 2163835778384127003}
   lockedPopup: {fileID: 4489479858737708828}
   interactPrompt: {fileID: 8318205021339067815}
@@ -1378,6 +1380,7 @@ MonoBehaviour:
   playerHPBar: {fileID: 5759599734092850184}
   playerManaBar: {fileID: 2255849500918375809}
   enemyCountText: {fileID: 3533685683070714943}
+  item: {fileID: 8057230924068492545, guid: a4fc0e332ecd4044592e74b1015df28a, type: 3}
   player: {fileID: 0}
   playerSpawnPos: {fileID: 0}
   playerScript: {fileID: 0}
@@ -1385,7 +1388,7 @@ MonoBehaviour:
   manaRegenStutter: 0.5
   manaRegenDelay: 0.6
   manaInUse: 0
-  isComplete: 0
+  isComplete: 1
 --- !u!114 &6981635731868674754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2158,7 +2161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 57.099976, y: -40}
+  m_AnchoredPosition: {x: 57.100098, y: -40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5309602084581001487

@@ -510,6 +510,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
                     inventory.AddItem(item.item, item.item.signature, 1);
                     gameManager.instance.interactPrompt.SetActive(false); // stop telling the player to pick up something they already have
                     item.gameObject.SetActive(false); // deactivate rather than destroy??
+                    gameManager.instance.updateGameGoal(0);
                 }
             }
             /* great Idea, needlessly complicated. Doing this different.
