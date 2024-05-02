@@ -186,6 +186,4 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         weaponCol.enabled = false;
     }
-
-    
 }
