@@ -13,6 +13,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     // components like charController etc
     [Header("Components")]
     [SerializeField] CharacterController controller;
+    [SerializeField] ParticleSystem invincibleAura;
     [SerializeField] new GameObject camera;
     [SerializeField] AudioSource aud;
 
@@ -51,6 +52,8 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     [SerializeField] int altDamage;
     [SerializeField] float altRate;
     [SerializeField] int altDist;
+    int manaDrain;
+    int altManaDrain;
 
     [Header("Audio")]
     [SerializeField] AudioClip[] audJump;
@@ -64,6 +67,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     [Header("Misc")]
     [Range(1, 5)][SerializeField] float pickupRange;
     [SerializeField] float manaTrans;
+    [SerializeField] GameObject wardVol;
 
     private Vector3 moveDir;
     private Vector3 playerVel;
@@ -76,6 +80,8 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     private int selectedAlt; // see line 23
     private bool isDashing;
     private bool canDash = false;
+    bool isInvincible;
+    //ParticleSystem.EmissionModule em;
 
     private readonly int gravity = -10;
     int HPOrig;
@@ -128,13 +134,13 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         controller.Move(walkSpeed * Time.deltaTime * moveDir);
 
         // Primary fire
-        if (Input.GetButtonDown("Fire1") && !isShooting && activePrimary.Count > 0 && manaPool > activePrimary[selectedPrimary].manaDrain)
+        if (Input.GetButtonDown("Fire1") && !isShooting && activePrimary.Count > 0 && manaPool >= manaDrain)
         {
             StartCoroutine(castPrimary());
         }
 
         // Alt fire
-        if (Input.GetButtonDown("Fire2") && !isShootingAlt && activeAlt.Count > 0 && manaPool > activeAlt[selectedAlt].manaDrain)
+        if (Input.GetButtonDown("Fire2") && !isShootingAlt && activeAlt.Count > 0 && manaPool >= altManaDrain)
         {
             StartCoroutine(castAlt());
         }
@@ -212,16 +218,21 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     {
         isShootingAlt = true;
 
-        if (activeAlt[selectedAlt].manaDrain > 0) // if the ability drains mana
+        if (altManaDrain > 0) // if the ability drains mana
         {
             gameManager.instance.manaInUse = true;
-            manaPool -= activeAlt[selectedAlt].manaDrain; // drain the mana
+            manaPool -= altManaDrain; // drain the mana
         }
 
         if (activeAlt[selectedAlt].shootsProjectile)
         {
             // instance projectiles on camera rotation
             Instantiate(altProjectile, altFirePos.position, camera.transform.rotation);
+        }
+        else if (activeAlt[selectedAlt].makesImmune)
+        {
+            isInvincible = true;
+            invincibleAura.Play();
         }
         else
         {
@@ -245,6 +256,8 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
 
         yield return new WaitForSeconds(altRate);
         isShootingAlt = false;
+        isInvincible = false;
+        invincibleAura.Stop();
         gameManager.instance.manaInUse = false;
     }
 
@@ -252,10 +265,10 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     {
         isShooting = true;
 
-        if (activePrimary[selectedPrimary].manaDrain > 0) // if the ability drains mana
+        if (manaDrain > 0) // if the ability drains mana
         {
             gameManager.instance.manaInUse = true;
-            manaPool -= activePrimary[selectedPrimary].manaDrain; // drain the mana
+            manaPool -= manaDrain; // drain the mana
         }
 
         if (activePrimary[selectedPrimary].shootsProjectile)
@@ -309,6 +322,11 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
 
     public void takeDamage(int amount)
     {
+        if (isInvincible)
+        {
+            return;
+        }
+
         HP -= amount;
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         updatePlayerUI();
@@ -518,6 +536,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
             primaryDist = activePrimary[selectedPrimary].shootDist;
         }
         primaryRate = activePrimary[selectedPrimary].shootRate;
+        manaDrain = activePrimary[selectedPrimary].manaDrain;
 
         primaryModel.GetComponent<MeshFilter>().sharedMesh = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshFilter>().sharedMesh;
         // big Tony blunder: assets have more than one material
@@ -571,6 +590,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         }
 
         altRate = activeAlt[selectedAlt].shootRate;
+        altManaDrain = activeAlt[selectedAlt].manaDrain;
 
         altModel.GetComponent<MeshFilter>().sharedMesh = activeAlt[selectedAlt].abilityModel.GetComponent<MeshFilter>().sharedMesh;
         // big Tony blunder: assets have more than one material

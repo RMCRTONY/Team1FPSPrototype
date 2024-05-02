@@ -17,13 +17,19 @@ MonoBehaviour:
   signature: 201
   description: Fits so perfectly, you would barely notice if it fell off.
   isPrimary: 0
-  abilityModel: {fileID: 0}
-  manaDrain: 1
-  shootRate: 0.1
+  isMovement: 0
+  abilityModel: {fileID: 4258226227562952737, guid: 63eff5c88b4a5424e8577cb5f8b2a1c3, type: 3}
+  manaDrain: 100
+  shootRate: 5
   shootDamage: 0
   shootDist: 0
   shootsProjectile: 0
   projectile: {fileID: 0}
+  canDash: 0
+  dashSpeed: 0
+  makesImmune: 1
+  spawnsSomething: 0
+  objToSpawn: {fileID: 0}
   hitEffect: {fileID: 0}
   shootSound: {fileID: 0}
   shootSoundVol: 0

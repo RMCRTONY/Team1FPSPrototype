@@ -17,13 +17,19 @@ MonoBehaviour:
   signature: 203
   description: Legally Distinct from DnD 5e
   isPrimary: 0
+  isMovement: 0
   abilityModel: {fileID: 2303205409579412723, guid: 32a5bab1f34cb2f488603cc1f415eb92, type: 3}
   manaDrain: 20
   shootRate: 1
-  shootDamage: 3
+  shootDamage: 8
   shootDist: 60
   shootsProjectile: 0
   projectile: {fileID: 0}
+  canDash: 0
+  dashSpeed: 0
+  makesImmune: 0
+  spawnsSomething: 0
+  objToSpawn: {fileID: 0}
   hitEffect: {fileID: 4529804811838174369, guid: 4db3634de54463a42b164d4e8d10b1bd, type: 3}
   shootSound: {fileID: 0}
   shootSoundVol: 0
