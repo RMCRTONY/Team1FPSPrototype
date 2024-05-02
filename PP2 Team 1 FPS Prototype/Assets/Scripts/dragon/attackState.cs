@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class attackState : StateMachineBehaviour
 {
@@ -16,7 +19,7 @@ public class attackState : StateMachineBehaviour
     {
         animator.transform.LookAt(player);
         float distance = Vector3.Distance(player.position, animator.transform.position);
-        if (distance > 5f)
+        if (distance > 5.5f)
             animator.SetBool("isAttacking", false);
     }
 
