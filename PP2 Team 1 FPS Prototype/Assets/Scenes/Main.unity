@@ -3497,6 +3497,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1790796445 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4931584115565625263, guid: a05f84a05b656794990db05d891191d8, type: 3}
+  m_PrefabInstance: {fileID: 2125531331}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1820714252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3847,6 +3852,10 @@ PrefabInstance:
       propertyPath: checkPointMenu
       value: 
       objectReference: {fileID: 1535838749}
+    - target: {fileID: 4114584095091908766, guid: a05f84a05b656794990db05d891191d8, type: 3}
+      propertyPath: objectiveCompleteMenu
+      value: 
+      objectReference: {fileID: 1790796445}
     - target: {fileID: 4597387281324562087, guid: a05f84a05b656794990db05d891191d8, type: 3}
       propertyPath: m_Name
       value: UI

@@ -35,6 +35,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] float manaRegenDelay;
     public bool manaInUse;
     bool manaCool;
+    public bool isComplete;
     int enemyCount;
     
     
@@ -68,6 +69,8 @@ public class gameManager : MonoBehaviour
             }
            
         }
+
+        
     }
 
     public void statePaused()

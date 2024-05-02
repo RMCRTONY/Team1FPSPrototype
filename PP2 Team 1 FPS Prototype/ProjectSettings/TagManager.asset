@@ -7,6 +7,7 @@ TagManager:
   - wayPoints
   - Player Spawn Pos
   - CaveDragon
+  - Key
   layers:
   - Default
   - TransparentFX
