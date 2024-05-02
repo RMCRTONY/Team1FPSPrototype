@@ -11,7 +11,7 @@ public class LockedObject : MonoBehaviour
     public void Awake()
     {
         _key = key;
-        _key.tag = "Key";
+        //_key.tag = "Key";
     }
 
     public Item GetKey()

@@ -316,10 +316,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
-    - target: {fileID: 4809440672899953332, guid: 9a88253308c063e4d8e49aacca7cf1bc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7271348606947042106, guid: 9a88253308c063e4d8e49aacca7cf1bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.1543417
@@ -863,6 +859,10 @@ PrefabInstance:
     - target: {fileID: 1447588778238784036, guid: e58759cca23c80f44a4b03a9e1952b3e, type: 3}
       propertyPath: m_Name
       value: Player Spawn Pos
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447588778238784036, guid: e58759cca23c80f44a4b03a9e1952b3e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
