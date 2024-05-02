@@ -162,15 +162,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2347
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2407
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.1843
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -284,13 +284,13 @@ MonoBehaviour:
   anim: {fileID: 5570905162432317885}
   headPos: {fileID: 5570905162441942621}
   weaponCol: {fileID: 4237773662796673213}
-  HP: 10
-  faceTargetSpeed: 200
+  HP: 6
+  faceTargetSpeed: 6
   viewCone: 90
   roamDist: 15
   roamPauseTimer: 5
   animSpeedTrans: 4
-  bullet: {fileID: 7118765615501587130, guid: 6de55cd9e52926d40957b4c6c755bdcb, type: 3}
+  bullet: {fileID: 7118765615501587130, guid: c5d2a8c5c325bd54daea512781b7e48c, type: 3}
   shootRate: 2
 --- !u!195 &8657866869713903052
 NavMeshAgent:
