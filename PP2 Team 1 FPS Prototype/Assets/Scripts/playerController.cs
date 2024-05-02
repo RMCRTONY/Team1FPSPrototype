@@ -209,9 +209,9 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
 
         if (!isSprinting)
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.6f);
         else
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
         playingSteps = false;
     }
 
@@ -225,6 +225,8 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
             manaPool -= altManaDrain; // drain the mana
         }
 
+        aud.PlayOneShot(activeAlt[selectedAlt].shootSound, activeAlt[selectedAlt].shootSoundVol);
+
         if (activeAlt[selectedAlt].shootsProjectile)
         {
             // instance projectiles on camera rotation
@@ -237,24 +239,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         }
         else
         {
-            Vector3 camDir = camera.transform.forward; // initial aim
-            // its a raycast so do the raycast stuff
-            if (Physics.Raycast(camera.transform.position, camDir, out RaycastHit hit, altDist))
-            {
-                Debug.DrawLine(camera.transform.position, hit.point, Color.green, 1f);
-
-                IDamage dmg = hit.collider.GetComponent<IDamage>();
-
-                if (hit.transform != transform && dmg != null)
-                {
-                    dmg.takeDamage(altDamage);
-                }
-                Instantiate(activeAlt[selectedAlt].hitEffect, hit.point, Quaternion.identity); // need those hit effects ALWAYS
-            }
-            else
-            {
-                Debug.DrawLine(camera.transform.position, camera.transform.position + camDir * altDist, Color.red, 1f);
-            }
+            FireRaycast(1);
         }
 
         yield return new WaitForSeconds(altRate);
@@ -273,6 +258,8 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
             gameManager.instance.manaInUse = true;
             manaPool -= manaDrain; // drain the mana
         }
+
+        aud.PlayOneShot(activePrimary[selectedPrimary].shootSound, activePrimary[selectedPrimary].shootSoundVol);
 
         if (activePrimary[selectedPrimary].shootsProjectile)
         {
@@ -346,8 +333,10 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     IEnumerator dash()
     {
         isDashing = true;
-
+        
         manaPool -= altManaDrain;
+
+        aud.PlayOneShot(activeAlt[selectedAlt].shootSound, activeAlt[selectedAlt].shootSoundVol);
 
         // add dash speed to proper vector direction
         float startTime = Time.time;
@@ -490,7 +479,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         StartCoroutine(flashHeal());
     }
 
-    private bool searchInventory(Item search) // returns bool if item is in inventory
+    public bool searchInventory(Item search) // returns bool if item is in inventory
     {
         for (int i = 0; i < inventory.container.Count; i++)
         {

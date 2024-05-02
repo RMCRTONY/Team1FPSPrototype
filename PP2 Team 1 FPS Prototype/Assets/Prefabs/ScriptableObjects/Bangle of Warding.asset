@@ -19,8 +19,10 @@ MonoBehaviour:
   isPrimary: 0
   isMovement: 0
   abilityModel: {fileID: 4258226227562952737, guid: 63eff5c88b4a5424e8577cb5f8b2a1c3, type: 3}
+  preferredHardpoint: 0
   manaDrain: 50
   shootRate: 5
+  numOfShots: 0
   shootDamage: 0
   shootDist: 0
   shootsProjectile: 0
@@ -31,5 +33,5 @@ MonoBehaviour:
   spawnsSomething: 0
   objToSpawn: {fileID: 0}
   hitEffect: {fileID: 0}
-  shootSound: {fileID: 0}
-  shootSoundVol: 0
+  shootSound: {fileID: 8300000, guid: a6f4857e4305b244da4f4a34671e35c6, type: 3}
+  shootSoundVol: 0.388

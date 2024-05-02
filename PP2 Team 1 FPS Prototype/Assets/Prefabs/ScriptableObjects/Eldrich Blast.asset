@@ -33,5 +33,5 @@ MonoBehaviour:
   spawnsSomething: 0
   objToSpawn: {fileID: 0}
   hitEffect: {fileID: 4529804811838174369, guid: 4db3634de54463a42b164d4e8d10b1bd, type: 3}
-  shootSound: {fileID: 0}
-  shootSoundVol: 0
+  shootSound: {fileID: 8300000, guid: f6992f991b5766e4284cc1b49b7c4fb3, type: 3}
+  shootSoundVol: 0.224
