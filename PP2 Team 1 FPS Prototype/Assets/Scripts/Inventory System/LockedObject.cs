@@ -16,7 +16,7 @@ public class LockedObject : MonoBehaviour
 
     public Item GetKey()
     {
-        gameManager.instance.objectiveCompleteMenu.SetActive(true);
+        
         return _key;
     }
 }
