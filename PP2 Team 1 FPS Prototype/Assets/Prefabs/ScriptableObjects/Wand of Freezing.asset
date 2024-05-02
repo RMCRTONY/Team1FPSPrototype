@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e32869d50f064574487d303886308f11, type: 3}
-  m_Name: Staff of Fireballs
+  m_Name: Wand of Freezing
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  signature: 202
-  description: The entire length of the staff is suprisingly cool to the touch.
+  signature: 205
+  description: 
   isPrimary: 1
   isMovement: 0
-  abilityModel: {fileID: 3102872132118464444, guid: 6e23627d16519534f95260b78a6c4247, type: 3}
+  abilityModel: {fileID: 6795007840556696025, guid: 40826149322f81b46924cb63c01297f5, type: 3}
   manaDrain: 0
-  shootRate: 0.25
+  shootRate: 0.5
   shootDamage: 0
   shootDist: 0
   shootsProjectile: 1
-  projectile: {fileID: 7118765615501587130, guid: 7db29af73ce437a4c83e2d34a0bb6df7, type: 3}
+  projectile: {fileID: 7118765615501587130, guid: ff8502453e5e9ea46a98ec3d1321f429, type: 3}
   canDash: 0
   dashSpeed: 0
   makesImmune: 0

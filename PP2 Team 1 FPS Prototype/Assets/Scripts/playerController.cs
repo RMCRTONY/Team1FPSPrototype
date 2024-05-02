@@ -37,7 +37,7 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     [SerializeField] int jumpSpeed;
     [SerializeField] int gravityMultiplier; // IMPORTANT: gravity is negative downward force
     [SerializeField] int maxJumps;
-    [Range(10, 20)][SerializeField] int dashSpeed;
+    [SerializeField] int dashSpeed;
     [SerializeField] float dashRate;
     [SerializeField] float dashTime;
     [SerializeField] float dashCooldown;
@@ -140,13 +140,13 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         }
 
         // Alt fire
-        if (Input.GetButtonDown("Fire2") && !isShootingAlt && activeAlt.Count > 0 && manaPool >= altManaDrain)
+        if (Input.GetButtonDown("Fire2") && !isShootingAlt && !canDash && activeAlt.Count > 0 && manaPool >= altManaDrain)
         {
             StartCoroutine(castAlt());
         }
 
         // check for dash key, make dash happen
-        if (canDash && Input.GetButtonDown("Dash"))
+        if (canDash && !isDashing && Input.GetButtonDown("Dash") && manaPool >= altManaDrain)
         {
             StartCoroutine(dash());
         }
@@ -304,7 +304,8 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
     IEnumerator dash()
     {
         isDashing = true;
-        canDash = false;
+
+        manaPool -= altManaDrain;
 
         // add dash speed to proper vector direction
         float startTime = Time.time;
@@ -316,8 +317,6 @@ public class playerController : MonoBehaviour, IDamage // Has IInteractions
         
         yield return new WaitForSeconds(dashRate);
         isDashing = false;
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
     }
 
     public void takeDamage(int amount)

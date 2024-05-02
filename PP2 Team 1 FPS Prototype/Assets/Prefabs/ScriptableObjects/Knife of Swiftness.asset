@@ -26,7 +26,7 @@ MonoBehaviour:
   shootsProjectile: 0
   projectile: {fileID: 0}
   canDash: 1
-  dashSpeed: 16
+  dashSpeed: 20
   makesImmune: 0
   spawnsSomething: 0
   objToSpawn: {fileID: 0}
