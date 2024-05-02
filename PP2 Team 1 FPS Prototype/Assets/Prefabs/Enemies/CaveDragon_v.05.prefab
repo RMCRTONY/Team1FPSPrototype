@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3059401582300259946}
-  - component: {fileID: 2682281778209236385}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -37,27 +36,6 @@ Transform:
   - {fileID: 623997276839903942}
   m_Father: {fileID: 3136679603241270638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2682281778209236385
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65272399279365889}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 200
-  m_Center: {x: -255, y: 50, z: 0}
 --- !u!1 &111040160189950965
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,9 +955,8 @@ GameObject:
   - component: {fileID: 3038774905641249222}
   - component: {fileID: 143799217539846557}
   - component: {fileID: 1513938123909815756}
-  - component: {fileID: 2422334611700374569}
   m_Layer: 0
-  m_Name: CaveDragon
+  m_Name: CaveDragon_v.05
   m_TagString: CaveDragon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,9 +994,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 143799217539846557}
   model: {fileID: 7108514283127144874}
-  shootPos: {fileID: 3059401582300259946}
+  shootPos: {fileID: 7767955585677240292}
   HP: 50
-  weaponCol: {fileID: 2682281778209236385}
+  weaponCol: {fileID: 0}
   bullet: {fileID: 7118765615501587130, guid: 6de55cd9e52926d40957b4c6c755bdcb, type: 3}
   shootRate: 1
   animator: {fileID: 3038774905641249222}
@@ -1088,27 +1065,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.408312, y: 5.9325933, z: 7.7816525}
   m_Center: {x: 0, y: 1.1773877, z: 0.29633665}
---- !u!135 &2422334611700374569
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2673345128522397930}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 15
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2682044343313897831
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,14 +9,20 @@ public class Dragon : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
     [SerializeField] Transform shootPos;
+    [SerializeField] Transform headPos;
     //public int HP = 100;
     [SerializeField] int HP;
+    [SerializeField] int faceTargetSpeed;
+    [SerializeField] int viewCone;
     [SerializeField] Collider weaponCol;
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
     public Animator animator;
     public Slider healthBar;
     bool isShooting;
+    bool playerInRange;
+    Vector3 playerDir;
+    float angleToPlayer;
 
     void Start()
     {
@@ -28,6 +34,7 @@ public class Dragon : MonoBehaviour, IDamage
         healthBar.value = HP;
     }
 
+
     public void takeDamage(int amount) 
     {
         HP -= amount;
@@ -35,10 +42,12 @@ public class Dragon : MonoBehaviour, IDamage
         {
             animator.SetTrigger("die");
             GetComponent<BoxCollider>().enabled = false;
+            gameManager.instance.updateGameGoal(-1);
         }
         else 
         {
             animator.SetTrigger("damage");
+            StartCoroutine(flashRed());
         }
     }
 
@@ -64,15 +73,13 @@ public class Dragon : MonoBehaviour, IDamage
         Instantiate(bullet, shootPos.position, transform.rotation);
     }
 
-    public void weaponColOn()
+    public void dragColOn()
     {
         weaponCol.enabled = true;
     }
 
-    public void weaponColOff()
+    public void dragColOff()
     {
         weaponCol.enabled = false;
     }
-
-
 }

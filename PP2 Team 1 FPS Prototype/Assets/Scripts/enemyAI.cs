@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
+    [Header("---------- Components ----------")]
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Renderer model;
-    [SerializeField] Transform shootPos;
     [SerializeField] Animator anim;
+    [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    [SerializeField] AudioSource aud;
     [SerializeField] Collider weaponCol;
 
+    [Header("---------- Enemy Stats ----------")]
     [SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int viewCone;
@@ -23,6 +27,10 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
 
+    [Header("---------- Audio ----------")]
+    [SerializeField] AudioClip[] audHurt;
+    [Range(0, 1)][SerializeField] float audHurtVol;
+
     bool isShooting;
     bool playerInRange;
     bool destinationChosen;
@@ -30,7 +38,8 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     float angleToPlayer;
     float stoppingDistOrig;
-    
+    //Dragon Health
+    //public Slider healthBar;
     //Animator enemyAnim;
 
     // Start is called before the first frame update
@@ -46,6 +55,8 @@ public class enemyAI : MonoBehaviour, IDamage
     void Update()
     {
         //enemyAnim.SetBool("Run", true);
+        //Dragon Health 
+        //healthBar.value = HP.;
 
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
