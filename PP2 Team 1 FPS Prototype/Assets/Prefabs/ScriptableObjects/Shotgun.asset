@@ -24,7 +24,7 @@ MonoBehaviour:
   shootRate: 0.75
   numOfShots: 8
   shootDamage: 2
-  shootDist: 20
+  shootDist: 200
   shootsProjectile: 0
   projectile: {fileID: 0}
   canDash: 0

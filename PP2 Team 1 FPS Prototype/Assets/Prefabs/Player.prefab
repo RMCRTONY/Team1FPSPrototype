@@ -5183,6 +5183,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7614859256466478925}
   - component: {fileID: 8872309287483853455}
+  - component: {fileID: 2495819059305073160}
+  - component: {fileID: 306633382736053115}
+  - component: {fileID: 7919812454060167850}
+  - component: {fileID: 2102055436078942056}
   - component: {fileID: 1990995417799884302}
   - component: {fileID: 6776772565083343938}
   - component: {fileID: 2965685814911874220}
@@ -5225,51 +5229,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1990995417799884302}
-  invincibleAura: {fileID: 5959530252340311563}
   camera: {fileID: 5178453130668984876}
   aud: {fileID: 7822784077642032957}
-  projectile: {fileID: 0}
-  primaryFirePos: {fileID: 6795272328599103923}
-  altProjectile: {fileID: 0}
-  altFirePos: {fileID: 8657556218955492470}
-  testLantern: {fileID: 1809581633867787574, guid: 2d35d492ca1d407469bdd0c05ded8e1e, type: 3}
-  inventory: {fileID: 11400000, guid: 035232a7d72a5d0439300fa18dbc583e, type: 2}
-  shotGunModel: {fileID: 7905080251934625008}
-  primaryModel: {fileID: 6602776243985436131}
-  activePrimary: []
-  altModel: {fileID: 4924142403867857532}
-  activeAlt: []
-  HP: 10
   walkSpeed: 5
   sprintMod: 2
-  jumpSpeed: 8
-  gravityMultiplier: 2
-  maxJumps: 2
-  dashSpeed: 16
-  dashRate: 0.15
-  dashTime: 0.2
-  dashCooldown: 0.25
-  manaPool: 100
-  primaryDamage: 0
-  primaryRate: 0
-  primaryDist: 0
-  altDamage: 0
-  altRate: 0
-  altDist: 0
-  numOfShots: 1
-  audJump:
-  - {fileID: 8300000, guid: 3703d675ce5cc744c8f7997044135364, type: 3}
-  - {fileID: 8300000, guid: c9be6ea075e5ceb4cac03632006d82d7, type: 3}
-  - {fileID: 8300000, guid: af7f248d8a61e5f40b96fc88c7f99325, type: 3}
-  audJumpVol: 0.372
-  audHurt:
-  - {fileID: 8300000, guid: 4ecde08a9af3a2846927f628768f03b4, type: 3}
-  - {fileID: 8300000, guid: 41218bfd2b8a6014084709efc7b6365c, type: 3}
-  - {fileID: 8300000, guid: 5af02a8fdc2521040a270bf21a590c09, type: 3}
-  - {fileID: 8300000, guid: 8fe324bba849c764ba58d1d245b96e3d, type: 3}
-  - {fileID: 8300000, guid: c31c0e6d45b05d9449666eda6e3a6414, type: 3}
-  - {fileID: 8300000, guid: 4fb9f52ac3659c746b6af2d707c12b62, type: 3}
-  audHurtVol: 0.367
   audSteps:
   - {fileID: 8300000, guid: 712a9d0c39591d94aa7652c6df2de4b3, type: 3}
   - {fileID: 8300000, guid: f7c2ca8f7b978344683fc69afd6fed11, type: 3}
@@ -5281,10 +5244,105 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 87e7f7463d4ee5d48beb0e32015df0bf, type: 3}
   - {fileID: 8300000, guid: 20bacdd836fe4144caf2237dd2513236, type: 3}
   audStepsVol: 0.138
-  pickupRange: 2
-  manaTrans: 0.5
-  wardVol: {fileID: 0}
+--- !u!114 &2495819059305073160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536746683237164607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 200b29a7ef775014b9f38fb5823568ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aud: {fileID: 7822784077642032957}
+  HP: 10
+  audHurt:
+  - {fileID: 8300000, guid: 4ecde08a9af3a2846927f628768f03b4, type: 3}
+  - {fileID: 8300000, guid: 41218bfd2b8a6014084709efc7b6365c, type: 3}
+  - {fileID: 8300000, guid: 5af02a8fdc2521040a270bf21a590c09, type: 3}
+  - {fileID: 8300000, guid: 8fe324bba849c764ba58d1d245b96e3d, type: 3}
+  - {fileID: 8300000, guid: c31c0e6d45b05d9449666eda6e3a6414, type: 3}
+  - {fileID: 8300000, guid: 4fb9f52ac3659c746b6af2d707c12b62, type: 3}
+  audHurtVol: 0.36
+  HPOrig: 0
+  isInvincible: 0
+--- !u!114 &306633382736053115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536746683237164607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 119163051a2145240ab000516d06bfa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1990995417799884302}
+  maxJumps: 1
+  jumpSpeed: 8
+  gravityMultiplier: 2
+  aud: {fileID: 7822784077642032957}
+  audJump:
+  - {fileID: 8300000, guid: 3703d675ce5cc744c8f7997044135364, type: 3}
+  - {fileID: 8300000, guid: c9be6ea075e5ceb4cac03632006d82d7, type: 3}
+  - {fileID: 8300000, guid: af7f248d8a61e5f40b96fc88c7f99325, type: 3}
+  audJumpVol: 0.39
+  grounded: 0
+  groundCheckDist: 0
+--- !u!114 &7919812454060167850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536746683237164607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dde2900c0169604f86fcb4941f57862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1990995417799884302}
+  invincibleAura: {fileID: 5959530252340311563}
+  camera: {fileID: 5178453130668984876}
+  aud: {fileID: 7822784077642032957}
+  projectile: {fileID: 0}
+  primaryFirePos: {fileID: 6795272328599103923}
+  altProjectile: {fileID: 0}
+  altFirePos: {fileID: 8657556218955492470}
+  testLantern: {fileID: 1809581633867787574, guid: 2d35d492ca1d407469bdd0c05ded8e1e, type: 3}
+  shotGunModel: {fileID: 7905080251934625008}
+  primaryModel: {fileID: 6602776243985436131}
+  activePrimary: []
+  altModel: {fileID: 4924142403867857532}
+  activeAlt: []
+  manaPool: 100
+  manaRegenStutter: 0.5
+  manaRegenDelay: 0.6
+  manaRegenAmount: 1
   manaOrig: 0
+  dashSpeed: 16
+  dashRate: 0.15
+  dashTime: 0.2
+  dashCooldown: 0.25
+  isDashing: 0
+  canDash: 0
+--- !u!114 &2102055436078942056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536746683237164607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5245fde405f1cbb4a8c2a5808954b908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 035232a7d72a5d0439300fa18dbc583e, type: 2}
+  pickupRange: 2
 --- !u!143 &1990995417799884302
 CharacterController:
   m_ObjectHideFlags: 0

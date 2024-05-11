@@ -12,7 +12,7 @@ public class abilityPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gameManager.instance.playerScript.GetAbilityStats(ability);
+            gameManager.instance.weaponsSystem.GetAbilityStats(ability);
             Destroy(gameObject);
         }
     }

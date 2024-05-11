@@ -31,12 +31,12 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public GameObject playerSpawnPos;
     public playerController playerScript;
+    public JumpRaycast groundChecker;
+    public WeaponsSystem weaponsSystem;
+    public InventorySystem inventorySystem;
+    public PlayerHealth playerHealth;
 
     public bool isPaused;
-    [SerializeField] float manaRegenStutter;
-    [SerializeField] float manaRegenDelay;
-    public bool manaInUse;
-    bool manaCool;
     public bool isComplete;
     int enemyCount;
     
@@ -47,17 +47,17 @@ public class gameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+        groundChecker = player.GetComponent<JumpRaycast>();
+        weaponsSystem = player.GetComponent<WeaponsSystem>();
+        inventorySystem = player.GetComponent<InventorySystem>();
+        playerHealth = player.GetComponent<PlayerHealth>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isPaused && !manaCool && !manaInUse && CanFillMana()) // regenerates mana over time
-        {
-            StartCoroutine(Refill());
-        }
-
+       
         if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == null) // should allow for esc to toggle pause menu only. 
@@ -97,7 +97,7 @@ public class gameManager : MonoBehaviour
     {
         if (amount == 0)
         {
-            if (playerScript.searchInventory(item))
+            if (inventorySystem.searchInventory(item))
             {
                 keyComplete.SetActive(true);
             }
@@ -123,27 +123,5 @@ public class gameManager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(true);
     }
-
-    public bool CanFillMana()
-    {
-        if (playerScript.manaPool < playerScript.manaOrig)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    IEnumerator Refill()
-    {
-        manaCool = true;
-
-        playerScript.manaPool++;
-        // playerScript.updateManaBar();
-        yield return new WaitForSeconds(manaRegenStutter);
-        manaCool = false;
-    }
-
-    
-
     
 }
