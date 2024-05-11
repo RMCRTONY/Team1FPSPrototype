@@ -16,8 +16,8 @@ GameObject:
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5097318398760610754
 Transform:
@@ -119,7 +119,7 @@ GameObject:
   m_Name: Lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4555662794712624935
@@ -132,7 +132,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -37.466663, y: 0.0013012886, z: -42.235916}
-  m_LocalScale: {x: 0.07673478, y: 0.07673478, z: 0.07673478}
+  m_LocalScale: {x: 0.054391783, y: 0.054391783, z: 0.054391783}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6810379407137405212}
@@ -158,8 +158,8 @@ GameObject:
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6810379407137405212
 Transform:
@@ -264,8 +264,8 @@ GameObject:
   m_Name: Cylinder.000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2569324062398518722
 Transform:
@@ -368,7 +368,7 @@ GameObject:
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &9104968958090978534
@@ -399,7 +399,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.9811321, g: 0.8416449, b: 0, a: 1}
   m_Intensity: 1
-  m_Range: 5
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -464,8 +464,8 @@ GameObject:
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8529677534073375929
 Transform:
