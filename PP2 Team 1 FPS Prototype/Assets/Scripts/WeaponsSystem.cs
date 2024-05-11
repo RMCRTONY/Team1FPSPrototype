@@ -231,13 +231,12 @@ public class WeaponsSystem : MonoBehaviour
 
             // add dash speed to proper vector direction
             float startTime = Time.time;
-            controller.enabled = false;
+            
             while (Time.time < startTime + dashTime)
             {
                 controller.Move(dashSpeed * Time.deltaTime * camera.transform.forward); // input the dash
                 yield return null;
             }
-            controller.enabled = true;
             yield return new WaitForSeconds(dashRate);
             isDashing = false;
         }
