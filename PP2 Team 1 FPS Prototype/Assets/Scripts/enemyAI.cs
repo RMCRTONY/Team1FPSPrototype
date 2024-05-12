@@ -118,7 +118,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if (!isAttacking)
                 {
-                    if(distanceToPlayer <= meleeAttackRange && bullet == null)
+                    if(distanceToPlayer <= meleeAttackRange) //&& bullet == null)
                     {
                         StartCoroutine(melee());
                     }
