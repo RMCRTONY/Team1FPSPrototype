@@ -9,6 +9,7 @@ public class lookAtPlayer : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.LookAt(cam);
+        //transform.LookAt(cam);
+        transform.forward = cam.forward;
     }
 }

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6e522bb20e21342add92e46feb7b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 5570905162441718295, guid: 5e17bdfcb68b08247aa6af74560e9fe0, type: 3}
-  numToSpawn: 1
+  objectToSpawn: {fileID: 3138232296983901954, guid: 9453c666c77ddbe47a8902e5d7c4b94a, type: 3}
+  numToSpawn: 2
   spawnTimer: 1
   spawnPos:
   - {fileID: 4925800316643965774}

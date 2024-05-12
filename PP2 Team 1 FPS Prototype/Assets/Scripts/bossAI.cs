@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 //using UnityEngine.UIElements;
 
-public class enemyAI : MonoBehaviour, IDamage
+public class bossAI : MonoBehaviour, IDamage
 {
     [Header("---------- Components ----------")]
     [SerializeField] NavMeshAgent agent;
@@ -16,7 +15,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform headPos;
     [SerializeField] AudioSource aud;
     [SerializeField] Collider weaponCol;
-    //[SerializeField] Slider healthBar;
+    [SerializeField] Slider healthBar;
 
     [Header("---------- Enemy Stats ----------")]
     [SerializeField] int HP;
@@ -63,7 +62,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         //enemyAnim.SetBool("Run", true);
         //Dragon Health 
-        //healthBar.value = HP;
+        healthBar.value = HP;
 
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
@@ -118,11 +117,11 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if (!isAttacking)
                 {
-                    if(distanceToPlayer <= meleeAttackRange && bullet == null)
+                    if(distanceToPlayer <= meleeAttackRange)
                     {
                         StartCoroutine(melee());
                     }
-                    else if(bullet != null)
+                    else
                     {
                         StartCoroutine(shoot());
                     }
@@ -229,7 +228,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator DelayedDestroy()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
 }

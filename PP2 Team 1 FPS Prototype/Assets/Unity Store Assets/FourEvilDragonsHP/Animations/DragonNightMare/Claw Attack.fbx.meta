@@ -513,14 +513,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.4390244
+      - time: 0.28127792
         functionName: weaponColOn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.55243903
+      - time: 0.7721574
         functionName: weaponColOff
         data: 
         objectReferenceParameter: {instanceID: 0}
