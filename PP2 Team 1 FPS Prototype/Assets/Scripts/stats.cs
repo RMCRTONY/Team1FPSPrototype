@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct serializableVector3
@@ -16,6 +17,7 @@ public struct serializableVector3
 [System.Serializable]
 public class Stats
 {
+
     //player specific
     public int health;
     public int mana;

@@ -132,12 +132,12 @@ public class gameManager : MonoBehaviour
 
         
 
-        if (enemyCount <= 0)
-        {
-            statePaused();
-            menuActive = menuWin;
-            menuActive.SetActive(isPaused);
-        }
+        //if (enemyCount <= 0)
+        //{
+        //    statePaused();
+        //    menuActive = menuWin;
+        //    menuActive.SetActive(isPaused);
+        //}
     }
 
     public void youLose()

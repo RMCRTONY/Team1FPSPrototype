@@ -16,6 +16,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform headPos;
     [SerializeField] AudioSource aud;
     [SerializeField] Collider weaponCol;
+    [SerializeField] ParticleSystem fireAnimation;
     //[SerializeField] Slider healthBar;
 
     [Header("---------- Enemy Stats ----------")]
@@ -41,13 +42,19 @@ public class enemyAI : MonoBehaviour, IDamage
     bool isAttacking;
     bool playerInRange;
     bool destinationChosen;
+    bool isOnFire = false;
+    bool isBurning = false;
     Vector3 playerDir;
     Vector3 startingPos;
     float angleToPlayer;
     float stoppingDistOrig;
     //Dragon Health
-    
+
     //Animator enemyAnim;
+    private void Awake()
+    {
+        fireAnimation = GetComponentInChildren<ParticleSystem>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +82,11 @@ public class enemyAI : MonoBehaviour, IDamage
         else if (!playerInRange)
         {
             StartCoroutine(roam());
+        }
+
+        if (isOnFire && !isBurning) // for flame damage
+        {
+            StartCoroutine(burning());
         }
     }
 
@@ -164,6 +176,13 @@ public class enemyAI : MonoBehaviour, IDamage
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
     }
 
+    IEnumerator burning() // I cannot get this to just activate once per second. It waits once and then plays every frame ad infinitum 
+    {
+        yield return new WaitForSeconds(1f);
+        takeDamage(1);
+        yield return new WaitForSeconds(2f);
+    }
+
     public void takeDamage(int amount)
     {
         HP -= amount;
@@ -230,5 +249,18 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
+    }
+
+    private void toggleOnFire(bool burn) // fire animation toggle
+    {
+        if (burn)
+        {
+            isOnFire = true;
+            fireAnimation.Play();
+        } else
+        {
+            isOnFire = false;
+            fireAnimation.Stop();
+        }
     }
 }

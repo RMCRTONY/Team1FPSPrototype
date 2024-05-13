@@ -401,6 +401,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bcdb0e854b81b4faccb2eda0c7c5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myStats:
+    health: 0
+    mana: 0
+    speed: 0
+    sprintMod: 0
+    pos:
+      x: 0
+      y: 0
+      z: 0
+    musicVol: 0
+    environmentVol: 0
+    playerVol: 0
+    enemyVol: 0
+    fov: 0
+    sensitivity: 0
+    invertY: 0
   controller: {fileID: 1990995417799884302}
   camera: {fileID: 5178453130668984876}
   aud: {fileID: 7822784077642032957}
@@ -439,6 +455,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c31c0e6d45b05d9449666eda6e3a6414, type: 3}
   - {fileID: 8300000, guid: 4fb9f52ac3659c746b6af2d707c12b62, type: 3}
   audHurtVol: 0.36
+  audParryPing: {fileID: 8300000, guid: 3a35fabf75493784386545afcc52caf2, type: 3}
+  parryPingVol: 0.528
   perfectReturn: 10
   perfectWindow: 0.5
   timeSinceTriggered: 0
