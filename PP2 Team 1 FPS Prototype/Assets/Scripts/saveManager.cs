@@ -13,7 +13,6 @@ public class saveManager : MonoBehaviour
     public void Awake()
     {
         _player = GameObject.FindObjectOfType<playerController>();
-        load();
     }
 
     public void save()
