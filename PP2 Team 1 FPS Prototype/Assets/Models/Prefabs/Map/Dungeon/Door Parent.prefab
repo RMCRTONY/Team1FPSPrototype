@@ -16,7 +16,7 @@ GameObject:
   m_Name: frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
+  m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3499844350381362465
@@ -121,7 +121,7 @@ GameObject:
   m_Name: frame (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
+  m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8964191881243942228
@@ -281,7 +281,7 @@ GameObject:
   m_Name: frame (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
+  m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3302314877260279802
@@ -446,6 +446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 598912943493876902}
   - component: {fileID: 5305223400282237636}
+  - component: {fileID: 6176085020950835787}
   - component: {fileID: 8498627211791839567}
   - component: {fileID: 6016631112775659839}
   - component: {fileID: 6989719169028384171}
@@ -453,8 +454,8 @@ GameObject:
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &598912943493876902
 Transform:
@@ -489,6 +490,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8dec6590a5ef9f8418226bf9244b2b2f, type: 3}
   audStepsVol: 1
   anim: {fileID: 6037106430974493952}
+--- !u!208 &6176085020950835787
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208177897509758875}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!33 &8498627211791839567
 MeshFilter:
   m_ObjectHideFlags: 0
