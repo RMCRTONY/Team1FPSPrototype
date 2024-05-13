@@ -722,6 +722,10 @@ PrefabInstance:
       propertyPath: numToSpawn
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8958658498847864698, guid: 4a5ca036b3f94d641b5c24cd715213a7, type: 3}
+      propertyPath: objectToSpawn
+      value: 
+      objectReference: {fileID: 1922655391508630272, guid: 2c821ed8a10a6bb4cb93c455bad10856, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
