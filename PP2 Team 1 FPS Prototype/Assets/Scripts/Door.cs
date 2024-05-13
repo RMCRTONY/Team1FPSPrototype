@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
     [Range(0, 1)][SerializeField] float audStepsVol;
 
     bool isOpen;
-    bool playingCreak;
+    bool playingCreak; // should this be used?
     public Animator anim;
 
     public void openClose()
@@ -26,8 +26,8 @@ public class Door : MonoBehaviour
             anim.ResetTrigger("close");
             anim.SetTrigger("open");
         }
-
-        StartCoroutine(PlayCreak());
+        // something like "if(!playingCreak)" maybe? also this is mad null when called my dude idk whats goin on.
+        StartCoroutine(PlayCreak()); 
     }
 
     IEnumerator PlayCreak()

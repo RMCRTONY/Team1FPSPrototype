@@ -24,10 +24,6 @@ public class playerController : MonoBehaviour
     [SerializeField] AudioClip[] audSteps;
     [Range(0, 1)][SerializeField] float audStepsVol;
 
-    // misc
-    //[Header("Misc")]
-    
-
     private Vector3 moveDir;
     bool playingSteps;
     bool isSprinting;

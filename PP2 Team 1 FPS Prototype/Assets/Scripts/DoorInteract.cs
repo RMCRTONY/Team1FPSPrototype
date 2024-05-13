@@ -15,7 +15,7 @@ public class DoorInteract : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<Door>())
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown("Interact"))
                 {
                     hit.collider.gameObject.GetComponent<Door>().openClose();
                 }

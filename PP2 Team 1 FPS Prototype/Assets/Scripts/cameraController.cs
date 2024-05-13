@@ -55,7 +55,7 @@ public class cameraController : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<Door>())
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetButtonDown("Interact")) // T: I changed this to use unity's input system instead
                 {
                     hit.collider.gameObject.GetComponent<Door>().openClose();
                 }

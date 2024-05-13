@@ -20,7 +20,9 @@ public class gameManager : MonoBehaviour
     public GameObject interactPrompt; // informs player that an object can be picked up
     public GameObject playerDamageScreen;
     public GameObject playerHealScreen;
+    public GameObject perfectParryScreen;
     public GameObject objectiveCompleteMenu;
+    public GameObject invincibleAura;
     public Image playerHPBar;
     public Image playerManaBar;
     public TMP_Text enemyCountText;
@@ -52,6 +54,8 @@ public class gameManager : MonoBehaviour
         inventorySystem = player.GetComponent<InventorySystem>();
         playerHealth = player.GetComponent<PlayerHealth>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+
+        playerManaBar.color = Color.blue;
     }
 
     // Update is called once per frame

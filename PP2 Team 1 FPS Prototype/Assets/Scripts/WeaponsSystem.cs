@@ -7,7 +7,6 @@ public class WeaponsSystem : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] CharacterController controller;
-    [SerializeField] ParticleSystem invincibleAura;
     [SerializeField] new GameObject camera;
     [SerializeField] AudioSource aud;
 
@@ -37,11 +36,11 @@ public class WeaponsSystem : MonoBehaviour
     [Range(1, 200)][SerializeField] public int manaPool;
     [SerializeField] float manaRegenStutter;
     [SerializeField] float manaRegenDelay;
-    [SerializeField] int manaRegenAmount;
+    [SerializeField] public int manaRegenAmount;
+    public int manaRegenOrig;
     public int manaOrig;
     bool manaCool;
     bool manaInUse;
-
 
     private bool isShooting;
     private bool isShootingAlt; // different rates of fire, can fire at same time
@@ -60,6 +59,7 @@ public class WeaponsSystem : MonoBehaviour
     private void Start()
     {
         manaOrig = manaPool;
+        manaRegenOrig = manaRegenAmount;
     }
 
     // Update is called once per frame
@@ -153,7 +153,8 @@ public class WeaponsSystem : MonoBehaviour
         else if (activeAlt[selectedAlt].makesImmune)
         {
             gameManager.instance.playerHealth.isInvincible = true;
-            invincibleAura.Play();
+            gameManager.instance.playerHealth.timeSinceTriggered = Time.time;
+            gameManager.instance.invincibleAura.SetActive(true); // indicates that player is invincible
         }
         else if (activeAlt[selectedAlt].isMovement && canDash /*&& !isDashing*/)
         {
@@ -167,7 +168,7 @@ public class WeaponsSystem : MonoBehaviour
         yield return new WaitForSeconds(altRate);
         isShootingAlt = false;
         gameManager.instance.playerHealth.isInvincible = false;
-        invincibleAura.Stop();
+        gameManager.instance.invincibleAura.SetActive(false);
         manaInUse = false;
     }
 
@@ -372,6 +373,8 @@ public class WeaponsSystem : MonoBehaviour
         {
             return true;
         }
+        manaRegenAmount = manaRegenOrig;
+        gameManager.instance.playerHealth.acceleratedManaRegen = false;
         return false;
     }
 
@@ -388,5 +391,13 @@ public class WeaponsSystem : MonoBehaviour
     public void updateManaBar()
     {
         gameManager.instance.playerManaBar.fillAmount = (float)manaPool / manaOrig;
+
+        if (gameManager.instance.playerHealth.acceleratedManaRegen )
+        {
+            gameManager.instance.playerManaBar.color = Color.yellow;
+        } else
+        {
+            gameManager.instance.playerManaBar.color = Color.blue;
+        }
     }
 }

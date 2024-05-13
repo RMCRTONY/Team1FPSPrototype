@@ -11,6 +11,13 @@ public class PlayerHealth : MonoBehaviour, IDamage // Has IInteractions
     [Header("Audio")]
     [SerializeField] AudioClip[] audHurt;
     [Range(0, 1)][SerializeField] float audHurtVol;
+
+    [Header("Warding")]
+    [SerializeField] int perfectReturn;
+    [SerializeField] float perfectWindow;
+    public float timeSinceTriggered;
+    public bool acceleratedManaRegen = false;
+
     public int HPOrig;
     public bool isInvincible;
     // Start is called before the first frame update
@@ -29,6 +36,12 @@ public class PlayerHealth : MonoBehaviour, IDamage // Has IInteractions
     {
         if (isInvincible)
         {
+            if (Time.time < timeSinceTriggered + perfectWindow && !acceleratedManaRegen) 
+            {
+                acceleratedManaRegen = true;
+                gameManager.instance.weaponsSystem.manaRegenAmount *= perfectReturn;
+                StartCoroutine(flashParry());
+            }
             return;
         }
 
@@ -82,6 +95,13 @@ public class PlayerHealth : MonoBehaviour, IDamage // Has IInteractions
         gameManager.instance.playerHealScreen.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         gameManager.instance.playerHealScreen.SetActive(false);
+    }
+
+    IEnumerator flashParry()
+    {
+        gameManager.instance.perfectParryScreen.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.perfectParryScreen.SetActive(false);
     }
 
     // add ability to pick up health objects by walking into them
