@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour, IDamage // Has IInteractions
     [Header("Audio")]
     [SerializeField] AudioClip[] audHurt;
     [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip audParryPing;
+    [Range(0, 1)][SerializeField] float parryPingVol;
 
     [Header("Warding")]
     [SerializeField] int perfectReturn;
@@ -39,7 +41,9 @@ public class PlayerHealth : MonoBehaviour, IDamage // Has IInteractions
             if (Time.time < timeSinceTriggered + perfectWindow && !acceleratedManaRegen) 
             {
                 acceleratedManaRegen = true;
+                gameManager.instance.weaponsSystem.manaInUse = false;
                 gameManager.instance.weaponsSystem.manaRegenAmount *= perfectReturn;
+                aud.PlayOneShot(audParryPing, parryPingVol);
                 StartCoroutine(flashParry());
             }
             return;

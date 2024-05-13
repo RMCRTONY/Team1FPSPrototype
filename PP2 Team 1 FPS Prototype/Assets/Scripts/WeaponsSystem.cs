@@ -35,12 +35,12 @@ public class WeaponsSystem : MonoBehaviour
     [Header("Mana")]
     [Range(1, 200)][SerializeField] public int manaPool;
     [SerializeField] float manaRegenStutter;
-    [SerializeField] float manaRegenDelay;
-    [SerializeField] public int manaRegenAmount;
+    //[SerializeField] float manaRegenDelay;
+    public int manaRegenAmount = 1;
     public int manaRegenOrig;
     public int manaOrig;
     bool manaCool;
-    bool manaInUse;
+    public bool manaInUse;
 
     private bool isShooting;
     private bool isShootingAlt; // different rates of fire, can fire at same time
