@@ -7,13 +7,28 @@ using UnityEngine.SceneManagement;
 
 public class mainMenu : MonoBehaviour
 {
+    float selection;
+
+    [SerializeField] GameObject menuActive;
+    [SerializeField] GameObject continueButton;
+
+    public void Update()
+    {
+        //if there is a load file
+        //toggle continue button
+        string curFile = "/Player.dat";
+        if (File.Exists(curFile))
+        {
+            menuActive = continueButton;
+            menuActive.SetActive(true);
+        }
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync(1);
     }
 
-    //if there is a load file
-    //toggle continue button
     public void ContinueGame()
     {
         
