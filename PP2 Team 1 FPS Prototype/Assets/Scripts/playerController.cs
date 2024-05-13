@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 
@@ -6,6 +7,9 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    //stats for saving/loading and options menu
+    public Stats myStats;
+
     // components like charController etc
     [Header("Components")]
     [SerializeField] CharacterController controller;
