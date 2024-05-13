@@ -13,7 +13,7 @@ public class WeaponsSystem : MonoBehaviour
     int primaryDamage;
     float primaryRate;
     int primaryDist;
-    int altDamage;
+    //int altDamage;
     float altRate;
     int altDist;
     int numOfShots;
@@ -344,7 +344,7 @@ public class WeaponsSystem : MonoBehaviour
         }
         else
         {
-            altDamage = activeAlt[selectedAlt].shootDamage; // needs unique damage, not stored in projectile
+            // altDamage = activeAlt[selectedAlt].shootDamage; // needs unique damage, not stored in projectile
             altDist = activeAlt[selectedAlt].shootDist;
         }
 

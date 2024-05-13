@@ -1,23 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FireBad : MonoBehaviour
 {
     [Header("---------- Components ----------")]
-    [SerializeField] int burnDMG;
+    [SerializeField] int burnDMG = 1; // declared and initialized for convinience
     [SerializeField] float damageInterval = 1.0f; // Damage applied every second
+    [SerializeField] float timeToExtinguish = 5.0f; // time in which the fire will stop burning
 
     private float timeSinceLastDamage = 0.0f;
 
-    // Coroutine for handling damage over time
-    IEnumerator DamageOverTimeCoroutine(IDamage dmg)
+    private void Start()
     {
-        while (true) // Loop continuously
+        Destroy(gameObject, timeToExtinguish);
+    }
+
+    // Coroutine for handling damage over time
+    IEnumerator DamageOverTimeCoroutine(IDamage dmg, Collider other)
+    {
+        // add case for fire to extinguish
+        float startTime = Time.time;
+
+        while (Time.time < startTime + timeToExtinguish) // Loop until time to extinguish
         {
             yield return new WaitForSeconds(damageInterval);
             dmg.takeDamage(burnDMG);
         }
+
+        other.SendMessageUpwards("toggleOnFire", false, SendMessageOptions.DontRequireReceiver); // enemies will not burn
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,11 +37,9 @@ public class FireBad : MonoBehaviour
         if (other.isTrigger)
             return;
 
-        IDamage dmg = other.GetComponent<IDamage>();
-
-        if (dmg != null)
+        if (other.TryGetComponent(out IDamage dmg)) // cleanup :)
         {
-            StartCoroutine(DamageOverTimeCoroutine(dmg));
+            StartCoroutine(DamageOverTimeCoroutine(dmg, other));
         }
     }
 

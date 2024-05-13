@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8852330604756791330}
-  - component: {fileID: 4601369208982377673}
+  - component: {fileID: 8243035409715032228}
   - component: {fileID: 2982380420357105630}
   - component: {fileID: 3273755954016566293}
   - component: {fileID: 4655005455336613925}
@@ -37,7 +37,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4601369208982377673
+--- !u!114 &8243035409715032228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,13 +46,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7118765615501587130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d799704b1e4a9084091a19fa1443cf1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 174574febdee1ac44b7904694227ac08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3273755954016566293}
   damage: 3
   speed: 20
   destroyTime: 3
+  Flames: {fileID: 2952348992051931531, guid: 062f0f765e97a244e90fef98dcb10fcb, type: 3}
 --- !u!135 &2982380420357105630
 SphereCollider:
   m_ObjectHideFlags: 0
