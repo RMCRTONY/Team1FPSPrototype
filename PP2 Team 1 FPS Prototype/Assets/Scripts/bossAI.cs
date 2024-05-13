@@ -174,10 +174,9 @@ public class bossAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
+            gameManager.instance.updateGameGoal(-1);
             anim.SetTrigger("Die");
             StartCoroutine(DelayedDestroy());
-            gameManager.instance.updateGameGoal(-1);
-
         }
     }
 

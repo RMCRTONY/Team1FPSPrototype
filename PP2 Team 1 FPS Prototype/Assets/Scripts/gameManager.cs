@@ -41,8 +41,17 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     public bool isComplete;
     int enemyCount;
-    
-    
+
+    [Header("---------- Audio ----------")]
+    [SerializeField] AudioSource aud;
+    //[SerializeField] AudioClip audClick;
+    //[Range(0, 1)][SerializeField] float audClickVol;
+    [SerializeField] AudioClip[] menuMusic;
+    [Range(0, 1)][SerializeField] float menuMusicVol;
+    [SerializeField] AudioClip[] bgMusic;
+    [Range(0, 1)][SerializeField] float bgMusicVol;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -56,6 +65,10 @@ public class gameManager : MonoBehaviour
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
 
         playerManaBar.color = Color.blue;
+
+        aud.Stop();
+        aud.loop = true;
+        aud.PlayOneShot(bgMusic[Random.Range(0, bgMusic.Length)], bgMusicVol);
     }
 
     // Update is called once per frame
@@ -85,6 +98,9 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        aud.Stop();
+        aud.loop = true;
+        aud.PlayOneShot(menuMusic[Random.Range(0, menuMusic.Length)], menuMusicVol);
     }
 
     public void stateUnpaused()
@@ -95,6 +111,9 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(isPaused);
         menuActive = null;
+        aud.Stop();
+        aud.loop = true;
+        aud.PlayOneShot(bgMusic[Random.Range(0, bgMusic.Length)], bgMusicVol);
     }
 
     public void updateGameGoal(int amount)
