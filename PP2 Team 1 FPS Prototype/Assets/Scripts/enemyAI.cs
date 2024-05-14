@@ -43,7 +43,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool playerInRange;
     bool destinationChosen;
     bool isOnFire = false;
-    bool isBurning = false;
+    bool isCold = false;
     Vector3 playerDir;
     Vector3 startingPos;
     float angleToPlayer;
@@ -84,7 +84,7 @@ public class enemyAI : MonoBehaviour, IDamage
             StartCoroutine(roam());
         }
 
-        if (isOnFire && !isBurning) // for flame damage
+        if (isOnFire) // for flame damage
         {
             StartCoroutine(burning());
         }
@@ -262,5 +262,23 @@ public class enemyAI : MonoBehaviour, IDamage
             isOnFire = false;
             fireAnimation.Stop();
         }
+    }
+
+    private void toggleOnChilled(bool chill)
+    {
+        if (chill)
+        {
+            isCold = true;
+            slowEverything();
+        }
+        else
+        {
+            isCold = false;
+        }
+    }
+
+    void slowEverything() // should slow all animations, walk speed, and actions by half, for a short period
+    {
+        
     }
 }
