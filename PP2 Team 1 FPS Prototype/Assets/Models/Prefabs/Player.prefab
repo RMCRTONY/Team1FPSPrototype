@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 1882451824875611997}
   serializedVersion: 2
   m_LocalRotation: {x: -0.2595866, y: 0.510953, z: 0.39351836, w: 0.71880823}
-  m_LocalPosition: {x: 0.239, y: 0.799, z: 0.075}
+  m_LocalPosition: {x: 0.407, y: 1.044, z: 0.184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -503,6 +503,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   aud: {fileID: 7822784077642032957}
   projectile: {fileID: 0}
+  muzzleFlash: {fileID: 0}
   primaryFirePos: {fileID: 6795272328599103923}
   altProjectile: {fileID: 0}
   altFirePos: {fileID: 8657556218955492470}
