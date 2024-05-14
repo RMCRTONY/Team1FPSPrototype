@@ -217,10 +217,10 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator melee()
     {
-        isAttacking=true;
+        isAttacking = true;
         anim.SetTrigger("Melee");
         yield return new WaitForSeconds(swingRate);
-        isAttacking =false;
+        isAttacking = false;
     }
 
     public void createBullet()

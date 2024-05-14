@@ -44,10 +44,9 @@ public class bossAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     float angleToPlayer;
     float stoppingDistOrig;
-    //Dragon Health
-    
-    //Animator enemyAnim;
-
+    private Collider[] colliders;
+    bool isDead = false; // Flag to track if the boss is dead
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +54,7 @@ public class bossAI : MonoBehaviour, IDamage
         //enemyAnim = GetComponent<Animator>();
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
+        colliders = GetComponentsInChildren<Collider>(); // Get all colliders on the boss
     }
 
     // Update is called once per frame
@@ -66,6 +66,14 @@ public class bossAI : MonoBehaviour, IDamage
 
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
+
+        // Check if the boss is dead and stop movement
+        if (isDead)
+        {
+            //agent.enabled = false;
+            agent.isStopped = true; // Stop the NavMeshAgent
+            return; // Exit the Update loop early
+        }
 
         if (playerInRange && !canSeePlayer())
         {
@@ -174,9 +182,18 @@ public class bossAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            gameManager.instance.updateGameGoal(-1);
+            isDead = true; // Set the boss as dead
+            //agent.enabled = false;
             anim.SetTrigger("Die");
-            StartCoroutine(DelayedDestroy());
+            //StartCoroutine(DelayedDestroy());
+            gameManager.instance.updateGameGoal(-1);
+            aud.Stop();
+
+            // Disable all colliders on the boss
+            foreach (Collider collider in colliders)
+            {
+                collider.enabled = false;
+            }
         }
     }
 
@@ -197,10 +214,10 @@ public class bossAI : MonoBehaviour, IDamage
 
     IEnumerator melee()
     {
-        isAttacking=true;
+        isAttacking = true;
         anim.SetTrigger("Melee");
         yield return new WaitForSeconds(swingRate);
-        isAttacking =false;
+        isAttacking = false;
     }
 
     public void createBullet()
