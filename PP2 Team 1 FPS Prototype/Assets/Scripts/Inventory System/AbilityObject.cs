@@ -34,6 +34,7 @@ public class AbilityObject : ItemObject
 
     [Header("Effects and Feedback")]
     public ParticleSystem hitEffect;
+    public ParticleSystem muzzleFlash;
     public AudioClip shootSound;
     [Range(0, 1)] public float shootSoundVol;
 

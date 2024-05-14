@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 1882451824875611997}
   serializedVersion: 2
   m_LocalRotation: {x: -0.2595866, y: 0.510953, z: 0.39351836, w: 0.71880823}
-  m_LocalPosition: {x: 0.026, y: 0.788, z: -0.2}
+  m_LocalPosition: {x: 0.239, y: 0.799, z: 0.075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1990995417799884302}
-  camera: {fileID: 5178453130668984876}
+  cam: {fileID: 0}
   aud: {fileID: 7822784077642032957}
   projectile: {fileID: 0}
   primaryFirePos: {fileID: 6795272328599103923}
@@ -514,10 +514,10 @@ MonoBehaviour:
   activeAlt: []
   manaPool: 100
   manaRegenStutter: 0.5
-  manaRegenDelay: 0.6
   manaRegenAmount: 1
   manaRegenOrig: 0
   manaOrig: 0
+  manaInUse: 0
   dashSpeed: 16
   dashRate: 0.15
   dashTime: 0.2

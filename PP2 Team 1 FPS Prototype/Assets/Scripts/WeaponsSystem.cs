@@ -7,21 +7,25 @@ public class WeaponsSystem : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] CharacterController controller;
-    [SerializeField] new GameObject camera;
+    [SerializeField] Camera cam;
     [SerializeField] AudioSource aud;
+    //[SerializeField] GameObject lines;
+    //public LineRenderer[] lineRends;
+    //private readonly List<RaycastHit> hits = new();
 
     int primaryDamage;
     float primaryRate;
     int primaryDist;
     //int altDamage;
     float altRate;
-    int altDist;
+    // int altDist;
     int numOfShots;
     int manaDrain;
     int altManaDrain;
 
     [Header("Firing Values")]
     [SerializeField] GameObject projectile;
+    [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] Transform primaryFirePos;
     [SerializeField] GameObject altProjectile;
     [SerializeField] Transform altFirePos;
@@ -58,8 +62,11 @@ public class WeaponsSystem : MonoBehaviour
 
     private void Start()
     {
+        cam = Camera.main;
         manaOrig = manaPool;
         manaRegenOrig = manaRegenAmount;
+
+        //lineRends = lines.GetComponentsInChildren<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -117,15 +124,17 @@ public class WeaponsSystem : MonoBehaviour
         if (activePrimary[selectedPrimary].shootsProjectile)
         {
             // instance projectiles on camera rotation
-            Instantiate(projectile, primaryFirePos.position, camera.transform.rotation);
+            Instantiate(projectile, primaryFirePos.position, cam.transform.rotation);
         }
         else
         {
+            Instantiate(muzzleFlash, primaryFirePos.transform.position, cam.transform.rotation);
             // its a raycast so do the raycast stuff
             for (int i = 1; i <= numOfShots; i++)
             {
                 FireRaycast(i);
             }
+            //StartCoroutine(bulletTrails());
         }
 
         yield return new WaitForSeconds(primaryRate);
@@ -148,7 +157,7 @@ public class WeaponsSystem : MonoBehaviour
         if (activeAlt[selectedAlt].shootsProjectile)
         {
             // instance projectiles on camera rotation
-            Instantiate(altProjectile, altFirePos.position, camera.transform.rotation);
+            Instantiate(altProjectile, altFirePos.position, cam.transform.rotation);
         }
         else if (activeAlt[selectedAlt].makesImmune)
         {
@@ -159,10 +168,6 @@ public class WeaponsSystem : MonoBehaviour
         else if (activeAlt[selectedAlt].isMovement && canDash /*&& !isDashing*/)
         {
             StartCoroutine(dash());
-        }
-        else
-        {
-            FireRaycast(1);
         }
 
         yield return new WaitForSeconds(altRate);
@@ -178,14 +183,16 @@ public class WeaponsSystem : MonoBehaviour
         {
             float maxOffset = 1.0f;
             Vector3 pelletSpread = Vector3.zero;
-            Vector3 camDir = camera.transform.forward; // initial aim 
-            pelletSpread += camera.transform.right * Random.Range(-maxOffset, maxOffset);
-            pelletSpread += camera.transform.up * Random.Range(-maxOffset, maxOffset);
+            Vector3 camDir = cam.transform.forward; // initial aim 
+            pelletSpread += cam.transform.right * Random.Range(-maxOffset, maxOffset);
+            pelletSpread += cam.transform.up * Random.Range(-maxOffset, maxOffset);
 
             camDir += pelletSpread.normalized * Random.Range(0f, 0.2f);
-            if (Physics.Raycast(camera.transform.position, camDir, out RaycastHit hit, primaryDist))
+            
+            if (Physics.Raycast(cam.transform.position, camDir, out RaycastHit hit, primaryDist))
             {
-                Debug.DrawLine(camera.transform.position, hit.point, Color.green, 1f);
+                //Debug.DrawLine(cam.transform.position, hit.point, Color.green, 1f);
+                //hits.Add(hit); // line renderer setup
 
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
 
@@ -195,17 +202,15 @@ public class WeaponsSystem : MonoBehaviour
                 }
                 Instantiate(activePrimary[selectedPrimary].hitEffect, hit.point, Quaternion.identity); // need those hit effects ALWAYS
             }
-            else
-            {
-                Debug.DrawLine(camera.transform.position, camera.transform.position + camDir * altDist, Color.red, 1f);
-            }
+            
         }
         else
         {
-            Vector3 camDir = camera.transform.forward; // initial aim 
-            if (Physics.Raycast(camera.transform.position, camDir, out RaycastHit hit, primaryDist))
+            Vector3 camDir = cam.transform.forward; // initial aim 
+            if (Physics.Raycast(cam.transform.position, camDir, out RaycastHit hit, primaryDist))
             {
-                Debug.DrawLine(camera.transform.position, hit.point, Color.green, 1f);
+                //Debug.DrawLine(cam.transform.position, hit.point, Color.green, 1f);
+                //hits.Add(hit); // line renderer setup
 
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
 
@@ -215,12 +220,29 @@ public class WeaponsSystem : MonoBehaviour
                 }
                 Instantiate(activePrimary[selectedPrimary].hitEffect, hit.point, Quaternion.identity); // need those hit effects ALWAYS
             }
-            else
-            {
-                Debug.DrawLine(camera.transform.position, camera.transform.position + camDir * altDist, Color.red, 1f);
-            }
         }
     }
+
+    //IEnumerator bulletTrails()
+    //{
+    //    for (int i = 0; i < hits.Count; i++) 
+    //    {
+    //        lineRends[i].enabled = true;
+    //        lineRends[i].SetPosition(0, primaryFirePos.transform.position);
+    //        lineRends[i].SetPosition(1, hits[i].point);
+    //    }
+    //    yield return new WaitForSeconds(1f);
+    //    foreach (LineRenderer l in lineRends)
+    //    {
+    //        l.enabled = false;
+    //    }
+    //    clearHits();
+    //}
+
+    //void clearHits()
+    //{
+    //    hits.Clear();
+    //}
 
     public IEnumerator dash()
     {
@@ -235,7 +257,7 @@ public class WeaponsSystem : MonoBehaviour
             
             while (Time.time < startTime + dashTime)
             {
-                controller.Move(dashSpeed * Time.deltaTime * camera.transform.forward); // input the dash
+                controller.Move(dashSpeed * Time.deltaTime * cam.transform.forward); // input the dash
                 yield return null;
             }
             yield return new WaitForSeconds(dashRate);
@@ -284,6 +306,7 @@ public class WeaponsSystem : MonoBehaviour
             primaryDamage = activePrimary[selectedPrimary].shootDamage; // needs unique damage
             primaryDist = activePrimary[selectedPrimary].shootDist;
             numOfShots = activePrimary[selectedPrimary].numOfShots;
+            muzzleFlash = activePrimary[selectedPrimary].muzzleFlash;
         }
         primaryRate = activePrimary[selectedPrimary].shootRate;
         manaDrain = activePrimary[selectedPrimary].manaDrain;
@@ -345,7 +368,7 @@ public class WeaponsSystem : MonoBehaviour
         else
         {
             // altDamage = activeAlt[selectedAlt].shootDamage; // needs unique damage, not stored in projectile
-            altDist = activeAlt[selectedAlt].shootDist;
+            // altDist = activeAlt[selectedAlt].shootDist;
         }
 
         if (activeAlt[selectedAlt].isMovement) // only alt weapons can be Movement abilites currently, sorry
