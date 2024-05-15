@@ -11,7 +11,6 @@ public class mainMenu : MonoBehaviour
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject continueButton;
-    saveManager _saveManager;
 
     public void Update()
     {
@@ -32,7 +31,7 @@ public class mainMenu : MonoBehaviour
 
     public void ContinueGame()
     {
-        _saveManager.load();
+        
     }    
 
     public void QuitGame()

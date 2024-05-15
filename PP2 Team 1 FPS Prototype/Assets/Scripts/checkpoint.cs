@@ -5,14 +5,12 @@ using UnityEngine;
 public class checkpoint : MonoBehaviour
 {
     [SerializeField] Renderer model;
-    saveManager _saveManager;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player") && gameManager.instance.playerSpawnPos.transform.position != transform.position)
         {
             gameManager.instance.playerSpawnPos.transform.position = transform.position;
-            _saveManager.save();
             StartCoroutine(displayPopup());
         }
     }
