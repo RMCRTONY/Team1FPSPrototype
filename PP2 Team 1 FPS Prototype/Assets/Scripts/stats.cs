@@ -21,8 +21,6 @@ public class Stats
     //player specific
     public int health;
     public int mana;
-    public int speed;
-    public int sprintMod;
     public serializableVector3 pos;
 
     //game options
@@ -34,6 +32,5 @@ public class Stats
     //camera options
     public int fov;
     public int sensitivity;
-    public bool invertY;
 
 }
