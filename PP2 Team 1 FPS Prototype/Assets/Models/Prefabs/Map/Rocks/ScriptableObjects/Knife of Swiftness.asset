@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32869d50f064574487d303886308f11, type: 3}
+  m_Name: Knife of Swiftness
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  type: 0
+  signature: 204
+  description: You feel lighter on your feet
+  isPrimary: 0
+  isMovement: 1
+  abilityModel: {fileID: 7070716701692480845, guid: 1d4535486310c2b48b58822b49615dd0, type: 3}
+  preferredHardpoint: 0
+  manaDrain: 25
+  shootRate: 1
+  numOfShots: 0
+  shootDamage: 0
+  shootDist: 0
+  shootsProjectile: 0
+  projectile: {fileID: 0}
+  canDash: 1
+  dashSpeed: 20
+  dashDamageDistance: 4.8
+  dashDamage: 1
+  makesImmune: 0
+  spawnsSomething: 0
+  objToSpawn: {fileID: 0}
+  improvesMana: 0
+  manaRegenMod: 0
+  hitEffect: {fileID: 0}
+  muzzleFlash: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 2fb1caf8e3f9f4140a5d834bd32331b7, type: 3}
+  shootSoundVol: 0.096

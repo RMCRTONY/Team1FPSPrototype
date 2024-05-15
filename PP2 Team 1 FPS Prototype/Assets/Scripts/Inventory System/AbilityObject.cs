@@ -26,11 +26,17 @@ public class AbilityObject : ItemObject
     [Header("Movement Abilities")]
     public bool canDash;
     public int dashSpeed;
+    public float dashDamageDistance;
+    public int dashDamage;
     public bool makesImmune;
 
     [Header("Spawning Abilities")]
     public bool spawnsSomething;
     public GameObject objToSpawn;
+
+    [Header("Buff Abilities")]
+    public bool improvesMana;
+    public int manaRegenMod;
 
     [Header("Effects and Feedback")]
     public ParticleSystem hitEffect;

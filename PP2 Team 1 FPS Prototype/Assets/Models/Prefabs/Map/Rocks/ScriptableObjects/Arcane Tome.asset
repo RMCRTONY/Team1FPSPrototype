@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32869d50f064574487d303886308f11, type: 3}
+  m_Name: Arcane Tome
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  type: 0
+  signature: 203
+  description: Legally Distinct from DnD 5e. Regenerates mana at an improved rate.
+  isPrimary: 0
+  isMovement: 0
+  abilityModel: {fileID: 2303205409579412723, guid: 32a5bab1f34cb2f488603cc1f415eb92, type: 3}
+  preferredHardpoint: 0
+  manaDrain: 0
+  shootRate: 0
+  numOfShots: 0
+  shootDamage: 0
+  shootDist: 0
+  shootsProjectile: 0
+  projectile: {fileID: 0}
+  canDash: 0
+  dashSpeed: 0
+  dashDamageDistance: 0
+  dashDamage: 0
+  makesImmune: 0
+  spawnsSomething: 0
+  objToSpawn: {fileID: 0}
+  improvesMana: 1
+  manaRegenMod: 5
+  hitEffect: {fileID: 4529804811838174369, guid: 4db3634de54463a42b164d4e8d10b1bd, type: 3}
+  muzzleFlash: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: bac17c5de1c47c84a94e76d2104193dc, type: 3}
+  shootSoundVol: 0

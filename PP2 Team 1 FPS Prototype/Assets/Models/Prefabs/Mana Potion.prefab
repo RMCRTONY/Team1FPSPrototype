@@ -9759,7 +9759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3270129495387659333}
-  - component: {fileID: 5505955502357167332}
+  - component: {fileID: 5400124743194494417}
   - component: {fileID: 2914579623770300934}
   m_Layer: 0
   m_Name: Mana Potion
@@ -9785,7 +9785,7 @@ Transform:
   - {fileID: 1178239799058964253}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &5505955502357167332
+--- !u!114 &5400124743194494417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9794,10 +9794,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8120084767801126311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a734601223917d948b37c2355b4d2ced, type: 3}
+  m_Script: {fileID: 11500000, guid: 4973128d69ddd1a43a307d527c301896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potency: 10
+  potency: 100
+  soundOfItem: {fileID: 8300000, guid: f5d468e95be7a7540953b217cc92bb48, type: 3}
+  volume: 0.428
 --- !u!136 &2914579623770300934
 CapsuleCollider:
   m_ObjectHideFlags: 0

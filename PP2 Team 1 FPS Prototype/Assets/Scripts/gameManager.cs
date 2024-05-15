@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
@@ -89,7 +90,6 @@ public class gameManager : MonoBehaviour
            
         }
 
-        
     }
 
     public void statePaused()

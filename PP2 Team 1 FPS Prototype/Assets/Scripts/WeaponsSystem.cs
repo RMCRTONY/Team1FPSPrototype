@@ -16,9 +16,9 @@ public class WeaponsSystem : MonoBehaviour
     int primaryDamage;
     float primaryRate;
     int primaryDist;
-    //int altDamage;
+    int altDamage;
     float altRate;
-    // int altDist;
+    float altDist;
     int numOfShots;
     int manaDrain;
     int altManaDrain;
@@ -55,7 +55,6 @@ public class WeaponsSystem : MonoBehaviour
     [SerializeField] int dashSpeed;
     [SerializeField] float dashRate;
     [SerializeField] float dashTime;
-    [SerializeField] float dashCooldown;
 
     public bool isDashing;
     public bool canDash = false;
@@ -181,7 +180,7 @@ public class WeaponsSystem : MonoBehaviour
     {
         if (loop > 1)
         {
-            float maxOffset = 1.0f;
+            float maxOffset = 0.5f;
             Vector3 pelletSpread = Vector3.zero;
             Vector3 camDir = cam.transform.forward; // initial aim 
             pelletSpread += cam.transform.right * Random.Range(-maxOffset, maxOffset);
@@ -252,18 +251,40 @@ public class WeaponsSystem : MonoBehaviour
 
             aud.PlayOneShot(activeAlt[selectedAlt].shootSound, activeAlt[selectedAlt].shootSoundVol);
 
+            Vector3 camDir = cam.transform.forward; // initial aim 
+            if (Physics.Raycast(cam.transform.position, camDir, out RaycastHit hit, altDist))
+            {
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+                if (hit.transform != transform && dmg != null)
+                {
+                    dmg.takeDamage(altDamage);
+                }
+            }
+
             // add dash speed to proper vector direction
             float startTime = Time.time;
-            
+            Physics.IgnoreLayerCollision(7, 8, true); // ignores collision with enemies
             while (Time.time < startTime + dashTime)
             {
                 controller.Move(dashSpeed * Time.deltaTime * cam.transform.forward); // input the dash
                 yield return null;
             }
+            Physics.IgnoreLayerCollision(7, 8, false);
             yield return new WaitForSeconds(dashRate);
             isDashing = false;
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.isTrigger)
+    //        return;
+
+    //    IDamage dmg = other.GetComponent<IDamage>();
+
+    //    dmg?.takeDamage(altDamage);
+    //}
 
     public void GetAbilityStats(AbilityObject ability)
     {
@@ -365,20 +386,26 @@ public class WeaponsSystem : MonoBehaviour
         {
             altProjectile = activeAlt[selectedAlt].projectile; // no need to assign unique damage, all stored in projectile 
         }
-        else
-        {
-            // altDamage = activeAlt[selectedAlt].shootDamage; // needs unique damage, not stored in projectile
-            // altDist = activeAlt[selectedAlt].shootDist;
-        }
 
         if (activeAlt[selectedAlt].isMovement) // only alt weapons can be Movement abilites currently, sorry
         {
             canDash = true;
             dashSpeed = activeAlt[selectedAlt].dashSpeed;
+            altDamage = activeAlt[selectedAlt].dashDamage; // needs unique damage, not stored in projectile
+            altDist = activeAlt[selectedAlt].dashDamageDistance;
         }
         else
         {
             canDash = false;
+        }
+
+        if (activeAlt[selectedAlt].improvesMana)
+        {
+            manaRegenAmount = activeAlt[selectedAlt].manaRegenMod;
+        }
+        else
+        {
+            manaRegenAmount = manaRegenOrig;
         }
 
         altRate = activeAlt[selectedAlt].shootRate;
@@ -409,6 +436,39 @@ public class WeaponsSystem : MonoBehaviour
         // playerScript.updateManaBar();
         yield return new WaitForSeconds(manaRegenStutter);
         manaCool = false;
+    }
+
+    // add ability to pick up mana objects by walking into them
+    private void OnTriggerEnter(Collider other)
+    {
+        // if Item is health
+        if (other.TryGetComponent(out iMana item))
+        {
+            //Debug.Log("HealItem found");
+            ManaRestore(other, item);
+        }
+    }
+
+    private void ManaRestore(Collider other, iMana item)
+    {
+        if (manaPool == manaOrig) // if mana is full, item is not consumed
+        {
+            return;
+        }
+
+        int manaToRestore = item.RestoreMana();
+        int manaGap = manaOrig - manaPool; // no OverMana
+        if (manaToRestore > manaGap) // done this way to provide the posibility of displaying to player on UI
+        {
+            manaPool += manaGap;
+        }
+        else
+        {
+            manaPool += manaToRestore;
+        }
+        aud.PlayOneShot(item.GetAudioClip(), item.GetVolume());
+        Destroy(other.gameObject);
+        updateManaBar();
     }
 
     public void updateManaBar()
