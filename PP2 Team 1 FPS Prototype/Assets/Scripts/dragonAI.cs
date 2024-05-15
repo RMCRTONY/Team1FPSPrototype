@@ -25,6 +25,15 @@ public class dragonAI : MonoBehaviour, IDamage
     [SerializeField] int roamPauseTimer;
     [SerializeField] int animSpeedTrans;
 
+    [Header("---------- Flying Stats ----------")]
+    [SerializeField] float flyHeight;
+    [SerializeField] float ascendSpeed;
+    [SerializeField] float flySpeed;
+    [SerializeField] float landingDistance;
+    [SerializeField] int LandingHP;
+    [SerializeField] private Transform modelTransform; // Reference to the dragon's model
+    [SerializeField] private CapsuleCollider capsuleCollider;
+
     [Header("---------- Range Combat Stats ----------")]
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
@@ -46,7 +55,12 @@ public class dragonAI : MonoBehaviour, IDamage
     float stoppingDistOrig;
     private Collider[] colliders;
     bool isDead = false; // Flag to track if the boss is dead
-   
+
+    private bool isFlying;
+    private Vector3 targetYPos;
+    private bool shouldLand = false; // Flag to initiate landing
+    private float flyForwardDuration = 20f; // Adjust as needed
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +74,7 @@ public class dragonAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("Update called");
         //enemyAnim.SetBool("Run", true);
         //Dragon Health 
         healthBar.value = HP;
@@ -75,13 +90,29 @@ public class dragonAI : MonoBehaviour, IDamage
             return; // Exit the Update loop early
         }
 
-        if (playerInRange && !canSeePlayer())
+        // Separate flying from ground movement logic
+        isFlying = anim.GetBool("Flying");
+        agent.enabled = !isFlying;
+
+        if (isFlying)
         {
-            StartCoroutine(roam());
+            HandleFlying();
+            if (!isAttacking)
+            {
+                // Directly move towards the player instead of using NavMeshAgent
+                transform.position = Vector3.MoveTowards(transform.position, gameManager.instance.player.transform.position, flySpeed * Time.deltaTime);
+            }
         }
-        else if (!playerInRange)
+        else // Ground behavior
         {
-            StartCoroutine(roam());
+            if (playerInRange && !canSeePlayer())
+            {
+                StartCoroutine(roam());
+            }
+            else if (!playerInRange)
+            {
+                StartCoroutine(roam());
+            }
         }
     }
 
@@ -104,12 +135,30 @@ public class dragonAI : MonoBehaviour, IDamage
         }
     }
 
+    // HandleFlying now ONLY manages the collider and the ascending
+    void HandleFlying()
+    {
+        // Smoothly move towards the target position and adjust the y-position to flyHeight
+        Vector3 targetPosition = new Vector3(transform.position.x, targetYPos.y, transform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, ascendSpeed * Time.deltaTime);
+
+
+        // Adjust collider center only AFTER the position has updated
+        capsuleCollider.center = (transform.position - modelTransform.position) / 2f;
+    }
+
+    IEnumerator FlyForwardTimer()
+    {
+        yield return new WaitForSeconds(flyForwardDuration);
+        shouldLand = true;
+    }
+
     bool canSeePlayer()
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
         //Debug.Log(angleToPlayer);
-        Debug.DrawRay(headPos.position, playerDir);
+        //Debug.DrawRay(headPos.position, playerDir);
 
         RaycastHit hit;
 
@@ -119,23 +168,46 @@ public class dragonAI : MonoBehaviour, IDamage
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
                 agent.stoppingDistance = stoppingDistOrig;
-                agent.SetDestination(gameManager.instance.player.transform.position);
 
                 float distanceToPlayer = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
 
                 if (!isAttacking)
                 {
-                    if(distanceToPlayer <= meleeAttackRange)
+                    // Take off or land logic
+                    if (distanceToPlayer > landingDistance && HP > LandingHP && !isFlying)
                     {
-                        StartCoroutine(melee());
+                        StartCoroutine(takeOff());
                     }
-                    else
+                    else if ((shouldLand || distanceToPlayer <= landingDistance || HP <= LandingHP) && isFlying)
+                    {
+                        StartCoroutine(land());
+                    }
+
+                    // Attack based on current state
+                    if (isFlying)
                     {
                         StartCoroutine(shoot());
                     }
+                    else
+                    {
+                        if (distanceToPlayer <= meleeAttackRange)
+                        {
+                            StartCoroutine(melee());
+                        }
+                        else
+                        {
+                            StartCoroutine(shoot());
+                        }
+                    }
                 }
 
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                // Set destination based on flying state
+                if (isFlying)
+                {
+                    // Directly move towards the player instead of using NavMeshAgent
+                    transform.position = Vector3.MoveTowards(transform.position, gameManager.instance.player.transform.position, flySpeed * Time.deltaTime);
+                }
+                else
                 {
                     faceTarget();
                 }
@@ -144,7 +216,12 @@ public class dragonAI : MonoBehaviour, IDamage
             }
         }
 
-        agent.stoppingDistance = 0;
+        // If player is not seen or out of view cone
+        agent.stoppingDistance = 0; // Stop when losing sight
+        if (isFlying)
+        {
+            StartCoroutine(land());
+        }
         return false;
     }
 
@@ -218,6 +295,22 @@ public class dragonAI : MonoBehaviour, IDamage
         anim.SetTrigger("Melee");
         yield return new WaitForSeconds(swingRate);
         isAttacking = false;
+    }
+
+    IEnumerator takeOff()
+    {
+        anim.SetTrigger("TakeOff");
+        anim.SetBool("Flying", true);
+        yield return new WaitForSeconds(3f);
+        targetYPos = transform.position + new Vector3(0f, flyHeight, 0f);
+    }
+
+    IEnumerator land()
+    {
+        anim.SetTrigger("Land");
+        anim.SetBool("Flying", false); // Set Flying to false immediately
+        yield return new WaitForSeconds(3f);
+        shouldLand = false;
     }
 
     public void createBullet()
