@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     public bool isComplete;
     int enemyCount;
+    int sceneID;
 
     [Header("---------- Audio ----------")]
     [SerializeField] AudioSource aud;
@@ -55,6 +57,8 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        sceneID = SceneManager.GetActiveScene().buildIndex;
+
         instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
@@ -89,7 +93,6 @@ public class gameManager : MonoBehaviour
            
         }
 
-        
     }
 
     public void statePaused()
@@ -138,6 +141,15 @@ public class gameManager : MonoBehaviour
         //    menuActive = menuWin;
         //    menuActive.SetActive(isPaused);
         //}
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(CompareTag("Player"))
+        {
+            SceneManager.LoadSceneAsync(sceneID + 1);
+            
+        }
     }
 
     public void youLose()
