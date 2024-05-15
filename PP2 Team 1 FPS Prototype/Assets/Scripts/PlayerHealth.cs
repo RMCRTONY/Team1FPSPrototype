@@ -77,6 +77,7 @@ public class PlayerHealth : MonoBehaviour, IDamage // Has IInteractions
         {
             HP += healthToRestore;
         }
+        aud.PlayOneShot(item.GetAudioClip(), item.GetVolume());
         Destroy(other.gameObject);
         updatePlayerUI();
         StartCoroutine(flashHeal());

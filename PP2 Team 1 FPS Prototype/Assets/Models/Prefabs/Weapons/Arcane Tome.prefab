@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 655653756583636245}
   - component: {fileID: 5840692507655743300}
   m_Layer: 0
-  m_Name: Eldrich Blast
+  m_Name: Arcane Tome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

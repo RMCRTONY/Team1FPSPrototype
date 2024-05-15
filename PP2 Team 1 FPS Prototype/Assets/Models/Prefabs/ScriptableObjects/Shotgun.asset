@@ -23,16 +23,20 @@ MonoBehaviour:
   manaDrain: 0
   shootRate: 0.75
   numOfShots: 8
-  shootDamage: 2
+  shootDamage: 1
   shootDist: 200
   shootsProjectile: 0
   projectile: {fileID: 0}
   canDash: 0
   dashSpeed: 0
+  dashDamageDistance: 0
+  dashDamage: 0
   makesImmune: 0
   spawnsSomething: 0
   objToSpawn: {fileID: 0}
+  improvesMana: 0
+  manaRegenMod: 0
   hitEffect: {fileID: 7032496126852738943, guid: 0db7f0c487adb6e4f8113f953e99fcf5, type: 3}
   muzzleFlash: {fileID: 3848285776838767894, guid: 2d525b1166ad25c46b794bbc5df9967c, type: 3}
   shootSound: {fileID: 8300000, guid: 64bc27b09b55b914c9334ca910a70629, type: 3}
-  shootSoundVol: 0.459
+  shootSoundVol: 0.301

@@ -34,6 +34,10 @@ public class AbilityObject : ItemObject
     public bool spawnsSomething;
     public GameObject objToSpawn;
 
+    [Header("Buff Abilities")]
+    public bool improvesMana;
+    public int manaRegenMod;
+
     [Header("Effects and Feedback")]
     public ParticleSystem hitEffect;
     public ParticleSystem muzzleFlash;

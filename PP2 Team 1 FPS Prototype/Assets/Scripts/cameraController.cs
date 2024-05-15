@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class cameraController : MonoBehaviour
 {
-    [SerializeField] int sensitivity;
+    [Range(50, 250)][SerializeField] int sensitivity;
     [SerializeField] int lockVertMin, lockVertMax;
     [SerializeField] bool invertY; // for later settings buildout
     [SerializeField] float interactDist; //for doors

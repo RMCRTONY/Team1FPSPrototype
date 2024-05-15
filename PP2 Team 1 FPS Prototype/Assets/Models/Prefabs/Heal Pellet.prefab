@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   potency: 1
+  soundOfItem: {fileID: 8300000, guid: f5d468e95be7a7540953b217cc92bb48, type: 3}
+  volume: 0.25
 --- !u!136 &5126381776795156401
 CapsuleCollider:
   m_ObjectHideFlags: 0

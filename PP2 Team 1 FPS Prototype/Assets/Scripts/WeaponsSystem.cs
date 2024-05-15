@@ -180,7 +180,7 @@ public class WeaponsSystem : MonoBehaviour
     {
         if (loop > 1)
         {
-            float maxOffset = 1.0f;
+            float maxOffset = 0.5f;
             Vector3 pelletSpread = Vector3.zero;
             Vector3 camDir = cam.transform.forward; // initial aim 
             pelletSpread += cam.transform.right * Random.Range(-maxOffset, maxOffset);
@@ -264,7 +264,7 @@ public class WeaponsSystem : MonoBehaviour
 
             // add dash speed to proper vector direction
             float startTime = Time.time;
-            Physics.IgnoreLayerCollision(7, 8, true);
+            Physics.IgnoreLayerCollision(7, 8, true); // ignores collision with enemies
             while (Time.time < startTime + dashTime)
             {
                 controller.Move(dashSpeed * Time.deltaTime * cam.transform.forward); // input the dash
@@ -399,6 +399,15 @@ public class WeaponsSystem : MonoBehaviour
             canDash = false;
         }
 
+        if (activeAlt[selectedAlt].improvesMana)
+        {
+            manaRegenAmount = activeAlt[selectedAlt].manaRegenMod;
+        }
+        else
+        {
+            manaRegenAmount = manaRegenOrig;
+        }
+
         altRate = activeAlt[selectedAlt].shootRate;
         altManaDrain = activeAlt[selectedAlt].manaDrain;
 
@@ -427,6 +436,39 @@ public class WeaponsSystem : MonoBehaviour
         // playerScript.updateManaBar();
         yield return new WaitForSeconds(manaRegenStutter);
         manaCool = false;
+    }
+
+    // add ability to pick up mana objects by walking into them
+    private void OnTriggerEnter(Collider other)
+    {
+        // if Item is health
+        if (other.TryGetComponent(out iMana item))
+        {
+            //Debug.Log("HealItem found");
+            ManaRestore(other, item);
+        }
+    }
+
+    private void ManaRestore(Collider other, iMana item)
+    {
+        if (manaPool == manaOrig) // if mana is full, item is not consumed
+        {
+            return;
+        }
+
+        int manaToRestore = item.RestoreMana();
+        int manaGap = manaOrig - manaPool; // no OverMana
+        if (manaToRestore > manaGap) // done this way to provide the posibility of displaying to player on UI
+        {
+            manaPool += manaGap;
+        }
+        else
+        {
+            manaPool += manaToRestore;
+        }
+        aud.PlayOneShot(item.GetAudioClip(), item.GetVolume());
+        Destroy(other.gameObject);
+        updateManaBar();
     }
 
     public void updateManaBar()

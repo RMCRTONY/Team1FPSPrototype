@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface iHeal
+public interface iMana
 {
-    int RestoreHealth();
+    public int RestoreMana();
     public AudioClip GetAudioClip();
     public float GetVolume();
 }

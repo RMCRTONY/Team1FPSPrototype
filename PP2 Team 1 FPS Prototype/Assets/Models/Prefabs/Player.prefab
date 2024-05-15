@@ -433,7 +433,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 02a1979d840abe548974a3c542185692, type: 3}
   - {fileID: 8300000, guid: 87e7f7463d4ee5d48beb0e32015df0bf, type: 3}
   - {fileID: 8300000, guid: 20bacdd836fe4144caf2237dd2513236, type: 3}
-  audStepsVol: 0.138
+  audStepsVol: 0.031
 --- !u!114 &2495819059305073160
 MonoBehaviour:
   m_ObjectHideFlags: 0
