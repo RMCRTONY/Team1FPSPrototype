@@ -346,7 +346,7 @@ MonoBehaviour:
   headPos: {fileID: 5118139375438469774}
   aud: {fileID: 4707154157265340094}
   weaponCol: {fileID: 85106409226012973}
-  fireAnimation: {fileID: 0}
+  fireAnimation: {fileID: 166315706656481943, guid: 495896be022bcbb4392f81cb44a6a5e2, type: 3}
   HP: 6
   faceTargetSpeed: 6
   viewCone: 90
