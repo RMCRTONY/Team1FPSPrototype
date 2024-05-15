@@ -26,6 +26,8 @@ public class AbilityObject : ItemObject
     [Header("Movement Abilities")]
     public bool canDash;
     public int dashSpeed;
+    public float dashDamageDistance;
+    public int dashDamage;
     public bool makesImmune;
 
     [Header("Spawning Abilities")]

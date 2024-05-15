@@ -29,9 +29,12 @@ MonoBehaviour:
   projectile: {fileID: 0}
   canDash: 1
   dashSpeed: 20
+  dashDamageDistance: 4.8
+  dashDamage: 1
   makesImmune: 0
   spawnsSomething: 0
   objToSpawn: {fileID: 0}
   hitEffect: {fileID: 0}
+  muzzleFlash: {fileID: 0}
   shootSound: {fileID: 8300000, guid: 2fb1caf8e3f9f4140a5d834bd32331b7, type: 3}
   shootSoundVol: 0.321

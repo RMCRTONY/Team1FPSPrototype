@@ -16,9 +16,9 @@ public class WeaponsSystem : MonoBehaviour
     int primaryDamage;
     float primaryRate;
     int primaryDist;
-    //int altDamage;
+    int altDamage;
     float altRate;
-    // int altDist;
+    float altDist;
     int numOfShots;
     int manaDrain;
     int altManaDrain;
@@ -55,7 +55,6 @@ public class WeaponsSystem : MonoBehaviour
     [SerializeField] int dashSpeed;
     [SerializeField] float dashRate;
     [SerializeField] float dashTime;
-    [SerializeField] float dashCooldown;
 
     public bool isDashing;
     public bool canDash = false;
@@ -252,18 +251,40 @@ public class WeaponsSystem : MonoBehaviour
 
             aud.PlayOneShot(activeAlt[selectedAlt].shootSound, activeAlt[selectedAlt].shootSoundVol);
 
+            Vector3 camDir = cam.transform.forward; // initial aim 
+            if (Physics.Raycast(cam.transform.position, camDir, out RaycastHit hit, altDist))
+            {
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
+
+                if (hit.transform != transform && dmg != null)
+                {
+                    dmg.takeDamage(altDamage);
+                }
+            }
+
             // add dash speed to proper vector direction
             float startTime = Time.time;
-            
+            Physics.IgnoreLayerCollision(7, 8, true);
             while (Time.time < startTime + dashTime)
             {
                 controller.Move(dashSpeed * Time.deltaTime * cam.transform.forward); // input the dash
                 yield return null;
             }
+            Physics.IgnoreLayerCollision(7, 8, false);
             yield return new WaitForSeconds(dashRate);
             isDashing = false;
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.isTrigger)
+    //        return;
+
+    //    IDamage dmg = other.GetComponent<IDamage>();
+
+    //    dmg?.takeDamage(altDamage);
+    //}
 
     public void GetAbilityStats(AbilityObject ability)
     {
@@ -365,16 +386,13 @@ public class WeaponsSystem : MonoBehaviour
         {
             altProjectile = activeAlt[selectedAlt].projectile; // no need to assign unique damage, all stored in projectile 
         }
-        else
-        {
-            // altDamage = activeAlt[selectedAlt].shootDamage; // needs unique damage, not stored in projectile
-            // altDist = activeAlt[selectedAlt].shootDist;
-        }
 
         if (activeAlt[selectedAlt].isMovement) // only alt weapons can be Movement abilites currently, sorry
         {
             canDash = true;
             dashSpeed = activeAlt[selectedAlt].dashSpeed;
+            altDamage = activeAlt[selectedAlt].dashDamage; // needs unique damage, not stored in projectile
+            altDist = activeAlt[selectedAlt].dashDamageDistance;
         }
         else
         {
