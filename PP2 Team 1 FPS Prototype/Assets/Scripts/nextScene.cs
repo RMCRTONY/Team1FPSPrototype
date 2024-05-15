@@ -19,7 +19,7 @@ public class nextScene : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadSceneAsync(1);
+            SceneManager.LoadSceneAsync(sceneID + 1);
         }
     }
 
