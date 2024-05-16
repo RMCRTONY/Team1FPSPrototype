@@ -34289,6 +34289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5297198622887604164, guid: a05f84a05b656794990db05d891191d8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 8002634816304361359, guid: a05f84a05b656794990db05d891191d8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -34367,6 +34371,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8002634816304361359, guid: a05f84a05b656794990db05d891191d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318205021339067815, guid: a05f84a05b656794990db05d891191d8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

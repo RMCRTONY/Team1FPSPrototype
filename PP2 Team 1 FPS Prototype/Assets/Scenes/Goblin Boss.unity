@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1345155474}
     m_Modifications:
+    - target: {fileID: 1576708689817601671, guid: fdec043a0e75e5b4f91821d39d80dafe, type: 3}
+      propertyPath: HP
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1742158828646005605, guid: fdec043a0e75e5b4f91821d39d80dafe, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2000002
@@ -524,6 +528,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7098715588503952715, guid: 1b4de2fc627c9b1479d4b9263a9ebc6f, type: 3}
+      propertyPath: HP
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8695432359138188528, guid: 1b4de2fc627c9b1479d4b9263a9ebc6f, type: 3}
       propertyPath: m_Name
       value: NightmareDragon_BOSS
@@ -824,6 +832,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8130793853646787655, guid: 9e813510c9354774bb134b35fecbe78b, type: 3}
+      propertyPath: HP
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8396710075293661687, guid: 9e813510c9354774bb134b35fecbe78b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1051,6 +1063,10 @@ PrefabInstance:
     - target: {fileID: 6154491251617095783, guid: 442682e7a8746da478a0914f8cf3d9f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6782863063493464531, guid: 442682e7a8746da478a0914f8cf3d9f8, type: 3}
+      propertyPath: HP
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8203153817471485711, guid: 442682e7a8746da478a0914f8cf3d9f8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2060,6 +2076,10 @@ PrefabInstance:
     - target: {fileID: 8199373037522694093, guid: 3871f4ed39ba7ba459451112456e2f91, type: 3}
       propertyPath: m_Name
       value: Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199373037522694093, guid: 3871f4ed39ba7ba459451112456e2f91, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -50,7 +50,7 @@ public class bossAI : MonoBehaviour, IDamage
     // Start is called before the first frame update
     void Start()
     {
-        //gameManager.instance.updateGameGoal(1);
+        gameManager.instance.updateGameGoal(1);
         //enemyAnim = GetComponent<Animator>();
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;

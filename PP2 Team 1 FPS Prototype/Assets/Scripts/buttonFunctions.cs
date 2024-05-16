@@ -73,6 +73,7 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance._saveManager.save();
         yield return new WaitWhile(() => aud.isPlaying);
         SceneManager.LoadSceneAsync(0);
+        //SceneManager.LoadScene("Main Menu");
     }
 
     public void Quit()
