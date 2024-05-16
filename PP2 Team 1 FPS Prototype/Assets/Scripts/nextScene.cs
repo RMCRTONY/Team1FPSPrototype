@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class nextScene : MonoBehaviour
 {
+    public List<AbilityObject> weapons;
+    public List<AbilityObject> abilities;
+
     public GameObject LoaderUI;
     public Slider progressSlider;
     int sceneID;
@@ -19,7 +22,14 @@ public class nextScene : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            weapons = gameManager.instance.weaponsSystem.activePrimary;
+            abilities = gameManager.instance.weaponsSystem.activeAlt;
+
             SceneManager.LoadSceneAsync(sceneID + 1);
+
+            gameManager.instance.weaponsSystem.activePrimary = weapons;
+            gameManager.instance.weaponsSystem.activeAlt = abilities;
+
         }
     }
 
