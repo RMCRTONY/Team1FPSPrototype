@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32869d50f064574487d303886308f11, type: 3}
+  m_Name: Door
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  type: 0
+  signature: 700
+  description: It's a door...
+  isPrimary: 1
+  isMovement: 0
+  abilityModel: {fileID: 3314061567686045686, guid: 0ce49a82df073ce43be73bea2bdd632d, type: 3}
+  preferredHardpoint: 0
+  manaDrain: 0
+  shootRate: 0
+  numOfShots: 0
+  shootDamage: 0
+  shootDist: 0
+  shootsProjectile: 0
+  projectile: {fileID: 0}
+  canDash: 0
+  dashSpeed: 0
+  dashDamageDistance: 0
+  dashDamage: 0
+  makesImmune: 0
+  spawnsSomething: 0
+  objToSpawn: {fileID: 0}
+  improvesMana: 0
+  manaRegenMod: 0
+  hitEffect: {fileID: 0}
+  muzzleFlash: {fileID: 0}
+  shootSound: {fileID: 0}
+  shootSoundVol: 0.454

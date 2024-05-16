@@ -219,7 +219,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 107300161083681177}
+  - component: {fileID: 2737831202499756080}
   - component: {fileID: 6037106430974493952}
+  - component: {fileID: 7566465548039091486}
   m_Layer: 0
   m_Name: Door Parent
   m_TagString: Untagged
@@ -244,6 +246,19 @@ Transform:
   - {fileID: 3478328505437432646}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2737831202499756080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3314061567686045686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f55efd7f3ca8641a68bae4cb71a51b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 6659bc11d9063374c8199b33f8875900, type: 2}
 --- !u!95 &6037106430974493952
 Animator:
   serializedVersion: 5
@@ -265,6 +280,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!135 &7566465548039091486
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3314061567686045686}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 2.2}
 --- !u!1 &3365303640159106993
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +523,6 @@ MonoBehaviour:
   aud: {fileID: 0}
   audDoor:
   - {fileID: 8300000, guid: 1a24a977fb6bacd4e895861cf086e496, type: 3}
-  - {fileID: 8300000, guid: 8dec6590a5ef9f8418226bf9244b2b2f, type: 3}
   audStepsVol: 1
   anim: {fileID: 6037106430974493952}
 --- !u!208 &6176085020950835787
