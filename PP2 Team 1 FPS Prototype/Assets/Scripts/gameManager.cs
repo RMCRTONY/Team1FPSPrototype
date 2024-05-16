@@ -11,7 +11,9 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;
 
     [SerializeField] GameObject menuActive;
+    [SerializeField] GameObject menuPrev;
     [SerializeField] GameObject menuPause;
+    [SerializeField] GameObject menuOptions;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject keyComplete;
@@ -30,6 +32,7 @@ public class gameManager : MonoBehaviour
 
     public Item item;
 
+    public saveManager _saveManager;
 
     public GameObject player;
     public GameObject playerSpawnPos;
@@ -114,6 +117,21 @@ public class gameManager : MonoBehaviour
         aud.Stop();
         aud.loop = true;
         aud.PlayOneShot(bgMusic[Random.Range(0, bgMusic.Length)], bgMusicVol);
+    }
+
+    public void openOptionsMenu()
+    {
+        menuPrev = menuActive;
+        menuActive.SetActive(false);
+        menuActive = menuOptions;
+        menuActive.SetActive(true);
+    }
+
+    public void closeOptionsMenu()
+    {
+        menuActive.SetActive(false);
+        menuActive = menuPrev;
+        menuActive.SetActive(true);
     }
 
     public void updateGameGoal(int amount)

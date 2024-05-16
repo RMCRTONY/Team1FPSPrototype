@@ -10,7 +10,7 @@ public class FireBad : MonoBehaviour
     [SerializeField] float damageInterval = 1.0f; // Damage applied every second
     [SerializeField] float timeToExtinguish = 5.0f; // time in which the fire will stop burning
 
-    private float timeSinceLastDamage = 0.0f;
+    //private float timeSinceLastDamage = 0.0f;
 
     private void Start()
     {

@@ -405,8 +405,6 @@ MonoBehaviour:
   myStats:
     health: 0
     mana: 0
-    speed: 0
-    sprintMod: 0
     pos:
       x: 0
       y: 0
@@ -417,7 +415,6 @@ MonoBehaviour:
     enemyVol: 0
     fov: 0
     sensitivity: 0
-    invertY: 0
   controller: {fileID: 1990995417799884302}
   camera: {fileID: 5178453130668984876}
   aud: {fileID: 7822784077642032957}
@@ -647,7 +644,7 @@ AudioSource:
   m_GameObject: {fileID: 5536746683237164607}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5611655218107070688, guid: b65f339244d9c4d4ba50100792749a4d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1

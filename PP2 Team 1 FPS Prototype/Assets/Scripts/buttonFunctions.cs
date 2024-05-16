@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,6 +48,31 @@ public class buttonFunctions : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         gameManager.instance.player.SendMessage("clearInventory"); // sends the player a message to clear its inventory upon restart
         gameManager.instance.stateUnpaused();
+    }
+
+    public void Options()
+    {
+        aud.PlayOneShot(audClick, audClickVol);
+        StartCoroutine(openOptionsWithDelay());
+    }
+
+    IEnumerator openOptionsWithDelay()
+    {
+        yield return new WaitWhile(() => aud.isPlaying);
+        gameManager.instance.openOptionsMenu();
+    }
+
+    public void MainMenu()
+    {
+        aud.PlayOneShot(audClick, audClickVol);
+        StartCoroutine(loadMainMenuWithDelay());
+    }
+
+    IEnumerator loadMainMenuWithDelay()
+    {
+        gameManager.instance._saveManager.save();
+        yield return new WaitWhile(() => aud.isPlaying);
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void Quit()
