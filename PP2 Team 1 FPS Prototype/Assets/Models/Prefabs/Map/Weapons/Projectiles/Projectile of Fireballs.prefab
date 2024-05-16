@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3273755954016566293}
-  damage: 3
+  damage: 1
   speed: 20
   destroyTime: 3
   Flames: {fileID: 2952348992051931531, guid: 062f0f765e97a244e90fef98dcb10fcb, type: 3}

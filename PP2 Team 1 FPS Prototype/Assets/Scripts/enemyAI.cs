@@ -43,7 +43,8 @@ public class enemyAI : MonoBehaviour, IDamage
     bool playerInRange;
     bool destinationChosen;
     bool isOnFire = false;
-    bool isCold = false;
+    bool currentlyBurning = false;
+    //bool isCold = false;
     Vector3 playerDir;
     Vector3 startingPos;
     float angleToPlayer;
@@ -84,7 +85,7 @@ public class enemyAI : MonoBehaviour, IDamage
             StartCoroutine(roam());
         }
 
-        if (isOnFire) // for flame damage
+        if (isOnFire && !currentlyBurning) // for flame damage
         {
             StartCoroutine(burning());
         }
@@ -178,9 +179,11 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator burning() // I cannot get this to just activate once per second. It waits once and then plays every frame ad infinitum 
     {
+        currentlyBurning = true;
         yield return new WaitForSeconds(1f);
         takeDamage(1);
         yield return new WaitForSeconds(2f);
+        currentlyBurning = false;
     }
 
     public void takeDamage(int amount)
@@ -264,21 +267,21 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 
-    private void toggleOnChilled(bool chill)
-    {
-        if (chill)
-        {
-            isCold = true;
-            slowEverything();
-        }
-        else
-        {
-            isCold = false;
-        }
-    }
+    //private void toggleOnChilled(bool chill)
+    //{
+    //    if (chill)
+    //    {
+    //        isCold = true;
+    //        slowEverything();
+    //    }
+    //    else
+    //    {
+    //        isCold = false;
+    //    }
+    //}
 
-    void slowEverything() // should slow all animations, walk speed, and actions by half, for a short period
-    {
+    //void slowEverything() // should slow all animations, walk speed, and actions by half, for a short period
+    //{
         
-    }
+    //}
 }

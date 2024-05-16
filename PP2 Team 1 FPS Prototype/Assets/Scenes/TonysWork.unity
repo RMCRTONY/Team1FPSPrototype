@@ -420,13 +420,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2690351071866317208, guid: 211842e840efef140b67ba0c379cfeed, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3138232296983901954, guid: 211842e840efef140b67ba0c379cfeed, type: 3}
       propertyPath: m_Name
       value: Goblin_Brute
       objectReference: {fileID: 0}
     - target: {fileID: 3138232296983901954, guid: 211842e840efef140b67ba0c379cfeed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6725176130572590002, guid: 211842e840efef140b67ba0c379cfeed, type: 3}
       propertyPath: m_LocalPosition.x

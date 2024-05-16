@@ -6633,7 +6633,7 @@ AudioSource:
   m_GameObject: {fileID: 3024305041797277987}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 8209335895168144659, guid: b65f339244d9c4d4ba50100792749a4d, type: 2}
+  OutputAudioMixerGroup: {fileID: -7926402167890631980, guid: b65f339244d9c4d4ba50100792749a4d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -6729,7 +6729,7 @@ AudioSource:
   m_GameObject: {fileID: 3024305041797277987}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -7926402167890631980, guid: b65f339244d9c4d4ba50100792749a4d, type: 2}
+  OutputAudioMixerGroup: {fileID: 8209335895168144659, guid: b65f339244d9c4d4ba50100792749a4d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -24377,7 +24377,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6981635731868674754}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: Restart
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
