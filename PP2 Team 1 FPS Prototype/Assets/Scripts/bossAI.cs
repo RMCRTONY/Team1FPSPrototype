@@ -49,11 +49,15 @@ public class bossAI : MonoBehaviour, IDamage
     float stoppingDistOrig;
     private Collider[] colliders;
     bool isDead = false; // Flag to track if the boss is dead
-   
+
+    // Event to notify the spawner when the boss dies
+    public delegate void BossDeathEventHandler();
+    public event BossDeathEventHandler OnBossDeath;
+
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.instance.updateGameGoal(1);
+        //gameManager.instance.updateGameGoal(1);
         //enemyAnim = GetComponent<Animator>();
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
@@ -196,18 +200,19 @@ public class bossAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
+            gameManager.instance.updateGameGoal(-1);
             isDead = true; // Set the boss as dead
-            //agent.enabled = false;
             anim.SetTrigger("Die");
             //StartCoroutine(DelayedDestroy());
-            gameManager.instance.updateGameGoal(-1);
             aud.Stop();
-
             // Disable all colliders on the boss
             foreach (Collider collider in colliders)
             {
                 collider.enabled = false;
             }
+
+            // Trigger the OnBossDeath event
+            OnBossDeath?.Invoke();
         }
     }
 

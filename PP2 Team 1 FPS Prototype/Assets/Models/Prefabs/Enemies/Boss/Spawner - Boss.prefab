@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5530994004358296491
+--- !u!1 &2109654237963164551
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,56 +8,58 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7666660891396649360}
-  - component: {fileID: 6467388374363008461}
-  - component: {fileID: 3988727695421564670}
+  - component: {fileID: 3839405554290005524}
+  - component: {fileID: 6775819443415146119}
+  - component: {fileID: 4446944562264188816}
   m_Layer: 0
-  m_Name: Spawner - Dragon
+  m_Name: Spawner - Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7666660891396649360
+--- !u!4 &3839405554290005524
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5530994004358296491}
+  m_GameObject: {fileID: 2109654237963164551}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.403688, y: 0, z: 2.74}
+  m_LocalPosition: {x: -5.3436985, y: 0, z: -19.801785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5252661335112275667}
+  - {fileID: 8028349403957225317}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6467388374363008461
+--- !u!114 &6775819443415146119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5530994004358296491}
+  m_GameObject: {fileID: 2109654237963164551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e6e522bb20e21342add92e46feb7b81, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ae6b172c86a5d54f991d9d94768d3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 0}
-  numToSpawn: 1
-  spawnTimer: 1
+  bossesToSpawn:
+  - {fileID: 3195937935047144227, guid: fdec043a0e75e5b4f91821d39d80dafe, type: 3}
+  - {fileID: 5661675676886485753, guid: 4c1aba0ec16fc1a45b8f1b941ffb04bc, type: 3}
+  - {fileID: 8695432359138188528, guid: 1b4de2fc627c9b1479d4b9263a9ebc6f, type: 3}
+  - {fileID: 8262603134404583906, guid: 442682e7a8746da478a0914f8cf3d9f8, type: 3}
   spawnPos:
-  - {fileID: 5252661335112275667}
---- !u!135 &3988727695421564670
+  - {fileID: 8028349403957225317}
+--- !u!135 &4446944562264188816
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5530994004358296491}
+  m_GameObject: {fileID: 2109654237963164551}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -72,7 +74,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &8140791853750122328
+--- !u!1 &2544952544070769617
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,8 +82,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5252661335112275667}
-  - component: {fileID: 3690024634533980499}
+  - component: {fileID: 8028349403957225317}
+  - component: {fileID: 1984392409523729618}
   m_Layer: 0
   m_Name: Pos1
   m_TagString: Untagged
@@ -89,28 +91,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5252661335112275667
+--- !u!4 &8028349403957225317
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8140791853750122328}
+  m_GameObject: {fileID: 2544952544070769617}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.21, y: 1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7666660891396649360}
+  m_Father: {fileID: 3839405554290005524}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3690024634533980499
+--- !u!65 &1984392409523729618
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8140791853750122328}
+  m_GameObject: {fileID: 2544952544070769617}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

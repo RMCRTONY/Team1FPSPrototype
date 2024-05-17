@@ -2520,7 +2520,7 @@ MonoBehaviour:
   healthBar: {fileID: 6972520963923586105}
   bossName: Jeff - The Cryptkeeper
   nameText: {fileID: 1016321363758621172}
-  HP: 70
+  HP: 7
   faceTargetSpeed: 4
   viewCone: 90
   roamDist: 15
