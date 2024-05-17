@@ -26,15 +26,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201008002094496829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000048428767}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4714757063745174903}
+  m_Father: {fileID: 9216051785977022724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -145, y: 6.9}
+  m_AnchoredPosition: {x: -145, y: -282.99997}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2653497777475728664
@@ -230,6 +230,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4714757063745174903}
+  - {fileID: 6714383901234989284}
   m_Father: {fileID: 1742158828646005605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -640,7 +641,6 @@ RectTransform:
   m_Children:
   - {fileID: 6747066335837701500}
   - {fileID: 2163049851567963081}
-  - {fileID: 6714383901234989284}
   m_Father: {fileID: 9216051785977022724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -759,6 +759,8 @@ MonoBehaviour:
   aud: {fileID: 3535248215359913162}
   weaponCol: {fileID: 8314382562243544223}
   healthBar: {fileID: 2175409149520875820}
+  bossName: Gorlobus - Goblin Chief
+  nameText: {fileID: 6484956665984345033}
   HP: 50
   faceTargetSpeed: 6
   viewCone: 90

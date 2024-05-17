@@ -2458,6 +2458,8 @@ MonoBehaviour:
   aud: {fileID: 7530786838264054837}
   weaponCol: {fileID: 6778095113382517143}
   healthBar: {fileID: 2186499404371779272}
+  bossName: Vexorg - Nightmare Dragon
+  nameText: {fileID: 4521397994397052768}
   HP: 100
   faceTargetSpeed: 3
   viewCone: 180
@@ -2807,6 +2809,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Nightmare Dragon
       objectReference: {fileID: 0}
+    - target: {fileID: 3504821090209534628, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+      propertyPath: m_margin.x
+      value: -87.430954
+      objectReference: {fileID: 0}
+    - target: {fileID: 3504821090209534628, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+      propertyPath: m_margin.z
+      value: -374.69034
+      objectReference: {fileID: 0}
     - target: {fileID: 9108812819568021108, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2873,7 +2883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9108812819568021108, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.35
+      value: 5.79
       objectReference: {fileID: 0}
     - target: {fileID: 9108812819568021108, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2886,6 +2896,10 @@ PrefabInstance:
     - target: {fileID: 9108812819568021108, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175546457548044366, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2901,6 +2915,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4521397994397052768 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3504821090209534628, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+  m_PrefabInstance: {fileID: 1016858809300139460}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8103553857942975408 stripped

@@ -685,7 +685,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1820473069997329922}
-  - component: {fileID: 927644236908220612}
   - component: {fileID: 5181533746163072156}
   - component: {fileID: 5381203320975256073}
   - component: {fileID: 6413542863985731489}
@@ -715,49 +714,6 @@ Transform:
   - {fileID: 5800410302269936794}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &927644236908220612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3143637458737171942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a680f9142f5a84cae9ed99671589a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 5181533746163072156}
-  model: {fileID: 3617863732187824580}
-  anim: {fileID: 5381203320975256073}
-  shootPos: {fileID: 6430439595232640437}
-  headPos: {fileID: 9111366548090041000}
-  aud: {fileID: 4325434833004843358}
-  weaponCol: {fileID: 7599723427509814820}
-  healthBar: {fileID: 5896411887365408921}
-  HP: 100
-  faceTargetSpeed: 3
-  viewCone: 180
-  roamDist: 50
-  roamPauseTimer: 4
-  animSpeedTrans: 4
-  flyHeight: 10
-  ascendSpeed: 2
-  flySpeed: 5
-  landingDistance: 5
-  LandingHP: 20
-  modelTransform: {fileID: 5800410302269936794}
-  capsuleCollider: {fileID: 6413542863985731489}
-  bullet: {fileID: 7118765615501587130, guid: c0f879fc5c70895489bcc39bd8b8c3a7, type: 3}
-  shootRate: 5
-  swingRate: 5
-  meleeAttackRange: 6
-  audHurt:
-  - {fileID: 8300000, guid: 3bd167748139e0b468cfbd83ccf698c5, type: 3}
-  - {fileID: 8300000, guid: cf9b9a6d34f81d14b8be932b9033732b, type: 3}
-  - {fileID: 8300000, guid: 6cdf72b06b5fc344cb9170be6265f527, type: 3}
-  - {fileID: 8300000, guid: 5c124ed7833804f408debc253bd1c494, type: 3}
-  audHurtVol: 0.5
 --- !u!195 &5181533746163072156
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2561,14 +2517,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9108812819568021108, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
   m_PrefabInstance: {fileID: 4724515093900897173}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5896411887365408921 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1172231319881605900, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
-  m_PrefabInstance: {fileID: 4724515093900897173}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -18,6 +19,8 @@ public class bossAI : MonoBehaviour, IDamage
     [SerializeField] Slider healthBar;
 
     [Header("---------- Enemy Stats ----------")]
+    [SerializeField] private string bossName;
+    [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int viewCone;
@@ -55,6 +58,17 @@ public class bossAI : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         colliders = GetComponentsInChildren<Collider>(); // Get all colliders on the boss
+
+        // Ensure the TMP component reference is set
+        if (nameText == null)
+        {
+            Debug.LogError("Name TextMeshProUGUI component not assigned to " + gameObject.name);
+            return; // Exit Start() if no TMP component is found
+        }
+
+        // Set the text of the TMP component
+        nameText.text = bossName;
+
     }
 
     // Update is called once per frame
