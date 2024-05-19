@@ -39,6 +39,7 @@ public class playerController : MonoBehaviour
     void Start()
     {
         spawnPlayer();
+        gameManager.instance.updateGameGoal(0);
     }
 
     //Update is called once per frame

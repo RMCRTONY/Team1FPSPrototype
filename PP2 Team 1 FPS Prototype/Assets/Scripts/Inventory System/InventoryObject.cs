@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")] // if we want multiple inventories real easy, this could be useful
 public class InventoryObject : ScriptableObject
@@ -25,6 +27,18 @@ public class InventoryObject : ScriptableObject
         if (!hasitem) // if no; create new slot
         {
             container.Add(new InventorySlot(_item, _signature, _amount));
+        }
+    }
+
+    public void RemoveItem(int _signature)
+    {
+        for (int i = 0; i < container.Count; i++)
+        {
+            if (container[i].item.signature == _signature) // if yes; remove Item from stack
+            {
+                container.RemoveAt(i);
+                break;
+            }
         }
     }
 }

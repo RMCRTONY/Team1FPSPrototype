@@ -16,8 +16,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuOptions;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-    [SerializeField] GameObject keyComplete;
-    [SerializeField] GameObject dragonComplete;
+    
     public GameObject checkPointMenu;
     public GameObject lockedPopup; // informs player that an object is locked
     public GameObject interactPrompt; // informs player that an object can be picked up
@@ -28,8 +27,7 @@ public class gameManager : MonoBehaviour
     public GameObject invincibleAura;
     public Image playerHPBar;
     public Image playerManaBar;
-    public TMP_Text enemyCountText;
-
+    
     public Item item;
 
     public saveManager _saveManager;
@@ -42,9 +40,22 @@ public class gameManager : MonoBehaviour
     public InventorySystem inventorySystem;
     public PlayerHealth playerHealth;
 
+    [Header("---------- Objectives ----------")]
+    [SerializeField] GameObject keyObjective;
+    [SerializeField] GameObject keyComplete;
+    [SerializeField] GameObject unlockObjective;
+    [SerializeField] GameObject unlockComplete;
+    [SerializeField] GameObject mazeObjective;
+    [SerializeField] GameObject mazeComplete;
+    [SerializeField] GameObject bossObjective;
+    public GameObject currentObjective;
+    //TMP_Text completeText;
+    public TMP_Text enemyCountText;
+
     public bool isPaused;
-    public bool isComplete;
+    // public bool isComplete;
     int enemyCount;
+    readonly string checkmark = "\u2713";
 
     [Header("---------- Audio ----------")]
     [SerializeField] AudioSource aud;
@@ -67,6 +78,9 @@ public class gameManager : MonoBehaviour
         inventorySystem = player.GetComponent<InventorySystem>();
         playerHealth = player.GetComponent<PlayerHealth>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+
+        //completeText.text = checkmark;
+        currentObjective = keyObjective;
 
         playerManaBar.color = Color.blue;
 
@@ -138,9 +152,34 @@ public class gameManager : MonoBehaviour
     {
         if (amount == 0)
         {
-            if (inventorySystem.searchInventory(item))
+            if (inventorySystem.searchInventoryWithSig(111))
             {
-                keyComplete.SetActive(true);
+                StartCoroutine(objectiveComplete(keyComplete, unlockObjective));
+            }
+            else
+            {
+                StartCoroutine(objectiveComplete(unlockComplete, mazeObjective));
+            }
+
+            if (isSceneCurrentlyLoaded("Maze Level")){
+                if (keyObjective.activeInHierarchy)
+                {
+                    keyObjective.SetActive(false);
+                }
+                currentObjective.GetComponent<TMP_Text>().color = Color.white;
+                currentObjective = mazeObjective;
+                currentObjective.SetActive(true);
+            }
+
+            if (isSceneCurrentlyLoaded("Goblin Boss"))
+            {
+                if (keyObjective.activeInHierarchy)
+                {
+                    keyObjective.SetActive(false);
+                    currentObjective = mazeObjective;
+                    currentObjective.SetActive(true);
+                }
+                StartCoroutine(objectiveComplete(mazeComplete, bossObjective));
             }
             return;
         }
@@ -158,10 +197,36 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    IEnumerator objectiveComplete(GameObject complete, GameObject next)
+    {
+        //complete.GetComponent<TMP_Text>().text = completeText.text;
+        complete.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        currentObjective.GetComponent<TMP_Text>().color = new Color(0f, 1f, 0.1066146f);
+        yield return new WaitForSeconds(0.5f);
+        currentObjective.SetActive(false);
+        currentObjective = next;
+        currentObjective.GetComponent<TMP_Text>().color = Color.white;
+        currentObjective.SetActive(true);
+    }
+
     public void youLose()
     {
         statePaused();
         menuActive = menuLose;
         menuActive.SetActive(true);
+    }
+
+    bool isSceneCurrentlyLoaded(string sceneName) // runtime outside editor
+    {
+        for (int i = 0; i < SceneManager.sceneCount; i++) // this is not a problem we should ever run into tbh
+        {
+            Scene scene = SceneManager.GetSceneAt(i);
+            if (scene.name == sceneName)
+            {
+                return true; // like, we really are only loading one at a time, but jic
+            }
+        }
+        return false;
     }
 }

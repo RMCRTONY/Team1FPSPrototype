@@ -32,6 +32,21 @@ public class InventorySystem : MonoBehaviour
         return false;
     }
 
+    public bool searchInventoryWithSig(int signature) // returns bool if item is in inventory
+    {
+        for (int i = 0; i < inventory.container.Count; i++)
+        {
+            //Debug.Log("Searching for item");
+            if (inventory.container[i].item.signature == signature)
+            {
+                //Debug.Log("Inventory item found");
+                return true;
+            }
+        }
+        //Debug.Log("Inventory Item not found");
+        return false;
+    }
+
     public void PickUp()
     {
         //Debug.Log("Pickup Called");
@@ -66,6 +81,8 @@ public class InventorySystem : MonoBehaviour
             {
                 // Debug.Log("Item in Inventory");
                 Destroy(other.gameObject);
+                inventory.RemoveItem(search.item.signature);
+                gameManager.instance.updateGameGoal(0);
             }
             else // prompts the player they don't have the right key
             {
