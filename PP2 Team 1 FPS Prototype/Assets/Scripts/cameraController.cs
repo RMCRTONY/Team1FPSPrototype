@@ -5,13 +5,20 @@ using UnityEngine;
 
 public class cameraController : MonoBehaviour
 {
+    [Header("---------- Camera Components ----------")]
     [Range(50, 250)][SerializeField] int sensitivity;
     [SerializeField] int lockVertMin, lockVertMax;
     [SerializeField] bool invertY; // for later settings buildout
     [SerializeField] float interactDist; //for doors
     [SerializeField] LayerMask layers;
+    [Header("---------- Shake Settings ----------")]
+    [SerializeField] float shakeDuration;
+    [SerializeField] AnimationCurve curve;
+    [SerializeField] bool shakeStart = false; // testing camera shake
 
     float rotX; // rotation on x-axis
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +53,12 @@ public class cameraController : MonoBehaviour
         //check for door interaction
         doorInteract();
 
+        // Camera Shake Testing
+        if (shakeStart)
+        {
+            shakeStart = false;
+            StartCoroutine(Shaking());
+        }
     }
 
     public void doorInteract()
@@ -61,5 +74,21 @@ public class cameraController : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator Shaking()
+    {
+        Vector3 startPosition = transform.position;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < shakeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float shakeStrength = curve.Evaluate(elapsedTime / shakeDuration);
+            transform.position = startPosition + Random.insideUnitSphere * shakeStrength;
+            yield return null;
+        }
+
+        transform.position = startPosition;
     }
 }
