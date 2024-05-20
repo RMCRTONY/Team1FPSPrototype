@@ -10,6 +10,11 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     [SerializeField] TabGroup tabGroup;
 
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip bttnClick;
+    [Range(0, 1)]
+    [SerializeField] float audVol;
+
     public Image background;
 
     public UnityEvent onTabSelected;
@@ -44,5 +49,6 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerClick(PointerEventData eventData)
     {
         tabGroup.OnTabSelected(this);
+        aud.PlayOneShot(bttnClick, audVol);
     }
 }
