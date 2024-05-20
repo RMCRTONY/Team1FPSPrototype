@@ -17205,7 +17205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150.2, y: -60.299988}
+  m_AnchoredPosition: {x: 150.19995, y: -60.30005}
   m_SizeDelta: {x: 239.6242, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7099767591425239666
@@ -22364,7 +22364,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 58, y: -61.7}
+  m_AnchoredPosition: {x: 58, y: -61.69995}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5309602084581001487
@@ -22754,7 +22754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 137.5, y: -60.299988}
+  m_AnchoredPosition: {x: 137.5, y: -60.30005}
   m_SizeDelta: {x: 219.8121, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6426196358042299308
@@ -25631,29 +25631,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8779105250081464742, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779105250081464742, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779105250081464742, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4114584095091908766}
-    - target: {fileID: 8779105250081464742, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: closeOptionsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779105250081464742, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: gameManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8779105250081464742, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -6,6 +6,7 @@ public class InventorySystem : MonoBehaviour
 {
     [SerializeField] InventoryObject inventory;
     [Range(1, 5)][SerializeField] float pickupRange;
+    private ItemObject bustedKey;
     private void Update()
     {
         if (!gameManager.instance.isPaused) // can't do nun
@@ -82,6 +83,7 @@ public class InventorySystem : MonoBehaviour
                 // Debug.Log("Item in Inventory");
                 Destroy(other.gameObject);
                 inventory.RemoveItem(search.item.signature);
+                inventory.AddItem(bustedKey, 112, 1);
                 gameManager.instance.updateGameGoal(0);
             }
             else // prompts the player they don't have the right key
