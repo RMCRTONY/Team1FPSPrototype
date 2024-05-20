@@ -55,7 +55,7 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     // public bool isComplete;
     int enemyCount;
-    readonly string checkmark = "\u2713";
+    // readonly string checkmark = "\u2713";
 
     [Header("---------- Audio ----------")]
     [SerializeField] AudioSource aud;
@@ -152,17 +152,17 @@ public class gameManager : MonoBehaviour
     {
         if (amount == 0)
         {
-            if (inventorySystem.searchInventoryWithSig(111))
+            if (inventorySystem.searchInventoryWithSig(111)) // if player has key
             {
-                StartCoroutine(objectiveComplete(keyComplete, unlockObjective));
+                StartCoroutine(objectiveComplete(keyComplete, unlockObjective)); // complete the obj
             }
-            else
+            else if (inventorySystem.searchInventoryWithSig(112)) // busted key obj
             {
-                StartCoroutine(objectiveComplete(unlockComplete, mazeObjective));
+                StartCoroutine(objectiveComplete(unlockComplete, mazeObjective)); // if they have a busted key, they used it
             }
 
-            if (isSceneCurrentlyLoaded("Maze Level")){
-                if (keyObjective.activeInHierarchy)
+            if (isSceneCurrentlyLoaded("Maze Level")){ // if they are in the maze, new obj
+                if (keyObjective.activeInHierarchy) // sequence skip failsafe
                 {
                     keyObjective.SetActive(false);
                 }
@@ -173,7 +173,7 @@ public class gameManager : MonoBehaviour
 
             if (isSceneCurrentlyLoaded("Goblin Boss"))
             {
-                if (keyObjective.activeInHierarchy)
+                if (keyObjective.activeInHierarchy) // sequence skip failsafe
                 {
                     keyObjective.SetActive(false);
                     currentObjective = mazeObjective;
@@ -217,6 +217,22 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(true);
     }
 
+#if UNITY_EDITOR
+    bool isSceneCurrentlyLoaded(string sceneName)
+    {
+        for (int i = 0; i < UnityEditor.SceneManagement.EditorSceneManager.sceneCount; ++i) // unity uses a different scene manager in the editior??
+        {
+            var scene = UnityEditor.SceneManagement.EditorSceneManager.GetSceneAt(i);
+
+            if (scene.name == sceneName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+#else
+
     bool isSceneCurrentlyLoaded(string sceneName) // runtime outside editor
     {
         for (int i = 0; i < SceneManager.sceneCount; i++) // this is not a problem we should ever run into tbh
@@ -229,4 +245,5 @@ public class gameManager : MonoBehaviour
         }
         return false;
     }
+#endif
 }
