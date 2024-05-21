@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 //using UnityEngine.UIElements;
 
-public class bossAI : MonoBehaviour, IDamage
+public class bossBMAI : MonoBehaviour, IDamage
 {
     [Header("---------- Components ----------")]
     [SerializeField] NavMeshAgent agent;
