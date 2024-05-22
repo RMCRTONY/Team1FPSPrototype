@@ -78,17 +78,21 @@ public class cameraController : MonoBehaviour
 
     IEnumerator Shaking()
     {
-        Vector3 startPosition = transform.position;
+        //Vector3 startPosition = transform.position;
+        Transform playerTransform = transform.parent; // Get reference to player
+        Vector3 originalLocalPosition = transform.localPosition; // Store the original local position
         float elapsedTime = 0f;
 
         while (elapsedTime < shakeDuration)
         {
             elapsedTime += Time.deltaTime;
             float shakeStrength = curve.Evaluate(elapsedTime / shakeDuration);
-            transform.position = startPosition + Random.insideUnitSphere * shakeStrength;
+            //transform.position = startPosition + Random.insideUnitSphere * shakeStrength;
+            transform.localPosition = originalLocalPosition + Random.insideUnitSphere * shakeStrength;
             yield return null;
         }
 
-        transform.position = startPosition;
+        //transform.position = startPosition;
+        transform.localPosition = originalLocalPosition; // Restore the original local position
     }
 }

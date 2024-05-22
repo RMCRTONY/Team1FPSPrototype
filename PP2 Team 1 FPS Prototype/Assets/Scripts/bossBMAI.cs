@@ -16,6 +16,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     [SerializeField] Transform headPos;
     [SerializeField] AudioSource aud;
     [SerializeField] Collider weaponCol;
+    [SerializeField] Collider smashCol;
     [SerializeField] Slider healthBar;
     [SerializeField] private cameraController cameraController;  // Reference to the camera controller
 
@@ -36,6 +37,8 @@ public class bossBMAI : MonoBehaviour, IDamage
     [Header("---------- Melee Combat Stats ----------")]
     [SerializeField] float swingRate;
     [SerializeField] int meleeAttackRange;
+    [SerializeField] float smashRate;
+    [SerializeField] int smashAttackRange; // should be based on the sphere collider radius
 
     [Header("---------- Audio ----------")]
     [SerializeField] AudioClip[] audHurt;
@@ -148,6 +151,10 @@ public class bossBMAI : MonoBehaviour, IDamage
                     {
                         StartCoroutine(melee());
                     }
+                    else if (distanceToPlayer <= smashAttackRange)
+                    {
+                        StartCoroutine(smash());
+                    }
                     else
                     {
                         StartCoroutine(shoot());
@@ -240,6 +247,14 @@ public class bossBMAI : MonoBehaviour, IDamage
         isAttacking = false;
     }
 
+    IEnumerator smash()
+    {
+        isAttacking = true;
+        anim.SetTrigger("Smash");
+        yield return new WaitForSeconds(smashRate);
+        isAttacking = false;
+    }
+
     public void createBullet()
     {
         //Instantiate(bullet, shootPos.position, transform.rotation);
@@ -260,6 +275,17 @@ public class bossBMAI : MonoBehaviour, IDamage
     public void weaponColOff()
     {
         weaponCol.enabled = false;
+        //cameraController.StartCoroutine("Shaking");
+    }
+
+    public void smashColOn()
+    {
+        smashCol.enabled = true;
+    }
+
+    public void smashColOff()
+    {
+        smashCol.enabled = false;
         cameraController.StartCoroutine("Shaking");
     }
 

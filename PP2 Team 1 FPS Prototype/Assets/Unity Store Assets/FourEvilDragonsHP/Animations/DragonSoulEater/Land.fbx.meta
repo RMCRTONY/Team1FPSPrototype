@@ -448,14 +448,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.82525074
-        functionName: weaponColOn
+        functionName: smashColOn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.9727424
-        functionName: weaponColOff
+        functionName: smashColOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

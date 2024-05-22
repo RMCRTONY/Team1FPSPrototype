@@ -17,7 +17,7 @@ public class bossAI : MonoBehaviour, IDamage
     [SerializeField] AudioSource aud;
     [SerializeField] Collider weaponCol;
     [SerializeField] Slider healthBar;
-    [SerializeField] private cameraController cameraController;  // Reference to the camera controller
+    //[SerializeField] private cameraController cameraController;  // Reference to the camera controller
 
     [Header("---------- Enemy Stats ----------")]
     [SerializeField] private string bossName;
@@ -260,7 +260,7 @@ public class bossAI : MonoBehaviour, IDamage
     public void weaponColOff()
     {
         weaponCol.enabled = false;
-        cameraController.StartCoroutine("Shaking");
+        //cameraController.StartCoroutine("Shaking");
     }
 
     IEnumerator DelayedDestroy()
