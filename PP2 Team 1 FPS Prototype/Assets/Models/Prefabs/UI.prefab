@@ -6587,9 +6587,11 @@ MonoBehaviour:
   playerManaBar: {fileID: 2255849500918375809}
   item: {fileID: 8057230924068492545, guid: a4fc0e332ecd4044592e74b1015df28a, type: 3}
   _saveManager: {fileID: 3382421786800496088}
+  reticule: {fileID: 2047804146621452165}
   player: {fileID: 0}
   playerSpawnPos: {fileID: 0}
   playerScript: {fileID: 0}
+  _cameraController: {fileID: 0}
   groundChecker: {fileID: 0}
   weaponsSystem: {fileID: 0}
   inventorySystem: {fileID: 0}
@@ -25710,6 +25712,26 @@ PrefabInstance:
       propertyPath: _clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 788bf63cd16ac1e40beabffba3f04075, type: 3}
+    - target: {fileID: 537929078280627803, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 537929078280627803, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916102802171441960, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916102802171441960, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916102802171441960, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2098600270152353261, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -26059,9 +26081,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4497367517703625342, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2929470054710015530}
     - targetCorrespondingSourceObject: {fileID: 6137943488219452006, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7085337902333844967}
@@ -26296,41 +26315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1333720575508459057 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4497367517703625342, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}
-  m_PrefabInstance: {fileID: 3236830436434211919}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2929470054710015530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333720575508459057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cd3487d8b5f1a11429f236e141861a62, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &1769818825252281535 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3775178644987799792, guid: 5e8ac6a0af5924a44be5e3c3cad71361, type: 3}

@@ -14,13 +14,7 @@ public class buttonFunctions : MonoBehaviour
     public void Resume()
     {
         aud.PlayOneShot(audClick, audClickVol);
-        StartCoroutine(resumeWithDelay());
-    }
-
-    IEnumerator resumeWithDelay()
-    {
-        yield return new WaitWhile(() => aud.isPlaying);
-        gameManager.instance.stateUnpaused();
+        gameManager.instance.stateUnpaused(); // removing pause, as it is an eazy fix for a pause state bug
     }
 
     public void Respawn()

@@ -18,7 +18,7 @@ public class VolumeControl : MonoBehaviour
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] _clips;
     [Range(0, 1)][SerializeField] float _volume;
-    bool sliderAdjusted = false;
+    // bool sliderAdjusted = false;
 
     private void Awake()
     {
@@ -52,7 +52,7 @@ public class VolumeControl : MonoBehaviour
         }
         _mixer.SetFloat(_volumePerameter, Mathf.Log10(value) * _multiplier);
         _toggle.SetIsOnWithoutNotify(_slider.value > _slider.minValue);
-        sliderAdjusted = false;
+        // sliderAdjusted = false;
     }
 
     IEnumerator playDelayedAud()

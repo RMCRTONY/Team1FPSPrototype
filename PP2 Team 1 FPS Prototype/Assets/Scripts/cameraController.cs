@@ -6,7 +6,7 @@ using UnityEngine;
 public class cameraController : MonoBehaviour
 {
     [Header("---------- Camera Components ----------")]
-    [Range(50, 250)][SerializeField] int sensitivity;
+    [Range(50, 250)][SerializeField] public float sensitivity;
     [SerializeField] int lockVertMin, lockVertMax;
     [SerializeField] bool invertY; // for later settings buildout
     [SerializeField] float interactDist; //for doors

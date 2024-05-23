@@ -32,9 +32,12 @@ public class gameManager : MonoBehaviour
 
     public saveManager _saveManager;
 
+    [Header("---------- Player ----------")]
+    [SerializeField] GameObject reticule;
     public GameObject player;
     public GameObject playerSpawnPos;
     public playerController playerScript;
+    public cameraController _cameraController;
     public JumpRaycast groundChecker;
     public WeaponsSystem weaponsSystem;
     public InventorySystem inventorySystem;
@@ -73,6 +76,7 @@ public class gameManager : MonoBehaviour
         instance = this;
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+        _cameraController = player.GetComponentInChildren<cameraController>();
         groundChecker = player.GetComponent<JumpRaycast>();
         weaponsSystem = player.GetComponent<WeaponsSystem>();
         inventorySystem = player.GetComponent<InventorySystem>();
@@ -115,6 +119,7 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        reticule.SetActive(false);
         aud.Stop();
         aud.loop = true;
         aud.PlayOneShot(menuMusic[Random.Range(0, menuMusic.Length)], menuMusicVol);
@@ -128,6 +133,7 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(isPaused);
         menuActive = null;
+        reticule.SetActive(true);
         aud.Stop();
         aud.loop = true;
         aud.PlayOneShot(bgMusic[Random.Range(0, bgMusic.Length)], bgMusicVol);
