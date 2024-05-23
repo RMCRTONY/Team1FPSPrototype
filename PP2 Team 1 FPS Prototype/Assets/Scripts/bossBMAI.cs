@@ -18,7 +18,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     [SerializeField] Collider weaponCol;
     [SerializeField] Collider smashCol;
     [SerializeField] Slider healthBar;
-    [SerializeField] private cameraController cameraController;  // Reference to the camera controller
+    //[SerializeField] private cameraController cameraController;  // Reference to the camera controller
 
     [Header("---------- Enemy Stats ----------")]
     [SerializeField] private string bossName;
@@ -53,6 +53,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     float stoppingDistOrig;
     private Collider[] colliders;
     bool isDead = false; // Flag to track if the boss is dead
+    private cameraController cameraController; // Reference to the camera controller
 
     // Event to notify the spawner when the boss dies
     public delegate void BossDeathEventHandler();
@@ -66,6 +67,12 @@ public class bossBMAI : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         colliders = GetComponentsInChildren<Collider>(); // Get all colliders on the boss
+        // Find the camera controller component in the scene
+        cameraController = FindObjectOfType<cameraController>();
+        if (cameraController == null)
+        {
+            Debug.LogError("No Camera Controller found in the scene!");
+        }
 
         // Ensure the TMP component reference is set
         if (nameText == null)
