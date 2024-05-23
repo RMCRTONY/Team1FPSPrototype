@@ -42,6 +42,7 @@ public class gameManager : MonoBehaviour
     public WeaponsSystem weaponsSystem;
     public InventorySystem inventorySystem;
     public PlayerHealth playerHealth;
+    public TMP_Text playerKilledByText;
 
     [Header("---------- Objectives ----------")]
     [SerializeField] GameObject keyObjective;
@@ -216,11 +217,21 @@ public class gameManager : MonoBehaviour
         currentObjective.SetActive(true);
     }
 
-    public void youLose()
+    public void youLose(string lastAttackerName)
     {
         statePaused();
         menuActive = menuLose;
         menuActive.SetActive(true);
+
+        // Update the playerKilledByText with the attacker's name
+        if (playerKilledByText != null)
+        {
+            playerKilledByText.text = lastAttackerName;
+        }
+        else
+        {
+            Debug.LogWarning("playerKilledByText is not assigned in the gameManager.");
+        }
     }
 
 #if UNITY_EDITOR

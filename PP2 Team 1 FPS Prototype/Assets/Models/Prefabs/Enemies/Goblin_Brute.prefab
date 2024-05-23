@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 4707154157265340094}
   m_Layer: 8
   m_Name: Goblin_Brute
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,6 +348,7 @@ MonoBehaviour:
   aud: {fileID: 4707154157265340094}
   weaponCol: {fileID: 85106409226012973}
   fireAnimation: {fileID: 166315706656481943, guid: 495896be022bcbb4392f81cb44a6a5e2, type: 3}
+  enemyName: Goblin
   HP: 6
   faceTargetSpeed: 6
   viewCone: 90

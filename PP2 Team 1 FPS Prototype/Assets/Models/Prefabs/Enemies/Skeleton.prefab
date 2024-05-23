@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: -6599599493111719024}
   m_Layer: 8
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -675,6 +675,7 @@ MonoBehaviour:
   aud: {fileID: -6599599493111719024}
   weaponCol: {fileID: 5961173790329656306}
   fireAnimation: {fileID: 2559294593143433193}
+  enemyName: Skeleton Archer
   HP: 5
   faceTargetSpeed: 6
   viewCone: 90

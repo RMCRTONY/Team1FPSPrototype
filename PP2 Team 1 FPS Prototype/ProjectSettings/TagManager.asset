@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - wayPoints
   - Player Spawn Pos
-  - CaveDragon
   - Key
+  - Enemy
+  - Boss
+  - CaveDragon
   layers:
   - Default
   - TransparentFX

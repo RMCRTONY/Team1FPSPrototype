@@ -26,7 +26,7 @@ public class FireBad : MonoBehaviour
         while (Time.time < startTime + timeToExtinguish) // Loop until time to extinguish
         {
             yield return new WaitForSeconds(damageInterval);
-            dmg.takeDamage(burnDMG);
+            dmg.takeDamage(burnDMG); // Will update this with Fire
         }
 
         other.SendMessageUpwards("toggleOnFire", false, SendMessageOptions.DontRequireReceiver); // enemies will not burn

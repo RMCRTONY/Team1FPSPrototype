@@ -20,6 +20,7 @@ public class enemyAI : MonoBehaviour, IDamage
     //[SerializeField] Slider healthBar;
 
     [Header("---------- Enemy Stats ----------")]
+    [SerializeField] public string enemyName;
     [SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int viewCone;
@@ -39,7 +40,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] audHurt;
     [Range(0, 1)][SerializeField] float audHurtVol;
 
-    bool isAttacking;
+    public bool isAttacking;
     bool playerInRange;
     bool destinationChosen;
     bool isOnFire = false;
@@ -49,9 +50,7 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     float angleToPlayer;
     float stoppingDistOrig;
-    //Dragon Health
 
-    //Animator enemyAnim;
     private void Awake()
     {
         fireAnimation = GetComponentInChildren<ParticleSystem>();
@@ -137,6 +136,7 @@ public class enemyAI : MonoBehaviour, IDamage
                     }
                     else if(bullet != null)
                     {
+                        faceTarget();
                         StartCoroutine(shoot());
                     }
                 }
@@ -192,7 +192,6 @@ public class enemyAI : MonoBehaviour, IDamage
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         anim.SetTrigger("Damage");
         StartCoroutine(flashRed());
-        //enemyAnim.SetTrigger("damage");
         agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (HP <= 0)

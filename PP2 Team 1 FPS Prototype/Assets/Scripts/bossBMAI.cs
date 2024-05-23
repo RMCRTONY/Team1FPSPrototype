@@ -21,7 +21,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     //[SerializeField] private cameraController cameraController;  // Reference to the camera controller
 
     [Header("---------- Enemy Stats ----------")]
-    [SerializeField] private string bossName;
+    [SerializeField] public string enemyName;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
@@ -44,7 +44,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     [SerializeField] AudioClip[] audHurt;
     [Range(0, 1)][SerializeField] float audHurtVol;
 
-    bool isAttacking;
+    public bool isAttacking;
     bool playerInRange;
     bool destinationChosen;
     Vector3 playerDir;
@@ -82,7 +82,7 @@ public class bossBMAI : MonoBehaviour, IDamage
         }
 
         // Set the text of the TMP component
-        nameText.text = bossName;
+        nameText.text = enemyName;
 
     }
 

@@ -2475,7 +2475,7 @@ GameObject:
   - component: {fileID: 2991099261557839677}
   m_Layer: 0
   m_Name: Cryptkeeper_BOSS
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2518,7 +2518,7 @@ MonoBehaviour:
   aud: {fileID: 195229296481328789}
   weaponCol: {fileID: 2344530928935677413}
   healthBar: {fileID: 6972520963923586105}
-  bossName: Jeff - The Cryptkeeper
+  enemyName: Jeff - The Cryptkeeper
   nameText: {fileID: 1016321363758621172}
   HP: 7
   faceTargetSpeed: 4
@@ -2535,6 +2535,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 885fa6c0394d22647aed4a94dd33216e, type: 3}
   - {fileID: 8300000, guid: 2ca9882f01ba53f4289a5c4187ca4a49, type: 3}
   audHurtVol: 0.5
+  isAttacking: 0
 --- !u!195 &6756079637455570806
 NavMeshAgent:
   m_ObjectHideFlags: 0

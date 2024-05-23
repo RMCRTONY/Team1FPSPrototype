@@ -1988,7 +1988,7 @@ GameObject:
   - component: {fileID: 1154136103728307793}
   m_Layer: 0
   m_Name: BroodMother_BOSS
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2032,8 +2032,7 @@ MonoBehaviour:
   weaponCol: {fileID: 7001530124638805340}
   smashCol: {fileID: 2811014200350818857}
   healthBar: {fileID: 8432739936807911375}
-  cameraController: {fileID: 0}
-  bossName: Karen - Brood Mother Dragon
+  enemyName: Karen - Brood Mother Dragon
   nameText: {fileID: 6187988020221873767}
   HP: 10
   faceTargetSpeed: 3
@@ -2052,6 +2051,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cf9b9a6d34f81d14b8be932b9033732b, type: 3}
   - {fileID: 8300000, guid: 6cdf72b06b5fc344cb9170be6265f527, type: 3}
   audHurtVol: 0.5
+  isAttacking: 0
 --- !u!195 &9185461791058454149
 NavMeshAgent:
   m_ObjectHideFlags: 0

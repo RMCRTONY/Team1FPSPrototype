@@ -12,6 +12,13 @@ public class bullet : MonoBehaviour
 
     bool hitHappened;
 
+    public string enemyName = "Projectile"; // Default name
+
+    public void SetKillerName(string name)
+    {
+        enemyName = name;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +36,7 @@ public class bullet : MonoBehaviour
         if (dmg != null && !hitHappened)
         {
             dmg.takeDamage(damage);
+            Debug.Log("Hit Happened!");
             hitHappened = true;
         }
 

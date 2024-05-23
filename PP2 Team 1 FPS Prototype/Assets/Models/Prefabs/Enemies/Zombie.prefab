@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: -8526856994088255637}
   m_Layer: 8
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -612,6 +612,7 @@ MonoBehaviour:
   aud: {fileID: -8526856994088255637}
   weaponCol: {fileID: 7138166656040583200}
   fireAnimation: {fileID: 2032576312726887127}
+  enemyName: Zombie
   HP: 5
   faceTargetSpeed: 6
   viewCone: 90

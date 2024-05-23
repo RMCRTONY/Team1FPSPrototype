@@ -10,7 +10,7 @@ public class melee : MonoBehaviour
     //[SerializeField] int speed;
     //[SerializeField] int destroyTime;
 
-    bool hitHappened;
+    //bool hitHappened;
 
     // Start is called before the first frame update
     //void Start()
@@ -21,14 +21,16 @@ public class melee : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Debug.Log("Collision Happened!");
         if (other.isTrigger)
             return;
 
         IDamage dmg = other.GetComponent<IDamage>();
 
-        if (dmg != null && !hitHappened)
+        if (dmg != null)
         {
             dmg.takeDamage(damage);
+            //Debug.Log("Hit Happened!");
             //hitHappened = true;
         }
 

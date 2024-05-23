@@ -2415,7 +2415,7 @@ GameObject:
   - component: {fileID: 6951077750248140513}
   m_Layer: 0
   m_Name: NightmareDragon_BOSS
-  m_TagString: CaveDragon
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2458,7 +2458,7 @@ MonoBehaviour:
   aud: {fileID: 7530786838264054837}
   weaponCol: {fileID: 6778095113382517143}
   healthBar: {fileID: 2186499404371779272}
-  bossName: Vexorg - Nightmare Dragon
+  enemyName: Vexorg - Nightare Dragon
   nameText: {fileID: 4521397994397052768}
   HP: 10
   faceTargetSpeed: 3
@@ -2476,6 +2476,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6cdf72b06b5fc344cb9170be6265f527, type: 3}
   - {fileID: 8300000, guid: 5c124ed7833804f408debc253bd1c494, type: 3}
   audHurtVol: 0.4
+  isAttacking: 0
 --- !u!95 &1421636318754975335
 Animator:
   serializedVersion: 5
