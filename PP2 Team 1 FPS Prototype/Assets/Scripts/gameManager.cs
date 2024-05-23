@@ -27,6 +27,7 @@ public class gameManager : MonoBehaviour
     public GameObject invincibleAura;
     public Image playerHPBar;
     public Image playerManaBar;
+    public TMP_Text fpsCounter; 
     
     public Item item;
 
