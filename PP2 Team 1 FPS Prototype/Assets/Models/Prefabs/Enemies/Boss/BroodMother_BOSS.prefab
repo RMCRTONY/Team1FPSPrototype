@@ -875,6 +875,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6513970598638786009}
+  - component: {fileID: 1806589652711130632}
+  - component: {fileID: 2811014200350818857}
   m_Layer: 0
   m_Name: Root_Pelvis
   m_TagString: Untagged
@@ -901,6 +903,40 @@ Transform:
   - {fileID: 8315870974780390291}
   m_Father: {fileID: 6154491251617095783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1806589652711130632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396753496683348845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd43210837e53a5478f613559ff911a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
+--- !u!135 &2811014200350818857
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396753496683348845}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 2000
+  m_Center: {x: 0, y: -150, z: 0}
 --- !u!1 &3439833537457717681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +1980,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6154491251617095783}
+  - component: {fileID: 2694659737023795950}
   - component: {fileID: 9185461791058454149}
   - component: {fileID: 4833883082915810677}
   - component: {fileID: 4592997647708393530}
@@ -1974,6 +2011,47 @@ Transform:
   - {fileID: 1957524976704574135}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2694659737023795950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262603134404583906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb595286de257b64e9e13e22dd41d0c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 9185461791058454149}
+  model: {fileID: 141190271733299920}
+  anim: {fileID: 4833883082915810677}
+  shootPos: {fileID: 6959005167034792652}
+  headPos: {fileID: 4666222204791076729}
+  aud: {fileID: 1154136103728307793}
+  weaponCol: {fileID: 7001530124638805340}
+  smashCol: {fileID: 2811014200350818857}
+  healthBar: {fileID: 8432739936807911375}
+  cameraController: {fileID: 0}
+  bossName: Karen - Brood Mother Dragon
+  nameText: {fileID: 6187988020221873767}
+  HP: 10
+  faceTargetSpeed: 3
+  viewCone: 180
+  roamDist: 10
+  roamPauseTimer: 2
+  animSpeedTrans: 4
+  bullet: {fileID: 7118765615501587130, guid: c0f879fc5c70895489bcc39bd8b8c3a7, type: 3}
+  shootRate: 6
+  swingRate: 2
+  meleeAttackRange: 6
+  smashRate: 5
+  smashAttackRange: 20
+  audHurt:
+  - {fileID: 8300000, guid: 3bd167748139e0b468cfbd83ccf698c5, type: 3}
+  - {fileID: 8300000, guid: cf9b9a6d34f81d14b8be932b9033732b, type: 3}
+  - {fileID: 8300000, guid: 6cdf72b06b5fc344cb9170be6265f527, type: 3}
+  audHurtVol: 0.5
 --- !u!195 &9185461791058454149
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1988,7 +2066,7 @@ NavMeshAgent:
   m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 60
-  m_StoppingDistance: 6
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -2557,3 +2635,25 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9108812819568021108, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
   m_PrefabInstance: {fileID: 7296823602380152003}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6187988020221873767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3504821090209534628, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+  m_PrefabInstance: {fileID: 7296823602380152003}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8432739936807911375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1172231319881605900, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+  m_PrefabInstance: {fileID: 7296823602380152003}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

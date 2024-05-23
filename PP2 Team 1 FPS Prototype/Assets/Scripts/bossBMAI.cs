@@ -16,8 +16,9 @@ public class bossBMAI : MonoBehaviour, IDamage
     [SerializeField] Transform headPos;
     [SerializeField] AudioSource aud;
     [SerializeField] Collider weaponCol;
+    [SerializeField] Collider smashCol;
     [SerializeField] Slider healthBar;
-    [SerializeField] private cameraController cameraController;  // Reference to the camera controller
+    //[SerializeField] private cameraController cameraController;  // Reference to the camera controller
 
     [Header("---------- Enemy Stats ----------")]
     [SerializeField] private string bossName;
@@ -36,6 +37,8 @@ public class bossBMAI : MonoBehaviour, IDamage
     [Header("---------- Melee Combat Stats ----------")]
     [SerializeField] float swingRate;
     [SerializeField] int meleeAttackRange;
+    [SerializeField] float smashRate;
+    [SerializeField] int smashAttackRange; // should be based on the sphere collider radius
 
     [Header("---------- Audio ----------")]
     [SerializeField] AudioClip[] audHurt;
@@ -50,6 +53,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     float stoppingDistOrig;
     private Collider[] colliders;
     bool isDead = false; // Flag to track if the boss is dead
+    private cameraController cameraController; // Reference to the camera controller
 
     // Event to notify the spawner when the boss dies
     public delegate void BossDeathEventHandler();
@@ -63,6 +67,12 @@ public class bossBMAI : MonoBehaviour, IDamage
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         colliders = GetComponentsInChildren<Collider>(); // Get all colliders on the boss
+        // Find the camera controller component in the scene
+        cameraController = FindObjectOfType<cameraController>();
+        if (cameraController == null)
+        {
+            Debug.LogError("No Camera Controller found in the scene!");
+        }
 
         // Ensure the TMP component reference is set
         if (nameText == null)
@@ -147,6 +157,10 @@ public class bossBMAI : MonoBehaviour, IDamage
                     if(distanceToPlayer <= meleeAttackRange)
                     {
                         StartCoroutine(melee());
+                    }
+                    else if (distanceToPlayer <= smashAttackRange)
+                    {
+                        StartCoroutine(smash());
                     }
                     else
                     {
@@ -240,6 +254,14 @@ public class bossBMAI : MonoBehaviour, IDamage
         isAttacking = false;
     }
 
+    IEnumerator smash()
+    {
+        isAttacking = true;
+        anim.SetTrigger("Smash");
+        yield return new WaitForSeconds(smashRate);
+        isAttacking = false;
+    }
+
     public void createBullet()
     {
         //Instantiate(bullet, shootPos.position, transform.rotation);
@@ -260,6 +282,17 @@ public class bossBMAI : MonoBehaviour, IDamage
     public void weaponColOff()
     {
         weaponCol.enabled = false;
+        //cameraController.StartCoroutine("Shaking");
+    }
+
+    public void smashColOn()
+    {
+        smashCol.enabled = true;
+    }
+
+    public void smashColOff()
+    {
+        smashCol.enabled = false;
         cameraController.StartCoroutine("Shaking");
     }
 
