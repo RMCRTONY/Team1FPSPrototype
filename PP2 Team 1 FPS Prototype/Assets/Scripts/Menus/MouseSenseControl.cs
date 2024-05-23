@@ -8,7 +8,7 @@ public class MouseSenseControl : MonoBehaviour
     [SerializeField] Slider _mouseSenseSlider;
     [SerializeField] TMP_InputField _mouseSenseField;
 
-    void Start()
+    private void Awake()
     {
         _mouseSenseSlider.onValueChanged.AddListener(OnSliderChanged);
         _mouseSenseField.onValueChanged.AddListener(OnEndEdit);
@@ -40,5 +40,10 @@ public class MouseSenseControl : MonoBehaviour
     private void OnDisable()
     {
         PlayerPrefs.SetFloat("Mouse Sensitivity", _mouseSenseSlider.value);
+    }
+
+    private void Start()
+    {
+        _mouseSenseSlider.value = PlayerPrefs.GetFloat("Mouse Sensitivity", _mouseSenseSlider.value);
     }
 }
