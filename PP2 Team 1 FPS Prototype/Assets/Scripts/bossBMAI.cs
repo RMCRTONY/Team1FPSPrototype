@@ -164,6 +164,7 @@ public class bossBMAI : MonoBehaviour, IDamage
                     }
                     else
                     {
+                        faceTarget();
                         StartCoroutine(shoot());
                     }
                 }
@@ -231,6 +232,15 @@ public class bossBMAI : MonoBehaviour, IDamage
         }
     }
 
+    public void SetAttackerName()
+    {
+        PlayerHealth playerHealth = gameManager.instance.player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.lastAttackerName = enemyName;
+        }
+    }
+
     IEnumerator flashRed()
     {
         model.material.color = Color.red;
@@ -241,6 +251,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isAttacking = true;
+        SetAttackerName();
         anim.SetTrigger("Shoot");
         yield return new WaitForSeconds(shootRate);
         isAttacking = false;
@@ -249,6 +260,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     IEnumerator melee()
     {
         isAttacking = true;
+        SetAttackerName();
         anim.SetTrigger("Melee");
         yield return new WaitForSeconds(swingRate);
         isAttacking = false;
@@ -257,6 +269,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     IEnumerator smash()
     {
         isAttacking = true;
+        SetAttackerName();
         anim.SetTrigger("Smash");
         yield return new WaitForSeconds(smashRate);
         isAttacking = false;

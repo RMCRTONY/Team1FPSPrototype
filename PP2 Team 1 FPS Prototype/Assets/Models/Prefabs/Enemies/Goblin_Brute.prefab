@@ -352,7 +352,7 @@ MonoBehaviour:
   HP: 6
   faceTargetSpeed: 6
   viewCone: 90
-  roamDist: 15
+  roamDist: 25
   roamPauseTimer: 5
   animSpeedTrans: 4
   bullet: {fileID: 0}
@@ -364,6 +364,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 931bdc568fcc63c4c9aac7981b78e863, type: 3}
   - {fileID: 8300000, guid: e551b5b3e5a048244baddce21213ea9d, type: 3}
   audHurtVol: 0.4
+  isAttacking: 0
 --- !u!195 &2690351071866317208
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -375,9 +376,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2
-  m_Acceleration: 32
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 600
+  m_AngularSpeed: 150
   m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0

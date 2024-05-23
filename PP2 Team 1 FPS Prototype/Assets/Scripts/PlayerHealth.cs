@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour, IDamage // Has IInteractions
     public float timeSinceTriggered;
     public bool acceleratedManaRegen = false;
 
-    private string lastAttackerName = "Unknown"; // Store the last attacker's name
+    public string lastAttackerName = "Unknown"; // Store the last attacker's name
 
     public int HPOrig;
     public bool isInvincible;
@@ -123,35 +123,37 @@ public class PlayerHealth : MonoBehaviour, IDamage // Has IInteractions
         }
 
         // Check if the collider belongs to an enemy
-        if (other.CompareTag("Enemy") || other.CompareTag("Boss")) // Add other enemy tags as needed
-        {
-            Debug.Log("Collider is enemy's");
-            // Check if the enemy is attacking
-            if (other.GetComponent<enemyAI>()?.isAttacking == true || // Check if the enemy is using enemyAI and is attacking
-                other.GetComponent<bossAI>()?.isAttacking == true ||  // Check if the enemy is using bossAI and is attacking
-                other.GetComponent<bossBMAI>()?.isAttacking == true) // Check if the enemy is using bossBMAI and is attacking
-            {
-                Debug.Log("Found the AI");
-                // Get the enemyName directly from the specific boss AI component
-                if (other.TryGetComponent<enemyAI>(out var enemyAIScript))
-                {
-                    lastAttackerName = enemyAIScript.enemyName;
-                }
-                else if (other.TryGetComponent<bossAI>(out var bossAIScript))
-                {
-                    Debug.Log("Set Enemy Name.");
-                    lastAttackerName = bossAIScript.enemyName;
-                }
-                else if (other.TryGetComponent<bossBMAI>(out var bossBMAIScript))
-                {
-                    lastAttackerName = bossBMAIScript.enemyName;
-                }
-                else
-                {
-                    // Handle cases where the enemy script is not found or doesn't have a public enemyName
-                    lastAttackerName = "Unknown Enemy"; // Or log an error
-                }
-            }
-        }
+        //if (other.CompareTag("Enemy") || other.CompareTag("Boss")) // Add other enemy tags as needed
+        //{
+        //    Debug.Log("Collider is enemy's");
+        //    // Check if the enemy is attacking
+        //    if (other.GetComponent<enemyAI>()?.isAttacking == true || // Check if the enemy is using enemyAI and is attacking
+        //        other.GetComponent<bossAI>()?.isAttacking == true ||  // Check if the enemy is using bossAI and is attacking
+        //        other.GetComponent<bossBMAI>()?.isAttacking == true) // Check if the enemy is using bossBMAI and is attacking
+        //    {
+        //        Debug.Log("Found the AI");
+        //        // Get the enemyName directly from the specific boss AI component
+        //        if (other.TryGetComponent<enemyAI>(out var enemyAIScript))
+        //        {
+        //            Debug.Log("Set Enemy Name.");
+        //            lastAttackerName = enemyAIScript.enemyName;
+        //        }
+        //        else if (other.TryGetComponent<bossAI>(out var bossAIScript))
+        //        {
+        //            Debug.Log("Set Boss Name.");
+        //            lastAttackerName = bossAIScript.enemyName;
+        //        }
+        //        else if (other.TryGetComponent<bossBMAI>(out var bossBMAIScript))
+        //        {
+        //            Debug.Log("Set Boss Bitch Name.");
+        //            lastAttackerName = bossBMAIScript.enemyName;
+        //        }
+        //        else
+        //        {
+        //            // Handle cases where the enemy script is not found or doesn't have a public enemyName
+        //            lastAttackerName = "Unknown Enemy"; // Or log an error
+        //        }
+        //    }
+        //}
     }
   }

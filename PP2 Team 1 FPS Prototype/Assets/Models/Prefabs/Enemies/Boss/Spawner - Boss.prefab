@@ -53,6 +53,7 @@ MonoBehaviour:
   - {fileID: 8262603134404583906, guid: 442682e7a8746da478a0914f8cf3d9f8, type: 3}
   spawnPos:
   - {fileID: 8028349403957225317}
+  spawnRate: 10
 --- !u!135 &4446944562264188816
 SphereCollider:
   m_ObjectHideFlags: 0

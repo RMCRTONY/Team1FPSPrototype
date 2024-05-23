@@ -692,6 +692,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 502023a33258d664b840dcb915f22dfa, type: 3}
   - {fileID: 8300000, guid: 09356f78cbefb5f4fa5627e210b2e1e9, type: 3}
   audHurtVol: 0.5
+  isAttacking: 0
 --- !u!95 &1617229008846193083
 Animator:
   serializedVersion: 5

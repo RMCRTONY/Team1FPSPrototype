@@ -144,12 +144,14 @@ public class bossAI : MonoBehaviour, IDamage
 
                 if (!isAttacking)
                 {
-                    if(distanceToPlayer <= meleeAttackRange)
+                    Debug.Log("Boss Attack =" + isAttacking);
+                    if (distanceToPlayer <= meleeAttackRange)
                     {
                         StartCoroutine(melee());
                     }
                     else
                     {
+                        faceTarget();
                         StartCoroutine(shoot());
                     }
                 }
@@ -217,6 +219,15 @@ public class bossAI : MonoBehaviour, IDamage
         }
     }
 
+    public void SetAttackerName()
+    {
+        PlayerHealth playerHealth = gameManager.instance.player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.lastAttackerName = enemyName;
+        }
+    }
+
     IEnumerator flashRed()
     {
         model.material.color = Color.red;
@@ -227,17 +238,21 @@ public class bossAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isAttacking = true;
+        SetAttackerName();
         anim.SetTrigger("Shoot");
         yield return new WaitForSeconds(shootRate);
         isAttacking = false;
+        Debug.Log("Boss Attack =" + isAttacking);
     }
 
     IEnumerator melee()
     {
         isAttacking = true;
+        SetAttackerName();
         anim.SetTrigger("Melee");
         yield return new WaitForSeconds(swingRate);
         isAttacking = false;
+        Debug.Log("Boss Attack =" + isAttacking);
     }
 
     public void createBullet()

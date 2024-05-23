@@ -584,7 +584,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -25.505, y: 0, z: 4.576798}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8826006962271119074}
@@ -628,6 +628,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d4d7d6f556077124aa07061727b6a1cd, type: 3}
   - {fileID: 8300000, guid: cf9b9a6d34f81d14b8be932b9033732b, type: 3}
   audHurtVol: 0.4
+  isAttacking: 0
 --- !u!195 &7188316208001104504
 NavMeshAgent:
   m_ObjectHideFlags: 0

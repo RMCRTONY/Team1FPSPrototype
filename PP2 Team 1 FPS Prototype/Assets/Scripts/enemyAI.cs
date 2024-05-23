@@ -50,10 +50,14 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
     float angleToPlayer;
     float stoppingDistOrig;
+    private string[] commonNames;
 
     private void Awake()
     {
         fireAnimation = GetComponentInChildren<ParticleSystem>();
+        commonNames = new string[] { "Bob", "Joe", "Frank", "Steve", "Carl", "Zac", "Cody", "Lance", "Tony", "Payton", "Chris", "Mike", "Paul", "Arthur", "William", "David", "Richard", "Thomas", "Charles", "Mary", "Jennifer", "Elizabeth", "Linda", "Barbara", "Susan", "Margaret", "Dorothy", "Lisa", "Nancy", "Sandra", "Katherine", "Brandon", "Ethan", "Daniel", "James", "Matthew", "John", "Robert", "Michael", "Christopher", "Joseph", "Jessica", "Ashley", "Emily", "Sarah", "Samantha", "Amanda", "Stephanie", "Melissa", "Michelle", "Alistair", "Bjorn", "Cassius", "Dimitri", "Elara", "Fintan", "Giovanni", "Hannelore", "Indira", "Kael", "Linnea", "Milo", "Nisha", "Oberon", "Phaedra", "Quentin", "Rhea", "Saoirse", "Tao", "Ulysses", "Vespera", "Wilhelm", "Xanthe", "Yasmin", "Zephyr" };
+        int index = Random.Range(0, commonNames.Length);
+        enemyName = commonNames[index] + " the " + enemyName;
     }
 
     // Start is called before the first frame update
@@ -202,6 +206,16 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 
+    public void SetAttackerName()
+    {
+        PlayerHealth playerHealth = gameManager.instance.player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            //int index = Random.Range(0, commonNames.Length);
+            playerHealth.lastAttackerName = enemyName;
+        }
+    }
+
     IEnumerator flashRed()
     {
         model.material.color = Color.red;
@@ -212,6 +226,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isAttacking = true;
+        SetAttackerName();
         anim.SetTrigger("Shoot");
         yield return new WaitForSeconds(shootRate);
         isAttacking = false;
@@ -220,6 +235,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator melee()
     {
         isAttacking = true;
+        SetAttackerName();
         anim.SetTrigger("Melee");
         yield return new WaitForSeconds(swingRate);
         isAttacking = false;
