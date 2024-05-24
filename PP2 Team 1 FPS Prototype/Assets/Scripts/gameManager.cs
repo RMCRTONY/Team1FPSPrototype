@@ -53,6 +53,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject mazeObjective;
     [SerializeField] GameObject mazeComplete;
     [SerializeField] GameObject bossObjective;
+    public GameObject map;
+    public WallMessageTrigger messages;
     public GameObject currentObjective;
     //TMP_Text completeText;
     public TMP_Text enemyCountText;
@@ -85,7 +87,9 @@ public class gameManager : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
 
-        //completeText.text = checkmark;
+        map = GameObject.FindWithTag("Map");
+        messages = map.GetComponent<WallMessageTrigger>();
+
         currentObjective = keyObjective;
 
         playerManaBar.color = Color.blue;
@@ -174,8 +178,8 @@ public class gameManager : MonoBehaviour
                 {
                     keyObjective.SetActive(false);
                 }
-                currentObjective.GetComponent<TMP_Text>().color = Color.white;
                 currentObjective = mazeObjective;
+                currentObjective.GetComponent<TMP_Text>().color = Color.white;
                 currentObjective.SetActive(true);
             }
 
@@ -236,7 +240,7 @@ public class gameManager : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    bool isSceneCurrentlyLoaded(string sceneName)
+    public bool isSceneCurrentlyLoaded(string sceneName)
     {
         for (int i = 0; i < UnityEditor.SceneManagement.EditorSceneManager.sceneCount; ++i) // unity uses a different scene manager in the editior??
         {
@@ -251,7 +255,7 @@ public class gameManager : MonoBehaviour
     }
 #else
 
-    bool isSceneCurrentlyLoaded(string sceneName) // runtime outside editor
+    public bool isSceneCurrentlyLoaded(string sceneName) // runtime outside editor
     {
         for (int i = 0; i < SceneManager.sceneCount; i++) // this is not a problem we should ever run into tbh
         {

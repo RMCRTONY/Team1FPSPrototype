@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Boss
   - CaveDragon
+  - Map
   layers:
   - Default
   - TransparentFX
