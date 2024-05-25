@@ -6644,7 +6644,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6981635731868674754}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
         m_MethodName: Respawn
         m_Mode: 1
@@ -6847,7 +6847,7 @@ MonoBehaviour:
   menuPause: {fileID: 1057464793541757984}
   menuOptions: {fileID: 3369222820808649806}
   menuWin: {fileID: 8465994575445328549}
-  menuLose: {fileID: 0}
+  menuLose: {fileID: 5806094372070423566}
   checkPointMenu: {fileID: 2163835778384127003}
   lockedPopup: {fileID: 4489479858737708828}
   interactPrompt: {fileID: 8318205021339067815}
@@ -6870,7 +6870,7 @@ MonoBehaviour:
   weaponsSystem: {fileID: 0}
   inventorySystem: {fileID: 0}
   playerHealth: {fileID: 0}
-  playerKilledByText: {fileID: 0}
+  playerKilledByText: {fileID: 1454715115697261960}
   keyObjective: {fileID: 4491468213226621293}
   keyComplete: {fileID: 4931584115565625263}
   unlockObjective: {fileID: 4668819971433027444}
@@ -23797,7 +23797,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3382421786800496088}
         m_TargetAssemblyTypeName: saveManager, Assembly-CSharp
         m_MethodName: save
         m_Mode: 1
@@ -23809,7 +23809,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6981635731868674754}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -24417,7 +24417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4085107272338150895
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25996,7 +25996,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6981635731868674754}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
