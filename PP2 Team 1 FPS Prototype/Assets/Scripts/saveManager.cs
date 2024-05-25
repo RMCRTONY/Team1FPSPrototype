@@ -8,10 +8,12 @@ using System.Runtime.Serialization;
 
 public class saveManager : MonoBehaviour
 {
+    public static saveManager instance;
     private playerController _player;
 
     public void Awake()
     {
+        instance = this;
         _player = GameObject.FindObjectOfType<playerController>();
     }
 

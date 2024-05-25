@@ -288,7 +288,8 @@ public class WeaponsSystem : MonoBehaviour
 
     public void GetAbilityStats(AbilityObject ability)
     {
-        gameManager.instance.messages.DisplayMessage(ability.signature);
+        if (gameManager.instance.isSceneCurrentlyLoaded("Dungeon Level") || gameManager.instance.isSceneCurrentlyLoaded("Maze Level"))
+            gameManager.instance.messages.DisplayMessage(ability.signature);
         if (ability.isPrimary) // if the ability is a primary ability
         {
             activePrimary.Add(ability); // push to ability wheel

@@ -87,9 +87,11 @@ public class gameManager : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
 
-        map = GameObject.FindWithTag("Map");
-        messages = map.GetComponent<WallMessageTrigger>();
-
+        if (isSceneCurrentlyLoaded("Dungeon Level") || isSceneCurrentlyLoaded("Maze Level"))
+        {
+            map = GameObject.FindWithTag("Map");
+            messages = map.GetComponent<WallMessageTrigger>();
+        }
         currentObjective = keyObjective;
 
         playerManaBar.color = Color.blue;
