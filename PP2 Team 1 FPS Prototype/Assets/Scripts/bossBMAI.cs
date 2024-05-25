@@ -219,16 +219,15 @@ public class bossBMAI : MonoBehaviour, IDamage
             gameManager.instance.updateGameGoal(-1);
             isDead = true; // Set the boss as dead
             anim.SetTrigger("Die");
-            //StartCoroutine(DelayedDestroy());
             aud.Stop();
             // Disable all colliders on the boss
             foreach (Collider collider in colliders)
             {
                 collider.enabled = false;
             }
-
             // Trigger the OnBossDeath event
             OnBossDeath?.Invoke();
+            StartCoroutine(DelayedDestroy());
         }
     }
 
@@ -311,7 +310,29 @@ public class bossBMAI : MonoBehaviour, IDamage
 
     IEnumerator DelayedDestroy()
     {
+        // Start fading process
+        StartCoroutine(FadeOut(model, 2f));
+
+        // Destroy!
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
+    }
+
+    // Coroutine for fading out the model
+    IEnumerator FadeOut(Renderer renderer, float duration)
+    {
+        if (renderer == null || renderer.material == null) yield break; // Check for valid renderer and material
+
+        Color startColor = renderer.material.color;
+        float startTime = Time.time;
+
+        while (Time.time < startTime + duration)
+        {
+            float t = (Time.time - startTime) / duration;
+            renderer.material.color = new Color(startColor.r, startColor.g, startColor.b, Mathf.Lerp(startColor.a, 0f, t));
+            yield return null;
+        }
+
+        renderer.material.color = new Color(startColor.r, startColor.g, startColor.b, 0f); // Ensure fully transparent
     }
 }
