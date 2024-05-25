@@ -205,10 +205,15 @@ public class gameManager : MonoBehaviour
 
         if (enemyCount <= 0)
         {
-            statePaused();
-            menuActive = menuWin;
-            menuActive.SetActive(isPaused);
+            Invoke("ShowWinMenu", 5f); // Call ShowWinMenu after 5 seconds
         }
+    }
+
+    private void ShowWinMenu()
+    {
+        statePaused();
+        menuActive = menuWin;
+        menuActive.SetActive(isPaused);
     }
 
     IEnumerator objectiveComplete(GameObject complete, GameObject next)

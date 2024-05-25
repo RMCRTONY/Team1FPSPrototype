@@ -96,7 +96,13 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator roam()
     {
-        if(!destinationChosen && agent.remainingDistance < 0.05f)
+        // Check if agent is enabled
+        if (!agent.enabled)
+        {
+            yield break; // Exit if agent is disabled
+        }
+
+        if (!destinationChosen && agent.remainingDistance < 0.05f)
         {
             destinationChosen = true;
             agent.stoppingDistance = 0;

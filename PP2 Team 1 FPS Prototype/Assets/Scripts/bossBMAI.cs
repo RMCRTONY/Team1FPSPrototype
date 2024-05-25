@@ -100,7 +100,7 @@ public class bossBMAI : MonoBehaviour, IDamage
         if (isDead)
         {
             //agent.enabled = false;
-            agent.isStopped = true; // Stop the NavMeshAgent
+            //agent.isStopped = true; // Stop the NavMeshAgent
             return; // Exit the Update loop early
         }
 
@@ -116,7 +116,13 @@ public class bossBMAI : MonoBehaviour, IDamage
 
     IEnumerator roam()
     {
-        if(!destinationChosen && agent.remainingDistance < 0.05f)
+        // Check if agent is enabled
+        if (!agent.enabled)
+        {
+            yield break; // Exit if agent is disabled
+        }
+
+        if (!destinationChosen && agent.remainingDistance < 0.05f)
         {
             destinationChosen = true;
             agent.stoppingDistance = 0;
@@ -219,6 +225,7 @@ public class bossBMAI : MonoBehaviour, IDamage
             gameManager.instance.updateGameGoal(-1);
             isDead = true; // Set the boss as dead
             anim.SetTrigger("Die");
+            agent.isStopped = true;
             aud.Stop();
             // Disable all colliders on the boss
             foreach (Collider collider in colliders)
@@ -310,29 +317,32 @@ public class bossBMAI : MonoBehaviour, IDamage
 
     IEnumerator DelayedDestroy()
     {
-        // Start fading process
-        StartCoroutine(FadeOut(model, 2f));
+        yield return new WaitForSeconds(5f); // Initial delay
+        Debug.Log("Delayed Destroy");
+        // Disable NavMeshAgent and animator
+        //agent.isStopped = true;
+        agent.enabled = false;
+        anim.enabled = false;
 
-        // Destroy!
-        yield return new WaitForSeconds(5f);
-        Destroy(gameObject);
-    }
-
-    // Coroutine for fading out the model
-    IEnumerator FadeOut(Renderer renderer, float duration)
-    {
-        if (renderer == null || renderer.material == null) yield break; // Check for valid renderer and material
-
-        Color startColor = renderer.material.color;
-        float startTime = Time.time;
-
-        while (Time.time < startTime + duration)
+        // Get rigidbody (if it exists) and make it non-kinematic
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
         {
-            float t = (Time.time - startTime) / duration;
-            renderer.material.color = new Color(startColor.r, startColor.g, startColor.b, Mathf.Lerp(startColor.a, 0f, t));
-            yield return null;
+            rb.isKinematic = false;
+            rb.useGravity = true;
         }
 
-        renderer.material.color = new Color(startColor.r, startColor.g, startColor.b, 0f); // Ensure fully transparent
+        // Sink the boss
+        float sinkSpeed = .5f;
+        float sinkDistance = -30f;
+        Vector3 targetPosition = transform.position + new Vector3(0, sinkDistance, 0);
+
+        while (transform.position.y > targetPosition.y)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, sinkSpeed * Time.deltaTime);
+            yield return null; // Wait for the next frame
+        }
+
+        Destroy(gameObject);
     }
 }
