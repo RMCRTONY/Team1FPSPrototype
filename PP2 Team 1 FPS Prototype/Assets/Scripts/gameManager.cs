@@ -218,7 +218,6 @@ public class gameManager : MonoBehaviour
 
     IEnumerator objectiveComplete(GameObject complete, GameObject next)
     {
-        //complete.GetComponent<TMP_Text>().text = completeText.text;
         complete.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         currentObjective.GetComponent<TMP_Text>().color = new Color(0f, 1f, 0.1066146f);
