@@ -99,7 +99,7 @@ public class enemyAI : MonoBehaviour, IDamage
         // Check if agent is enabled
         if (!agent.enabled)
         {
-            yield break; // Exit if agent is disabled
+            yield break; // Exit if agent is disabledw
         }
 
         if (!destinationChosen && agent.remainingDistance < 0.05f)
