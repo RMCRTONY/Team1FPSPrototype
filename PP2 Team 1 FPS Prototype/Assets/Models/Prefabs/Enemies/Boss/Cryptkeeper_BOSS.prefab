@@ -2520,7 +2520,7 @@ MonoBehaviour:
   healthBar: {fileID: 6972520963923586105}
   enemyName: Jeff - The Cryptkeeper
   nameText: {fileID: 1016321363758621172}
-  HP: 7
+  HP: 70
   faceTargetSpeed: 7
   viewCone: 90
   roamDist: 15
