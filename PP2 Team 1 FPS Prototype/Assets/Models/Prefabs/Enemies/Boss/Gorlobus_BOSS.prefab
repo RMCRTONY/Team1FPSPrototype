@@ -761,7 +761,7 @@ MonoBehaviour:
   healthBar: {fileID: 2175409149520875820}
   enemyName: Gorlobus - Goblin King
   nameText: {fileID: 6484956665984345033}
-  HP: 5
+  HP: 50
   faceTargetSpeed: 6
   viewCone: 90
   roamDist: 10
