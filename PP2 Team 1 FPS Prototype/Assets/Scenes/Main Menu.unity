@@ -1449,7 +1449,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2028149597}
         m_TargetAssemblyTypeName: mainMenu, Assembly-CSharp
-        m_MethodName: Credits
+        m_MethodName: CreditsOpen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1524,7 +1524,7 @@ RectTransform:
   m_GameObject: {fileID: 1042325414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.6754, y: 6.6754, z: 6.6754}
+  m_LocalScale: {x: 25.1835, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 675069701}
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 16575c24630739d4bb196017ebd2b686, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62d39fed52d712545bbe3bff2095ca6d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

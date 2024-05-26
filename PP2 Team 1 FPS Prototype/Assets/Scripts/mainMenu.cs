@@ -35,9 +35,14 @@ public class mainMenu : MonoBehaviour
         _saveManager.load();
     }    
 
-    public void Credits()
+    public void CreditsOpen()
     {
         SceneManager.LoadSceneAsync(4);
+    }
+
+    public void CreditsClose()
+    {
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void QuitGame()
