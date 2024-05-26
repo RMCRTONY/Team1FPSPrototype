@@ -32,6 +32,7 @@ public class WeaponsSystem : MonoBehaviour
     [SerializeField] Transform altFirePos;
     [SerializeField] GameObject testLantern;
     [SerializeField] GameObject shotGunModel;
+    [SerializeField] GameObject shieldModel;
     [SerializeField] GameObject primaryModel;
     public List<AbilityObject> activePrimary; // odd naming convention to allow for player decided loadouts once inventory menu exists
     [SerializeField] GameObject altModel;
@@ -377,10 +378,21 @@ public class WeaponsSystem : MonoBehaviour
         altRate = activeAlt[selectedAlt].shootRate;
         altManaDrain = activeAlt[selectedAlt].manaDrain;
 
-        altModel.GetComponent<MeshFilter>().sharedMesh = activeAlt[selectedAlt].abilityModel.GetComponent<MeshFilter>().sharedMesh;
-        // big Tony blunder: assets have more than one material
-        altModel.GetComponent<MeshRenderer>().sharedMaterials = activeAlt[selectedAlt].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
-
+        if (activeAlt[selectedAlt].preferredHardpoint) // shield looks better flipped
+        {
+            shieldModel.GetComponent<MeshFilter>().sharedMesh = activeAlt[selectedAlt].abilityModel.GetComponent<MeshFilter>().sharedMesh;
+            altModel.GetComponent<MeshRenderer>().enabled = false;
+            shieldModel.GetComponent<MeshRenderer>().enabled = true;
+            shieldModel.GetComponent<MeshRenderer>().sharedMaterials = activeAlt[selectedAlt].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
+        }
+        else
+        {
+            shieldModel.GetComponent<MeshRenderer>().enabled = false;
+            altModel.GetComponent<MeshRenderer>().enabled = true;
+            altModel.GetComponent<MeshFilter>().sharedMesh = activeAlt[selectedAlt].abilityModel.GetComponent<MeshFilter>().sharedMesh;
+            // big Tony blunder: assets have more than one material
+            altModel.GetComponent<MeshRenderer>().sharedMaterials = activeAlt[selectedAlt].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
+        }
     }
 
     public bool CanFillMana()
