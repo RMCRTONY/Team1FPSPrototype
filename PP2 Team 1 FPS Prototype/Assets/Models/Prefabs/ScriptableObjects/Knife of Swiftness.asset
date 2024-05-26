@@ -29,8 +29,8 @@ MonoBehaviour:
   projectile: {fileID: 0}
   canDash: 1
   dashSpeed: 20
-  dashDamageDistance: 4.8
-  dashDamage: 1
+  dashDamageDistance: 6
+  dashDamage: 5
   makesImmune: 0
   spawnsSomething: 0
   objToSpawn: {fileID: 0}

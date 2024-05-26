@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -31,6 +32,7 @@ public class WeaponsSystem : MonoBehaviour
     [SerializeField] Transform altFirePos;
     [SerializeField] GameObject testLantern;
     [SerializeField] GameObject shotGunModel;
+    [SerializeField] GameObject shieldModel;
     [SerializeField] GameObject primaryModel;
     public List<AbilityObject> activePrimary; // odd naming convention to allow for player decided loadouts once inventory menu exists
     [SerializeField] GameObject altModel;
@@ -47,7 +49,6 @@ public class WeaponsSystem : MonoBehaviour
     public bool manaInUse;
 
     private bool isShooting;
-    private bool isShootingAlt; // different rates of fire, can fire at same time
     private int selectedPrimary; 
     private int selectedAlt;
 
@@ -64,8 +65,6 @@ public class WeaponsSystem : MonoBehaviour
         cam = Camera.main;
         manaOrig = manaPool;
         manaRegenOrig = manaRegenAmount;
-
-        //lineRends = lines.GetComponentsInChildren<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -73,7 +72,7 @@ public class WeaponsSystem : MonoBehaviour
     {
         if (!gameManager.instance.isPaused) // can't do nun
         {
-            if (!manaCool && !manaInUse && CanFillMana()) // regenerates mana over time
+            if (!manaCool && CanFillMana()) // regenerates mana over time
             {
                 StartCoroutine(Refill());
             }
@@ -102,7 +101,7 @@ public class WeaponsSystem : MonoBehaviour
         }
 
         // Alt fire
-        if (Input.GetButtonDown("Fire2") && !isShootingAlt && activeAlt.Count > 0 && manaPool >= altManaDrain)
+        if (Input.GetButtonDown("Fire2") && activeAlt.Count > 0 && manaPool >= altManaDrain)
         {
             StartCoroutine(castAlt());
         }
@@ -143,7 +142,10 @@ public class WeaponsSystem : MonoBehaviour
 
     IEnumerator castAlt() // eventually recieve an enum that indicates kind of spell
     {
-        isShootingAlt = true;
+        if (activeAlt[selectedAlt].makesImmune && gameManager.instance.playerHealth.isInvincible) // if trying to be invincible and already invincible, exit.
+        {
+            yield break;
+        }
 
         if (altManaDrain > 0) // if the ability drains mana
         {
@@ -170,7 +172,6 @@ public class WeaponsSystem : MonoBehaviour
         }
 
         yield return new WaitForSeconds(altRate);
-        isShootingAlt = false;
         gameManager.instance.playerHealth.isInvincible = false;
         gameManager.instance.invincibleAura.SetActive(false);
         manaInUse = false;
@@ -190,8 +191,6 @@ public class WeaponsSystem : MonoBehaviour
             
             if (Physics.Raycast(cam.transform.position, camDir, out RaycastHit hit, primaryDist))
             {
-                //Debug.DrawLine(cam.transform.position, hit.point, Color.green, 1f);
-                //hits.Add(hit); // line renderer setup
 
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
 
@@ -221,27 +220,6 @@ public class WeaponsSystem : MonoBehaviour
             }
         }
     }
-
-    //IEnumerator bulletTrails()
-    //{
-    //    for (int i = 0; i < hits.Count; i++) 
-    //    {
-    //        lineRends[i].enabled = true;
-    //        lineRends[i].SetPosition(0, primaryFirePos.transform.position);
-    //        lineRends[i].SetPosition(1, hits[i].point);
-    //    }
-    //    yield return new WaitForSeconds(1f);
-    //    foreach (LineRenderer l in lineRends)
-    //    {
-    //        l.enabled = false;
-    //    }
-    //    clearHits();
-    //}
-
-    //void clearHits()
-    //{
-    //    hits.Clear();
-    //}
 
     public IEnumerator dash()
     {
@@ -275,16 +253,6 @@ public class WeaponsSystem : MonoBehaviour
             isDashing = false;
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.isTrigger)
-    //        return;
-
-    //    IDamage dmg = other.GetComponent<IDamage>();
-
-    //    dmg?.takeDamage(altDamage);
-    //}
 
     public void GetAbilityStats(AbilityObject ability)
     {
@@ -336,8 +304,6 @@ public class WeaponsSystem : MonoBehaviour
 
         if (activePrimary[selectedPrimary].preferredHardpoint) // the shotgun is just completely fucked
         {
-            //previousHardpoint = activeAlt[selectedAlt].preferredHardpoint;
-            //primaryModel.GetComponent<MeshFilter>().sharedMesh = null;
             shotGunModel.GetComponent<MeshFilter>().sharedMesh = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshFilter>().sharedMesh;
             primaryModel.GetComponent<MeshRenderer>().enabled = false;
             shotGunModel.GetComponent<MeshRenderer>().enabled = true;
@@ -345,7 +311,6 @@ public class WeaponsSystem : MonoBehaviour
         }
         else
         {
-            //shotGunModel.GetComponent<MeshFilter>().sharedMesh = null;
             shotGunModel.GetComponent<MeshRenderer>().enabled = false;
             primaryModel.GetComponent<MeshRenderer>().enabled = true;
             primaryModel.GetComponent<MeshFilter>().sharedMesh = activePrimary[selectedPrimary].abilityModel.GetComponent<MeshFilter>().sharedMesh;
@@ -413,10 +378,21 @@ public class WeaponsSystem : MonoBehaviour
         altRate = activeAlt[selectedAlt].shootRate;
         altManaDrain = activeAlt[selectedAlt].manaDrain;
 
-        altModel.GetComponent<MeshFilter>().sharedMesh = activeAlt[selectedAlt].abilityModel.GetComponent<MeshFilter>().sharedMesh;
-        // big Tony blunder: assets have more than one material
-        altModel.GetComponent<MeshRenderer>().sharedMaterials = activeAlt[selectedAlt].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
-
+        if (activeAlt[selectedAlt].preferredHardpoint) // shield looks better flipped
+        {
+            shieldModel.GetComponent<MeshFilter>().sharedMesh = activeAlt[selectedAlt].abilityModel.GetComponent<MeshFilter>().sharedMesh;
+            altModel.GetComponent<MeshRenderer>().enabled = false;
+            shieldModel.GetComponent<MeshRenderer>().enabled = true;
+            shieldModel.GetComponent<MeshRenderer>().sharedMaterials = activeAlt[selectedAlt].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
+        }
+        else
+        {
+            shieldModel.GetComponent<MeshRenderer>().enabled = false;
+            altModel.GetComponent<MeshRenderer>().enabled = true;
+            altModel.GetComponent<MeshFilter>().sharedMesh = activeAlt[selectedAlt].abilityModel.GetComponent<MeshFilter>().sharedMesh;
+            // big Tony blunder: assets have more than one material
+            altModel.GetComponent<MeshRenderer>().sharedMaterials = activeAlt[selectedAlt].abilityModel.GetComponent<MeshRenderer>().sharedMaterials;
+        }
     }
 
     public bool CanFillMana()
