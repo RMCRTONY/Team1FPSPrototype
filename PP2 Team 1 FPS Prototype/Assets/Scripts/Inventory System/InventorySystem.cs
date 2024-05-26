@@ -6,7 +6,7 @@ public class InventorySystem : MonoBehaviour
 {
     [SerializeField] InventoryObject inventory;
     [Range(1, 5)][SerializeField] float pickupRange;
-    private ItemObject bustedKey;
+    public ItemObject bustedKey;
     private void Update()
     {
         if (!gameManager.instance.isPaused) // can't do nun
@@ -35,6 +35,7 @@ public class InventorySystem : MonoBehaviour
 
     public bool searchInventoryWithSig(int signature) // returns bool if item is in inventory
     {
+        //Debug.Log("Searching for " + signature.ToString());
         for (int i = 0; i < inventory.container.Count; i++)
         {
             //Debug.Log("Searching for item");
@@ -82,8 +83,8 @@ public class InventorySystem : MonoBehaviour
             {
                 //Debug.Log("Item in Inventory");
                 Destroy(other.gameObject);
+                inventory.AddItem(bustedKey, bustedKey.signature, 1);
                 inventory.RemoveItem(search.item.signature);
-                inventory.AddItem(bustedKey, 112, 1);
                 gameManager.instance.updateGameGoal(0);
             }
             else // prompts the player they don't have the right key

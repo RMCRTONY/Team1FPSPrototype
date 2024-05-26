@@ -630,6 +630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 035232a7d72a5d0439300fa18dbc583e, type: 2}
   pickupRange: 2
+  bustedKey: {fileID: 11400000, guid: cbef61f70c053b441972b02724798b03, type: 2}
 --- !u!143 &1990995417799884302
 CharacterController:
   m_ObjectHideFlags: 0

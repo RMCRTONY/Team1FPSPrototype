@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86cd27255bf4beb4b997560135da9acc, type: 3}
   m_Name: Demolitionist's Key
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 4103090514690966888, guid: a4fc0e332ecd4044592e74b1015df28a, type: 3}
   type: 2
   signature: 111
   description: A key covered in soot and gunpowder.

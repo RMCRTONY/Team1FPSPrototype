@@ -17,7 +17,7 @@ public class InventoryObject : ScriptableObject
 
         for (int i = 0; i < container.Count; i++)
         {
-            if (container[i].item == _item) // if yes; add to pre-existing stack
+            if (container[i].item.signature == _item.signature) // if yes; add to pre-existing stack
             {
                 container[i].AddAmount(_amount);
                 hasitem = true;

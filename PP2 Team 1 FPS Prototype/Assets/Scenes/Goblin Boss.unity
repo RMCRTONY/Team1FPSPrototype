@@ -391,37 +391,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 52433759727528077, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 1012630401696232869, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
       propertyPath: m_Name
       value: Dragon Boss Room
-      objectReference: {fileID: 0}
-    - target: {fileID: 2089683705458737308, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3166041789157897517, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3275848499107841582, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417835263873542675, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3610715936102057919, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3798271303125493316, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4162031236988762640, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
       propertyPath: m_LocalPosition.x
@@ -462,54 +434,6 @@ PrefabInstance:
     - target: {fileID: 4162031236988762640, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4884672546622013238, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5267492595855098266, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525526057925135823, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5725425358207762130, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6109644963347770419, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6288175851423742834, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7022685360913122694, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7430275194736664547, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8847722348772601797, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 9093708220888212503, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 9140539308059200284, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152951537927667023, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
-      propertyPath: m_Range
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1260,10 +1184,6 @@ PrefabInstance:
     - target: {fileID: 3839405554290005524, guid: cb8d821e76f809b4cb819839b94326e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446944562264188816, guid: cb8d821e76f809b4cb819839b94326e0, type: 3}
-      propertyPath: m_Radius
-      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
