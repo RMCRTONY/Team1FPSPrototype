@@ -241,7 +241,7 @@ public class gameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("playerKilledByText is not assigned in the gameManager.");
+            //Debug.LogWarning("playerKilledByText is not assigned in the gameManager.");
         }
     }
 

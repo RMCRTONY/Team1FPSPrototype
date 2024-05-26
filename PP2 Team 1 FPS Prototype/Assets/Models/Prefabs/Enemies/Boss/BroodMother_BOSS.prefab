@@ -2034,7 +2034,7 @@ MonoBehaviour:
   healthBar: {fileID: 8432739936807911375}
   enemyName: Karen - Brood Mother Dragon
   nameText: {fileID: 6187988020221873767}
-  HP: 120
+  HP: 12
   faceTargetSpeed: 3
   viewCone: 180
   roamDist: 10

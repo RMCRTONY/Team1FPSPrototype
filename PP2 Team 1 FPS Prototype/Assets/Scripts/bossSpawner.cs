@@ -55,7 +55,7 @@ public class bossSpawner : MonoBehaviour
             }
             else
             {
-                Debug.LogError("No recognized boss AI component found on the spawned boss!");
+                //Debug.LogError("No recognized boss AI component found on the spawned boss!");
             }
         }
 
@@ -73,7 +73,7 @@ public class bossSpawner : MonoBehaviour
         else
         {
             // All bosses defeated - do something here (e.g., end the level)
-            Debug.Log("All bosses defeated!");
+            //Debug.Log("All bosses defeated!");
         }
     }
 }

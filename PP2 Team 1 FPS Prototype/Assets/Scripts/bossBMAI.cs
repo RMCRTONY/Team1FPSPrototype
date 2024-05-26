@@ -71,13 +71,13 @@ public class bossBMAI : MonoBehaviour, IDamage
         cameraController = FindObjectOfType<cameraController>();
         if (cameraController == null)
         {
-            Debug.LogError("No Camera Controller found in the scene!");
+            //Debug.LogError("No Camera Controller found in the scene!");
         }
 
         // Ensure the TMP component reference is set
         if (nameText == null)
         {
-            Debug.LogError("Name TextMeshProUGUI component not assigned to " + gameObject.name);
+            //Debug.LogError("Name TextMeshProUGUI component not assigned to " + gameObject.name);
             return; // Exit Start() if no TMP component is found
         }
 
@@ -144,7 +144,7 @@ public class bossBMAI : MonoBehaviour, IDamage
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward);
         //Debug.Log(angleToPlayer);
-        Debug.DrawRay(headPos.position, playerDir);
+        //Debug.DrawRay(headPos.position, playerDir);
 
         RaycastHit hit;
 
@@ -318,7 +318,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     IEnumerator DelayedDestroy()
     {
         yield return new WaitForSeconds(5f); // Initial delay
-        Debug.Log("Delayed Destroy");
+        //Debug.Log("Delayed Destroy");
         // Disable NavMeshAgent and animator
         //agent.isStopped = true;
         agent.enabled = false;

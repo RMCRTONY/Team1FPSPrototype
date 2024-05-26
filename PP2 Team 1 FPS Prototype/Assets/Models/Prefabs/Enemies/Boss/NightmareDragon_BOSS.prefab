@@ -2460,7 +2460,7 @@ MonoBehaviour:
   healthBar: {fileID: 2186499404371779272}
   enemyName: Vexorg - Nightare Dragon
   nameText: {fileID: 4521397994397052768}
-  HP: 90
+  HP: 9
   faceTargetSpeed: 3
   viewCone: 180
   roamDist: 50

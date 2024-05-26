@@ -80,7 +80,7 @@ public class InventorySystem : MonoBehaviour
             Item search = locked.GetKey(); // get item associated with unlocking the door
             if (searchInventory(search))
             {
-                // Debug.Log("Item in Inventory");
+                //Debug.Log("Item in Inventory");
                 Destroy(other.gameObject);
                 inventory.RemoveItem(search.item.signature);
                 inventory.AddItem(bustedKey, 112, 1);

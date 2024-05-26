@@ -36,7 +36,7 @@ public class bullet : MonoBehaviour
         if (dmg != null && !hitHappened)
         {
             dmg.takeDamage(damage);
-            Debug.Log("Hit Happened!");
+            //Debug.Log("Hit Happened!");
             hitHappened = true;
         }
 

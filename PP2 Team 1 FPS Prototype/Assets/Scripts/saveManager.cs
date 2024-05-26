@@ -19,7 +19,7 @@ public class saveManager : MonoBehaviour
 
     public void save()
     {
-        Debug.Log("Saving!");
+        //Debug.Log("Saving!");
 
         FileStream file = new FileStream(Application.persistentDataPath + "/Player.dat", FileMode.OpenOrCreate);
 
@@ -30,7 +30,7 @@ public class saveManager : MonoBehaviour
         }
         catch (SerializationException e)
         {
-            Debug.LogError("There was an issue serializing this data: " + e.Message);
+            //Debug.LogError("There was an issue serializing this data: " + e.Message);
         }
         finally
         {
@@ -49,7 +49,7 @@ public class saveManager : MonoBehaviour
         }
         catch(SerializationException e)
         {
-            Debug.LogError("Error Deserializing Data" + e.Message);
+            //Debug.LogError("Error Deserializing Data" + e.Message);
         }
         finally
         {
