@@ -35,6 +35,11 @@ public class mainMenu : MonoBehaviour
         _saveManager.load();
     }    
 
+    public void Credits()
+    {
+        SceneManager.LoadSceneAsync(4);
+    }
+
     public void QuitGame()
     {
 #if UNITY_EDITOR
