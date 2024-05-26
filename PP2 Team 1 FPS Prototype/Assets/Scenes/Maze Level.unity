@@ -329,6 +329,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8465994575445328549, guid: a05f84a05b656794990db05d891191d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -347,28 +351,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 402825337211923491, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 402825337211923491, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 402825337211923491, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 552940986316925602, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 552940986316925602, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 552940986316925602, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 552940986316925602, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -379,28 +367,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 652529685967648237, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 652529685967648237, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 652529685967648237, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 819457582324379577, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 819457582324379577, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 819457582324379577, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 819457582324379577, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -409,14 +381,6 @@ PrefabInstance:
     - target: {fileID: 1979045554310580733, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1979045554310580733, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1979045554310580733, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1979045554310580733, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -467,28 +431,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2394154989503116814, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2394154989503116814, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2394154989503116814, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2860429537730970842, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2860429537730970842, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2860429537730970842, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2860429537730970842, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -499,28 +447,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3405584673253394216, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3405584673253394216, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3405584673253394216, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3683427689097973882, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3683427689097973882, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3683427689097973882, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3683427689097973882, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -535,28 +467,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4054524666794058823, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4054524666794058823, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4054524666794058823, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5020440188536543012, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020440188536543012, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5020440188536543012, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5020440188536543012, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -567,28 +483,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5108922800020395081, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108922800020395081, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108922800020395081, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5275836081436508082, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5275836081436508082, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5275836081436508082, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5275836081436508082, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -597,14 +497,6 @@ PrefabInstance:
     - target: {fileID: 5443792639617862023, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443792639617862023, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443792639617862023, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5443792639617862023, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -613,14 +505,6 @@ PrefabInstance:
     - target: {fileID: 5644612673484578674, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5644612673484578674, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5644612673484578674, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5644612673484578674, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -629,14 +513,6 @@ PrefabInstance:
     - target: {fileID: 5704015025081627861, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5704015025081627861, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5704015025081627861, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5704015025081627861, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -645,14 +521,6 @@ PrefabInstance:
     - target: {fileID: 5726124422297771450, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5726124422297771450, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5726124422297771450, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5726124422297771450, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -661,14 +529,6 @@ PrefabInstance:
     - target: {fileID: 5744882507244322575, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744882507244322575, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5744882507244322575, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5744882507244322575, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -677,14 +537,6 @@ PrefabInstance:
     - target: {fileID: 5820607672060540026, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5820607672060540026, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5820607672060540026, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5820607672060540026, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -693,14 +545,6 @@ PrefabInstance:
     - target: {fileID: 6414990186851782493, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6414990186851782493, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6414990186851782493, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6414990186851782493, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -709,14 +553,6 @@ PrefabInstance:
     - target: {fileID: 6582360137887642272, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582360137887642272, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582360137887642272, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6582360137887642272, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -725,14 +561,6 @@ PrefabInstance:
     - target: {fileID: 7632249801039969097, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632249801039969097, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632249801039969097, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7632249801039969097, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -741,14 +569,6 @@ PrefabInstance:
     - target: {fileID: 9054129684535815559, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Range
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9054129684535815559, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9054129684535815559, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9054129684535815559, guid: f86cc305b784d2744b1fc52766c7d2f0, type: 3}
       propertyPath: m_Shadows.m_Type
