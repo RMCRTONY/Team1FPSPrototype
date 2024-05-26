@@ -28,7 +28,7 @@ public class saveManager : MonoBehaviour
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(file, _player.myStats);
         }
-        catch (SerializationException e)
+        catch (SerializationException /*e*/)
         {
             //Debug.LogError("There was an issue serializing this data: " + e.Message);
         }
@@ -47,7 +47,7 @@ public class saveManager : MonoBehaviour
             BinaryFormatter formatter = new BinaryFormatter();
             _player.myStats = (Stats)formatter.Deserialize(file);
         }
-        catch(SerializationException e)
+        catch(SerializationException /*e*/)
         {
             //Debug.LogError("Error Deserializing Data" + e.Message);
         }

@@ -13,8 +13,8 @@ public class bossSpawner : MonoBehaviour
     //[SerializeField] private cameraController cameraController;  // Reference to the camera controller
 
     private int currentBossIndex = 0;
-    private bool isSpawning = false;
-    private bool startSpawning = false;
+    //private bool isSpawning = false;
+    //private bool startSpawning = false;
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class bossSpawner : MonoBehaviour
     IEnumerator SpawnBoss()
     {
         yield return new WaitForSeconds(spawnRate);
-        isSpawning = true;
+        //isSpawning = true;
         int arrayPos = Random.Range(0, spawnPos.Length);
 
         // Spawn the current boss
@@ -60,7 +60,7 @@ public class bossSpawner : MonoBehaviour
         }
 
         yield return null; // Wait a frame to let the boss initialize
-        isSpawning = false; // Only set to false after boss is spawned
+        //isSpawning = false; // Only set to false after boss is spawned
     }
 
     void OnBossDeath()
