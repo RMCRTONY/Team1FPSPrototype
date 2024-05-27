@@ -13,6 +13,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPrev;
     [SerializeField] GameObject menuPause;
+    [SerializeField] GameObject pauseQuitButton;
+    [SerializeField] GameObject winQuitButton;
+    [SerializeField] GameObject loseQuitButton;
     [SerializeField] GameObject menuOptions;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
@@ -93,6 +96,13 @@ public class gameManager : MonoBehaviour
             messages = map.GetComponent<WallMessageTrigger>();
         }
         currentObjective = keyObjective;
+
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            pauseQuitButton.SetActive(false);
+            winQuitButton.SetActive(false);
+            loseQuitButton.SetActive(false);
+        }
 
         playerManaBar.color = Color.blue;
 

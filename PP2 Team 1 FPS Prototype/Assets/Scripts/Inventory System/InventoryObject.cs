@@ -1,8 +1,6 @@
-using System.Collections;
+
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")] // if we want multiple inventories real easy, this could be useful
 public class InventoryObject : ScriptableObject

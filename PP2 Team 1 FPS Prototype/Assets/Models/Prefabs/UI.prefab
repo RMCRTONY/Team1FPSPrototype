@@ -6921,6 +6921,9 @@ MonoBehaviour:
   menuActive: {fileID: 0}
   menuPrev: {fileID: 0}
   menuPause: {fileID: 1057464793541757984}
+  pauseQuitButton: {fileID: 4099078127173233057}
+  winQuitButton: {fileID: 1966873261335486491}
+  loseQuitButton: {fileID: 5289552969656978344}
   menuOptions: {fileID: 3369222820808649806}
   menuWin: {fileID: 8465994575445328549}
   menuLose: {fileID: 5806094372070423566}
