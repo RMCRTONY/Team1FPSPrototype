@@ -232,9 +232,11 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isAttacking = true;
+        agent.isStopped = true;
         SetAttackerName();
         anim.SetTrigger("Shoot");
         yield return new WaitForSeconds(shootRate);
+        agent.isStopped = false;
         isAttacking = false;
     }
 
