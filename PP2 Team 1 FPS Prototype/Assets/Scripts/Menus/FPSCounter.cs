@@ -18,7 +18,7 @@ public class FPSCounter : MonoBehaviour
         fps = 1f / Time.unscaledDeltaTime;
         if (Time.timeSinceLevelLoad < 0.1f) 
             sfps = fps;
-        sfps += (fps - sfps) * Mathf.Clamp(Time.deltaTime * decayValue, 0, 1);
+        sfps += (fps - sfps) * Mathf.Clamp(Time.unscaledDeltaTime * decayValue, 0, 1);
         counter.text = ((int)sfps).ToString();
     }
 }
