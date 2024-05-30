@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8852330604756791330}
-  - component: {fileID: 8243035409715032228}
+  - component: {fileID: 8033646733460829933}
   - component: {fileID: 2982380420357105630}
   - component: {fileID: 3273755954016566293}
   - component: {fileID: 4655005455336613925}
   - component: {fileID: 5449298042058448002}
   - component: {fileID: 2472568903582233194}
   m_Layer: 0
-  m_Name: Projectile of Fireballs
+  m_Name: Player Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,13 +31,13 @@ Transform:
   m_GameObject: {fileID: 7118765615501587130}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.12, y: 1.56, z: -0.3}
+  m_LocalPosition: {x: -1.12, y: 1.56, z: -0.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8243035409715032228
+--- !u!114 &8033646733460829933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,15 +46,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7118765615501587130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 174574febdee1ac44b7904694227ac08, type: 3}
+  m_Script: {fileID: 11500000, guid: 29b6571b5ea423c408e2a89cba9a6605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3273755954016566293}
   damage: 1
-  speed: 20
-  destroyTime: 3
-  Flames: {fileID: 2952348992051931531, guid: 062f0f765e97a244e90fef98dcb10fcb, type: 3}
-  enemyName: Projectile
+  speed: 10
+  destroyTime: 5
+  Flames: {fileID: 2952348992051931531, guid: 94357991e8d6ff2428ef9069772486a9, type: 3}
 --- !u!135 &2982380420357105630
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -74,7 +73,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.13
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3273755954016566293
 Rigidbody:

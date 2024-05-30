@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceBolt : MonoBehaviour
+public class PlayerFireball : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
 
     [SerializeField] int damage;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
+    [SerializeField] GameObject Flames;
     Transform firePos;
 
     bool hitHappened;
@@ -18,9 +19,9 @@ public class IceBolt : MonoBehaviour
     void Start()
     {
         firePos = gameManager.instance.weaponsSystem.primaryFirePos;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, float.MaxValue))
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, float.MaxValue))
         {
-            hitDestination = hit.point - firePos.transform.position;
+            hitDestination = hit.point - firePos.transform.position; 
             rb.velocity = hitDestination.normalized * speed;
         }
         else
@@ -28,6 +29,7 @@ public class IceBolt : MonoBehaviour
             hitDestination = (Camera.main.transform.position + Camera.main.transform.forward * 1000) - firePos.transform.position;
             rb.velocity = hitDestination.normalized * speed;
         }
+       
         Destroy(gameObject, destroyTime);
     }
 
@@ -41,7 +43,12 @@ public class IceBolt : MonoBehaviour
         if (dmg != null && !hitHappened)
         {
             dmg.takeDamage(damage);
+            other.SendMessageUpwards("toggleOnFire", true, SendMessageOptions.DontRequireReceiver); // enemies will burn
             hitHappened = true;
+        }
+        else
+        {
+            Instantiate(Flames, transform.position, Quaternion.identity);
         }
 
         Destroy(gameObject);

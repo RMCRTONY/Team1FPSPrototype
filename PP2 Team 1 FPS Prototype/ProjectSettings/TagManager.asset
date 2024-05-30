@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - CaveDragon
   - Map
+  - MainFirePos
   layers:
   - Default
   - TransparentFX

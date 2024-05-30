@@ -27,7 +27,7 @@ public class WeaponsSystem : MonoBehaviour
     [Header("Firing Values")]
     [SerializeField] GameObject projectile;
     [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] Transform primaryFirePos;
+    [SerializeField] public Transform primaryFirePos;
     [SerializeField] GameObject altProjectile;
     [SerializeField] Transform altFirePos;
     [SerializeField] GameObject testLantern;

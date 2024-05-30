@@ -29,7 +29,7 @@ public class FireBad : MonoBehaviour
             dmg.takeDamage(burnDMG); // Will update this with Fire
         }
 
-        other.SendMessageUpwards("toggleOnFire", false, SendMessageOptions.DontRequireReceiver); // enemies will not burn
+        other.SendMessageUpwards("toggleOnFire", true, SendMessageOptions.DontRequireReceiver); // enemies will burn ?? 
     }
 
     private void OnTriggerEnter(Collider other)
