@@ -103,6 +103,7 @@ MonoBehaviour:
   damage: 2
   speed: 25
   destroyTime: 2
+  enemyName: Projectile
 --- !u!135 &5029388944394024325
 SphereCollider:
   m_ObjectHideFlags: 0

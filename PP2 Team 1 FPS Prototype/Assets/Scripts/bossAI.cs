@@ -89,8 +89,6 @@ public class bossAI : MonoBehaviour, IDamage
         // Check if the boss is dead and stop movement
         if (isDead)
         {
-            //agent.enabled = false;
-            //agent.isStopped = true; // Stop the NavMeshAgent
             return; // Exit the Update loop early
         }
 
@@ -244,9 +242,11 @@ public class bossAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isAttacking = true;
+        agent.isStopped = true;
         SetAttackerName();
         anim.SetTrigger("Shoot");
         yield return new WaitForSeconds(shootRate);
+        agent.isStopped = false;
         isAttacking = false;
         //Debug.Log("Boss Attack =" + isAttacking);
     }

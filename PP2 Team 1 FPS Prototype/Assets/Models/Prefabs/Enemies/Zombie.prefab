@@ -587,7 +587,6 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8826006962271119074}
   - {fileID: 5993906303231817221}
   - {fileID: 1679440223018837386}
   m_Father: {fileID: 0}
@@ -616,13 +615,13 @@ MonoBehaviour:
   HP: 5
   faceTargetSpeed: 6
   viewCone: 90
-  roamDist: 30
-  roamPauseTimer: 4
+  roamDist: 25
+  roamPauseTimer: 5
   animSpeedTrans: 3
-  bullet: {fileID: 7118765615501587130, guid: 6fe6997771a019e48951facdbcfcb491, type: 3}
-  shootRate: 1
-  swingRate: 0
-  meleeAttackRange: 0
+  bullet: {fileID: 0}
+  shootRate: 0
+  swingRate: 1
+  meleeAttackRange: 2
   audHurt:
   - {fileID: 8300000, guid: ad867b174ceee56459f7b095ec1af69b, type: 3}
   - {fileID: 8300000, guid: d4d7d6f556077124aa07061727b6a1cd, type: 3}
@@ -638,11 +637,11 @@ NavMeshAgent:
   m_GameObject: {fileID: 2839571558885597515}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Radius: 1
+  m_Speed: 4
+  m_Acceleration: 32
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 600
   m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
@@ -662,7 +661,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
   m_Controller: {fileID: 9100000, guid: 48fad43ff9bc73b448be4e929904f2d3, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
@@ -1425,6 +1424,7 @@ Transform:
   - {fileID: 4825975116135179208}
   - {fileID: 6118305298827862114}
   - {fileID: 8966884300915311792}
+  - {fileID: 8826006962271119074}
   m_Father: {fileID: 874971847807183208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5956740774986424626
@@ -2055,12 +2055,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8471344785838696052}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.381, z: 0}
-  m_LocalScale: {x: 0.24544999, y: 0.24544999, z: 0.24544999}
+  m_LocalRotation: {x: -0.70710576, y: 0.0012336373, z: 0.70710576, w: 0.0012335181}
+  m_LocalPosition: {x: 0.4990243, y: 0.048276275, z: 0}
+  m_LocalScale: {x: 0.24544998, y: 0.24544999, z: 0.24545}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 874971847807183208}
+  m_Father: {fileID: 5993906303231817221}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &2032576312726887127
 ParticleSystem:

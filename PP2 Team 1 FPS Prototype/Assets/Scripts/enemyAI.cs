@@ -45,21 +45,23 @@ public class enemyAI : MonoBehaviour, IDamage
     bool destinationChosen;
     bool isOnFire = false;
     bool currentlyBurning = false;
+    bool isDead = false; // Flag to track if the enemy is dead
     //bool isCold = false;
     Vector3 playerDir;
     Vector3 startingPos;
+    private Coroutine roamCoroutine; // Reference to the roam coroutine
+    private Coroutine currentCoroutine; // Reference to the currently running coroutine
     float angleToPlayer;
     float stoppingDistOrig;
+    private Collider[] colliders;
     private string[] commonNames;
+    private Vector3 lastKnownPlayerPosition; // Store last known player position
 
-    private void Awake()
+    void Awake()
     {
         fireAnimation = GetComponentInChildren<ParticleSystem>();
-        commonNames = new string[] { "Bob", "Joe", "Frank", "Steve", "Carl", "Zac", "Cody", "Lance", "Tony", "Payton", "Chris", "Mike", "Paul", "Arthur", "William", "David", "Richard", "Thomas", "Charles", "Mary", "Jennifer", "Elizabeth", "Linda", "Barbara", "Susan", "Margaret", "Dorothy", "Lisa", "Nancy", "Sandra", "Katherine", "Brandon", "Ethan", "Daniel", "James", "Matthew", "John", "Robert", "Michael", "Christopher", "Joseph", "Jessica", "Ashley", "Emily", "Sarah", "Samantha", "Amanda", "Stephanie", "Melissa", "Michelle", "Alistair", "Bjorn", "Cassius", "Dimitri", "Elara", "Fintan", "Giovanni", "Hannelore", "Indira", "Kael", "Linnea", "Milo", "Nisha", "Oberon", "Phaedra", "Quentin", "Rhea", "Saoirse", "Tao", "Ulysses", "Vespera", "Wilhelm", "Xanthe", "Yasmin", "Zephyr" };
-        int index = Random.Range(0, commonNames.Length);
-        enemyName = commonNames[index] + " the " + enemyName;
     }
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -67,25 +69,36 @@ public class enemyAI : MonoBehaviour, IDamage
         //enemyAnim = GetComponent<Animator>();
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
+        
+        commonNames = new string[] { "Bob", "Joe", "Frank", "Steve", "Carl", "Zac", "Cody", "Lance", "Tony", "Payton", "Chris", "Mike", "Paul", "Arthur", "William", "David", "Richard", "Thomas", "Charles", "Mary", "Jennifer", "Elizabeth", "Linda", "Barbara", "Susan", "Margaret", "Dorothy", "Lisa", "Nancy", "Sandra", "Katherine", "Brandon", "Ethan", "Daniel", "James", "Matthew", "John", "Robert", "Michael", "Christopher", "Joseph", "Jessica", "Ashley", "Emily", "Sarah", "Samantha", "Amanda", "Stephanie", "Melissa", "Michelle", "Alistair", "Bjorn", "Cassius", "Dimitri", "Elara", "Fintan", "Giovanni", "Hannelore", "Indira", "Kael", "Linnea", "Milo", "Nisha", "Oberon", "Phaedra", "Quentin", "Rhea", "Saoirse", "Tao", "Ulysses", "Vespera", "Wilhelm", "Xanthe", "Yasmin", "Zephyr" };
+        int index = Random.Range(0, commonNames.Length);
+        enemyName = commonNames[index] + " the " + enemyName;
+        colliders = GetComponentsInChildren<Collider>(); // Get all colliders on the enemy
     }
 
     // Update is called once per frame
     void Update()
     {
-        //enemyAnim.SetBool("Run", true);
-        //Dragon Health 
-        //healthBar.value = HP;
-
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Speed", Mathf.Lerp(anim.GetFloat("Speed"), animSpeed, Time.deltaTime * animSpeedTrans));
 
-        if (playerInRange && !canSeePlayer())
+        // Check if the enemy is dead
+        if (isDead)
         {
-            StartCoroutine(roam());
+            return; // Exit the Update loop early
         }
-        else if (!playerInRange)
+
+        // If the enemy is not attacking and the agent is enabled (on the ground)
+        if (!isAttacking && agent.isActiveAndEnabled)
         {
-            StartCoroutine(roam());
+            if (playerInRange && !canSeePlayer())
+            {
+                StartOrRestartCoroutine(roam()); // Start or restart the roam coroutine
+            }
+            else if (!playerInRange)
+            {
+                StartOrRestartCoroutine(roam()); // Start or restart the roam coroutine
+            }
         }
 
         if (isOnFire && !currentlyBurning) // for flame damage
@@ -94,30 +107,46 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 
+    void StartOrRestartCoroutine(IEnumerator coroutine)
+    {
+        // Stop the currently running coroutine (if any)
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+
+        // Start or restart the new coroutine and store its reference
+        currentCoroutine = StartCoroutine(coroutine);
+    }
+
     IEnumerator roam()
     {
-        // Check if agent is enabled
-        if (!agent.enabled)
+        while (true)  // infinite loop
         {
-            yield break; // Exit if agent is disabledw
-        }
+            // Check if agent is enabled AND is on the NavMesh
+            if (agent.isActiveAndEnabled && agent.isOnNavMesh)
+            {
+                if (!destinationChosen && agent.remainingDistance < 2f)
+                {
+                    destinationChosen = true;
+                    agent.stoppingDistance = 0;
+                    yield return new WaitForSeconds(roamPauseTimer);
 
-        if (!destinationChosen && agent.remainingDistance < 0.05f)
-        {
-            destinationChosen = true;
-            agent.stoppingDistance = 0;
-            yield return new WaitForSeconds(roamPauseTimer);
+                    Vector3 randomPos = Random.insideUnitSphere * roamDist;
+                    randomPos += startingPos;
 
-            Vector3 randomPos = Random.insideUnitSphere * roamDist;
-            randomPos += startingPos;
+                    NavMeshHit hit;
+                    NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+                    agent.SetDestination(hit.position);
 
-            NavMeshHit hit;
-            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
-            agent.SetDestination(hit.position);
+                    destinationChosen = false;
+                }
+            }
 
-            destinationChosen = false;
+            yield return null; // Wait for the next frame
         }
     }
+
 
     bool canSeePlayer()
     {
@@ -155,8 +184,20 @@ public class enemyAI : MonoBehaviour, IDamage
                 {
                     faceTarget();
                 }
-
+                lastKnownPlayerPosition = gameManager.instance.player.transform.position; // Update last known position
                 return true;
+            }
+        }
+
+        // If player is not seen, move to the last known position
+        if (agent.enabled)
+        {
+            agent.SetDestination(lastKnownPlayerPosition);
+
+            // Check if enemy is near the last known position
+            if (Vector3.Distance(transform.position, lastKnownPlayerPosition) < 0.5f)
+            {
+                StartCoroutine(roam()); // Start roaming if near the last known position
             }
         }
 
@@ -206,9 +247,28 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
+            isDead = true;
             //gameManager.instance.updateGameGoal(-1);
+            // Disable all colliders
+            foreach (Collider collider in colliders)
+            {
+                collider.enabled = false;
+            }
+            StopAllCoroutines(); // Stop all coroutines, including roam and attacks
+            agent.isStopped = true;
             anim.SetTrigger("Die");
+            aud.Stop();
             StartCoroutine(DelayedDestroy());
+        }
+    }
+
+    private void StopRoaming()
+    {
+        // Check if the coroutine is running before stopping it
+        if (roamCoroutine != null)
+        {
+            StopCoroutine(roamCoroutine);
+            roamCoroutine = null; // Reset the reference
         }
     }
 
@@ -232,6 +292,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isAttacking = true;
+        faceTarget();
         agent.isStopped = true;
         SetAttackerName();
         anim.SetTrigger("Shoot");
@@ -273,7 +334,33 @@ public class enemyAI : MonoBehaviour, IDamage
 
     IEnumerator DelayedDestroy()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f); // Initial delay
+        //Debug.Log("Delayed Destroy");
+        //Disable NavMeshAgent and animator
+        //agent.isStopped = true;
+        agent.enabled = false;
+        anim.enabled = false;
+
+        // Get rigidbody (if it exists) and make it non-kinematic
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+        }
+
+        // Sink the boss
+        float sinkSpeed = .5f;
+        float sinkDistance = -30f;
+        Vector3 targetPosition = transform.position + new Vector3(0, sinkDistance, 0);
+
+        while (transform.position.y > targetPosition.y)
+        {
+            //Debug.Log("Sinking...");
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, sinkSpeed * Time.deltaTime);
+            yield return null; // Wait for the next frame
+        }
+
         Destroy(gameObject);
     }
 

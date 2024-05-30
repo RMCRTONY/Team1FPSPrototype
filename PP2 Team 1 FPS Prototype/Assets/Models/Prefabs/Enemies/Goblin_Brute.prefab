@@ -323,7 +323,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3395990429173297185}
-  - {fileID: 1239955490720509167}
   - {fileID: 396225816898514794}
   - {fileID: 1158100297493764827}
   m_Father: {fileID: 0}
@@ -352,8 +351,8 @@ MonoBehaviour:
   HP: 6
   faceTargetSpeed: 6
   viewCone: 90
-  roamDist: 25
-  roamPauseTimer: 5
+  roamDist: 15
+  roamPauseTimer: 3
   animSpeedTrans: 4
   bullet: {fileID: 0}
   shootRate: 0
@@ -383,7 +382,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.5
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -612,6 +611,7 @@ Transform:
   - {fileID: 1707553612025284307}
   - {fileID: 246930197770357066}
   - {fileID: 3312294800408505136}
+  - {fileID: 1239955490720509167}
   m_Father: {fileID: 396225816898514794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4477446317052735915
@@ -863,12 +863,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5867645932399878213}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.6889184, y: -0.15934697, z: -0.15934697, w: 0.6889184}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.24544999, y: 0.24545002, z: 0.24545002}
+  m_LocalRotation: {x: -0.37446356, y: -0.59981424, z: 0.37446356, w: 0.59981424}
+  m_LocalPosition: {x: 0.7241739, y: 0, z: 0}
+  m_LocalScale: {x: 0.24544993, y: 0.24545, z: 0.24544996}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6725176130572590002}
+  m_Father: {fileID: 5543017948280967164}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &2339634517562406576
 ParticleSystem:
