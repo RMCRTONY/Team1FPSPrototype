@@ -11,7 +11,7 @@ public class InventorySystem : MonoBehaviour
     {
         if (!gameManager.instance.isPaused) // can't do nun
         {
-            if (Input.GetButtonDown("Interact"))  // game cont interact key
+            if (UserInput.instance.InteractPressed)  // game cont interact key
             {
                 PickUp();
             }
@@ -64,6 +64,7 @@ public class InventorySystem : MonoBehaviour
                     //Debug.Log("Not Yourself");
                     inventory.AddItem(item.item, item.item.signature, 1);
                     gameManager.instance.interactPrompt.SetActive(false); // stop telling the player to pick up something they already have
+                    gameManager.instance.interactPromptWasActive = false;
                     item.gameObject.SetActive(false); // deactivate rather than destroy??
                     gameManager.instance.updateGameGoal(0);
                 }
@@ -91,11 +92,13 @@ public class InventorySystem : MonoBehaviour
             {
                 //Debug.Log("Item not in inventory");
                 gameManager.instance.lockedPopup.SetActive(true); // tells player object is locked
+                gameManager.instance.lockedPopupWasActive = true;
             }
         }
         else if (other.GetComponent<Item>()) // display interact prompt
         {
             gameManager.instance.interactPrompt.SetActive(true); // "hey, press e to do thing"
+            gameManager.instance.interactPromptWasActive = true;
         }
 }
 
@@ -104,10 +107,12 @@ public class InventorySystem : MonoBehaviour
         if (other.GetComponent<LockedObject>() && gameManager.instance.lockedPopup.activeInHierarchy) // both locked and informing player
         {
             gameManager.instance.lockedPopup.SetActive(false); // deactivate the message
+            gameManager.instance.lockedPopupWasActive = false;
         }
         if (gameManager.instance.interactPrompt.activeInHierarchy) // telling the player to pick the thing up at all
         {
             gameManager.instance.interactPrompt.SetActive(false); // deactivate
+            gameManager.instance.interactPromptWasActive = false;
         }
     }
     private void OnApplicationQuit()

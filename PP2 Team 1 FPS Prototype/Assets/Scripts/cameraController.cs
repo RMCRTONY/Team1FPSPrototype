@@ -6,6 +6,7 @@ using UnityEngine;
 public class cameraController : MonoBehaviour
 {
     [Header("---------- Camera Components ----------")]
+    [SerializeField] Transform playerBody;
     [Range(50, 250)][SerializeField] public float sensitivity;
     [SerializeField] int lockVertMin, lockVertMax;
     [SerializeField] bool invertY; // for later settings buildout
@@ -32,8 +33,8 @@ public class cameraController : MonoBehaviour
     {
 
         // get that input gurl
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity;
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime ;
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime ;
 
         // inversion query check
         if (invertY)
@@ -48,7 +49,7 @@ public class cameraController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(rotX, 0, 0);
 
         // rotate player on y
-        transform.parent.Rotate(Vector3.up * mouseX);
+        playerBody.Rotate(Vector3.up * mouseX);
 
         //check for door interaction
         doorInteract();
@@ -68,7 +69,7 @@ public class cameraController : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<Door>())
             {
-                if (Input.GetButtonDown("Interact")) // T: I changed this to use unity's input system instead
+                if (UserInput.instance.InteractPressed) // T: I changed this to use unity's input system instead
                 {
                     hit.collider.gameObject.GetComponent<Door>().openClose();
                 }
@@ -79,7 +80,7 @@ public class cameraController : MonoBehaviour
     IEnumerator Shaking()
     {
         //Vector3 startPosition = transform.position;
-        Transform playerTransform = transform.parent; // Get reference to player
+        //Transform playerTransform = transform.parent; // Get reference to player
         Vector3 originalLocalPosition = transform.localPosition; // Store the original local position
         float elapsedTime = 0f;
 

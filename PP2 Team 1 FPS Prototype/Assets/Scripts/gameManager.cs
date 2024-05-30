@@ -11,18 +11,21 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;
 
     [SerializeField] GameObject menuActive;
-    [SerializeField] GameObject menuPrev;
+    [SerializeField] List<GameObject> menuPrev;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject pauseQuitButton;
     [SerializeField] GameObject winQuitButton;
     [SerializeField] GameObject loseQuitButton;
     [SerializeField] GameObject menuOptions;
+    [SerializeField] GameObject keyboardControlsMenu;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     
     public GameObject checkPointMenu;
     public GameObject lockedPopup; // informs player that an object is locked
+    public bool lockedPopupWasActive;
     public GameObject interactPrompt; // informs player that an object can be picked up
+    public bool interactPromptWasActive;
     public GameObject playerDamageScreen;
     public GameObject playerHealScreen;
     public GameObject perfectParryScreen;
@@ -115,7 +118,7 @@ public class gameManager : MonoBehaviour
     void Update()
     {
        
-        if (Input.GetButtonDown("Cancel"))
+        if (UserInput.instance.MenuOpenCloseInput)
         {
             if (menuActive == null) // should allow for esc to toggle pause menu only. 
             {
@@ -138,9 +141,22 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         reticule.SetActive(false);
+        EliminatePopups();
         aud.Stop();
         aud.loop = true;
         aud.PlayOneShot(menuMusic[Random.Range(0, menuMusic.Length)], menuMusicVol);
+    }
+
+    private void EliminatePopups()
+    {
+        if (lockedPopup.activeInHierarchy)
+        {
+            lockedPopup.SetActive(false);
+        }
+        if (interactPrompt.activeInHierarchy)
+        {
+            interactPrompt.SetActive(false);
+        }
     }
 
     public void stateUnpaused()
@@ -152,14 +168,27 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(isPaused);
         menuActive = null;
         reticule.SetActive(true);
+        ResetPopups();
         aud.Stop();
         aud.loop = true;
         aud.PlayOneShot(bgMusic[Random.Range(0, bgMusic.Length)], bgMusicVol);
     }
 
+    private void ResetPopups()
+    {
+        if (lockedPopupWasActive)
+        {
+            lockedPopup.SetActive(true);
+        }
+        if (interactPromptWasActive)
+        {
+            interactPrompt.SetActive(true);
+        }
+    }
+
     public void openOptionsMenu()
     {
-        menuPrev = menuActive;
+        menuPrev.Add(menuActive);
         menuActive.SetActive(false);
         menuActive = menuOptions;
         menuActive.SetActive(true);
@@ -168,8 +197,24 @@ public class gameManager : MonoBehaviour
     public void closeOptionsMenu()
     {
         menuActive.SetActive(false);
-        menuActive = menuPrev;
+        menuActive = menuPrev[menuPrev.Count -1];
+        menuPrev.RemoveAt(menuPrev.Count - 1);
         menuActive.SetActive(true);
+    }
+
+    public void OpenControlsMenu(int menuType)
+    {
+        switch (menuType)
+        {
+            case 0:
+                menuPrev.Add(menuActive);
+                menuActive.SetActive(false);
+                menuActive = keyboardControlsMenu;
+                menuActive.SetActive(true);
+                break;
+            case 1:
+                break;
+        }
     }
 
     public void updateGameGoal(int amount)

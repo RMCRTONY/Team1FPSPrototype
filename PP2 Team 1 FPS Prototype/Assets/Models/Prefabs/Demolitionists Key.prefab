@@ -4817,7 +4817,7 @@ GameObject:
   - component: {fileID: 4445089182121499033}
   - component: {fileID: 8057230924068492545}
   - component: {fileID: 6740572186398448752}
-  - component: {fileID: 1488357108576072103}
+  - component: {fileID: 4447002391799948338}
   - component: {fileID: 1671504241582633203}
   m_Layer: 0
   m_Name: Demolitionists Key
@@ -4878,8 +4878,8 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1215533875317036940, guid: 0669f3d8f4b119f418a4bbe061cc198f, type: 3}
---- !u!135 &1488357108576072103
-SphereCollider:
+--- !u!136 &4447002391799948338
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4896,9 +4896,11 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.037243653
-  m_Center: {x: 0, y: 0, z: -0.065}
+  serializedVersion: 2
+  m_Radius: 0.078250445
+  m_Height: 0.27205184
+  m_Direction: 2
+  m_Center: {x: -0.003947419, y: 0.00430305, z: 0.0068129776}
 --- !u!135 &1671504241582633203
 SphereCollider:
   m_ObjectHideFlags: 0

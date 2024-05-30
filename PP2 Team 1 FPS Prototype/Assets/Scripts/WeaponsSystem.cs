@@ -95,13 +95,13 @@ public class WeaponsSystem : MonoBehaviour
     void FireWeapons()
     {
         // Primary fire
-        if (Input.GetButtonDown("Fire1") && !isShooting && activePrimary.Count > 0 && manaPool >= manaDrain)
+        if (UserInput.instance.PrimaryFireInput && !isShooting && activePrimary.Count > 0 && manaPool >= manaDrain)
         {
             StartCoroutine(castPrimary());
         }
 
         // Alt fire
-        if (Input.GetButtonDown("Fire2") && activeAlt.Count > 0 && manaPool >= altManaDrain)
+        if (UserInput.instance.AltFireInput && activeAlt.Count > 0 && manaPool >= altManaDrain)
         {
             StartCoroutine(castAlt());
         }
@@ -274,12 +274,12 @@ public class WeaponsSystem : MonoBehaviour
 
     void SelectPrimary() // scroll wheel primary rotation
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && selectedPrimary < activePrimary.Count - 1)
+        if (UserInput.instance.SwapWeaponInput > 0 && selectedPrimary < activePrimary.Count - 1)
         {
             selectedPrimary++;
             ChangePrimary();
         }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && selectedPrimary > 0)
+        else if (UserInput.instance.SwapWeaponInput < 0 && selectedPrimary > 0)
         {
             selectedPrimary--;
             ChangePrimary();
@@ -321,7 +321,7 @@ public class WeaponsSystem : MonoBehaviour
 
     void SelectAlt() // Q/E ability selection, infinite scroll
     {
-        if (Input.GetButtonDown("Depth Up")) // should be E
+        if (UserInput.instance.SwapAbilityUpInput) // should be E
         {
             if (selectedAlt >= activeAlt.Count - 1)
             {
@@ -333,7 +333,7 @@ public class WeaponsSystem : MonoBehaviour
             }
             ChangeAlt();
         }
-        else if (Input.GetButtonDown("Depth Down")) // should be Q
+        else if (UserInput.instance.SwapAbilityDownInput) // should be Q
         {
             if (selectedAlt <= 0)
             {

@@ -35,7 +35,7 @@ public class JumpRaycast : MonoBehaviour
     void jump()
     {
         // check for jump key, make jump happen
-        if (Input.GetButtonDown("Jump") && jumpTimes < maxJumps)
+        if (UserInput.instance.JumpPressed && jumpTimes < maxJumps)
         {
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             jumpTimes++;

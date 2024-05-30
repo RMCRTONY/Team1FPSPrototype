@@ -29,12 +29,13 @@ public class playerController : MonoBehaviour
     [Range(0, 1)][SerializeField] float audStepsVol;
 
     private Vector3 moveDir;
+    Vector2 moveInput;
     bool playingSteps;
     bool isSprinting;
     //ParticleSystem.EmissionModule em;
 
     //[Header("Debug")]
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -68,12 +69,12 @@ public class playerController : MonoBehaviour
 
     void Sprint()
     {
-        if (Input.GetButtonDown("Fire3") && gameManager.instance.groundChecker.grounded) // fire3 = Lshift
+        if (UserInput.instance.SprintPressed && gameManager.instance.groundChecker.grounded) // fire3 = Lshift
         {
             walkSpeed *= sprintMod;
             isSprinting = true;
         }
-        else if (Input.GetButtonUp("Fire3") && isSprinting)
+        else if (UserInput.instance.SprintReleased && isSprinting)
         {
             walkSpeed /= sprintMod;
             isSprinting = false;
@@ -106,8 +107,10 @@ public class playerController : MonoBehaviour
 
     private Vector3 getDirection()
     {
+        moveInput.x = UserInput.instance.MoveInput.x;
+        moveInput.y = UserInput.instance.MoveInput.y;
         // orient inputs
-        Vector3 dir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+        Vector3 dir = moveInput.x * transform.right + moveInput.y * transform.forward;
         return dir;
     }
     

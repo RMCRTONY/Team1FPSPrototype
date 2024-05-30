@@ -56,6 +56,18 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.openOptionsMenu();
     }
 
+    public void KeyboardControls()
+    {
+        aud.PlayOneShot(audClick, audClickVol);
+        StartCoroutine(OpenKeyboardControlsWithDelay());
+    }
+
+    IEnumerator OpenKeyboardControlsWithDelay()
+    {
+        yield return new WaitWhile(() => aud.isPlaying);
+        gameManager.instance.OpenControlsMenu(0);
+    }
+
     public void MainMenu()
     {
         aud.PlayOneShot(audClick, audClickVol);
