@@ -54,6 +54,7 @@ public class bossAI : MonoBehaviour, IDamage
     // Event to notify the spawner when the boss dies
     public delegate void BossDeathEventHandler();
     public event BossDeathEventHandler OnBossDeath;
+    private Vector3 lastKnownPlayerPosition; // Store last known player position
 
     // Start is called before the first frame update
     void Start()
@@ -92,38 +93,68 @@ public class bossAI : MonoBehaviour, IDamage
             return; // Exit the Update loop early
         }
 
-        if (playerInRange && !canSeePlayer())
+        // If the boss is not attacking and the agent is enabled (on the ground)
+        if (!isAttacking && agent.isActiveAndEnabled)
         {
-            StartCoroutine(roam());
-        }
-        else if (!playerInRange)
-        {
-            StartCoroutine(roam());
+            if (playerInRange && !canSeePlayer())
+            {
+                StartCoroutine(roam()); // Start or restart the roam coroutine
+            }
+            else if (!playerInRange)
+            {
+                StartCoroutine(roam()); // Start or restart the roam coroutine
+            }
         }
     }
 
     IEnumerator roam()
     {
-        // Check if agent is enabled
-        if (!agent.enabled)
+        while (true)  // Infinite loop to keep the coroutine running
         {
-            yield break; // Exit if agent is disabled
-        }
+            // Only perform actions if the agent is active and on the NavMesh
+            if (agent.isActiveAndEnabled && agent.isOnNavMesh)
+            {
+                // Check if a new destination needs to be chosen
+                if (!destinationChosen && agent.remainingDistance <= 0.05f)
+                {
+                    destinationChosen = true;
+                    agent.isStopped = true;  // Stop the agent while calculating new destination
+                    yield return new WaitForSeconds(roamPauseTimer);  // Pause movement to simulate waiting
 
-        if (!destinationChosen && agent.remainingDistance < 0.05f)
-        {
-            destinationChosen = true;
-            agent.stoppingDistance = 0;
-            yield return new WaitForSeconds(roamPauseTimer);
+                    Vector3 randomPos = Random.insideUnitSphere * roamDist + startingPos;
+                    randomPos.y = 0;  // Adjust y-coordinate if necessary to ensure it's on the ground
 
-            Vector3 randomPos = Random.insideUnitSphere * roamDist;
-            randomPos += startingPos;
+                    NavMeshHit hit;
+                    bool positionFound = NavMesh.SamplePosition(randomPos, out hit, roamDist, NavMesh.AllAreas);
+                    int attempts = 0;
 
-            NavMeshHit hit;
-            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
-            agent.SetDestination(hit.position);
+                    int currentRoamDist = roamDist; // Initialize with the original `roamDist`
 
-            destinationChosen = false;
+                    // Retry finding a valid position with a reduced radius if initial attempt fails
+                    while (!positionFound && attempts < 10)
+                    {
+                        currentRoamDist = Mathf.Max(1, (int)(currentRoamDist * 0.9));  // Reduce search radius by 10%, ensure not less than 1
+                        positionFound = NavMesh.SamplePosition(randomPos, out hit, currentRoamDist, NavMesh.AllAreas);
+                        attempts++;
+                    }
+
+                    if (positionFound)
+                    {
+                        agent.SetDestination(hit.position);
+                    }
+                    else
+                    {
+                        // Handle failure to find a valid position after several attempts
+                        Debug.Log("No valid position found after several attempts. Returning to start.");
+                        agent.SetDestination(startingPos);  // Fallback to starting position
+                    }
+
+                    agent.isStopped = false;  // Allow the agent to start moving towards the new destination
+                    destinationChosen = false;
+                }
+            }
+
+            yield return null; // Wait for the next frame to continue
         }
     }
 
@@ -148,9 +179,9 @@ public class bossAI : MonoBehaviour, IDamage
 
                 if (!isAttacking)
                 {
-                    //Debug.Log("Boss Attack =" + isAttacking);
                     if (distanceToPlayer <= meleeAttackRange)
                     {
+                        faceTarget();
                         StartCoroutine(melee());
                     }
                     else
@@ -164,8 +195,20 @@ public class bossAI : MonoBehaviour, IDamage
                 {
                     faceTarget();
                 }
-
+                lastKnownPlayerPosition = gameManager.instance.player.transform.position; // Update last known position
                 return true;
+            }
+        }
+
+        // If player is not seen, move to the last known position
+        if (agent.enabled)
+        {
+            agent.SetDestination(lastKnownPlayerPosition);
+
+            // Check if enemy is near the last known position
+            if (Vector3.Distance(transform.position, lastKnownPlayerPosition) < 0.5f)
+            {
+                StartCoroutine(roam()); // Start roaming if near the last known position
             }
         }
 
@@ -202,21 +245,21 @@ public class bossAI : MonoBehaviour, IDamage
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         anim.SetTrigger("Damage");
         StartCoroutine(flashRed());
-        //enemyAnim.SetTrigger("damage");
         agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (HP <= 0)
         {
             gameManager.instance.updateGameGoal(-1);
             isDead = true; // Set the boss as dead
-            anim.SetTrigger("Die");
-            agent.isStopped = true;
-            aud.Stop();
             // Disable all colliders on the boss
             foreach (Collider collider in colliders)
             {
                 collider.enabled = false;
             }
+            StopAllCoroutines(); // Stop all coroutines, including roam and attacks
+            agent.isStopped = true;
+            anim.SetTrigger("Die");
+            aud.Stop();
             // Trigger the OnBossDeath event for Spawner
             OnBossDeath?.Invoke();
             StartCoroutine(DelayedDestroy());
@@ -242,11 +285,12 @@ public class bossAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isAttacking = true;
-        agent.isStopped = true;
+        faceTarget();
+        //agent.isStopped = true;
         SetAttackerName();
         anim.SetTrigger("Shoot");
         yield return new WaitForSeconds(shootRate);
-        agent.isStopped = false;
+        //agent.isStopped = false;
         isAttacking = false;
         //Debug.Log("Boss Attack =" + isAttacking);
     }
@@ -254,6 +298,7 @@ public class bossAI : MonoBehaviour, IDamage
     IEnumerator melee()
     {
         isAttacking = true;
+        faceTarget();
         SetAttackerName();
         anim.SetTrigger("Melee");
         yield return new WaitForSeconds(swingRate);

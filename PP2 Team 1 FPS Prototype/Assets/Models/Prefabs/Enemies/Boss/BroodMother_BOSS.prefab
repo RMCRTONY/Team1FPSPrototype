@@ -2061,7 +2061,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8262603134404583906}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 4
+  m_Radius: 3.5
   m_Speed: 2
   m_Acceleration: 4
   avoidancePriority: 50
@@ -2478,6 +2478,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1172231319881605900, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+      propertyPath: m_Value
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172231319881605900, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_MaxValue
       value: 120
       objectReference: {fileID: 0}
@@ -2520,6 +2524,14 @@ PrefabInstance:
     - target: {fileID: 4157477985970397263, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -513
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395285733444938460, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395285733444938460, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5904494460996043519, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_Layer

@@ -2468,7 +2468,7 @@ MonoBehaviour:
   animSpeedTrans: 4
   bullet: {fileID: 7118765615501587130, guid: c0f879fc5c70895489bcc39bd8b8c3a7, type: 3}
   shootRate: 5
-  swingRate: 3
+  swingRate: 2
   meleeAttackRange: 6
   audHurt:
   - {fileID: 8300000, guid: 3bd167748139e0b468cfbd83ccf698c5, type: 3}
@@ -2507,8 +2507,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 8695432359138188528}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 2
+  m_Radius: 4
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 80
@@ -2804,7 +2804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1172231319881605900, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_Value
-      value: 9
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1172231319881605900, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_MaxValue
@@ -2837,6 +2837,14 @@ PrefabInstance:
     - target: {fileID: 3709646159614786873, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395285733444938460, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395285733444938460, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5904494460996043519, guid: 3b0d90edfdacc6348804068438af68d3, type: 3}
       propertyPath: m_Layer

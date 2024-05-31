@@ -49,8 +49,6 @@ public class enemyAI : MonoBehaviour, IDamage
     //bool isCold = false;
     Vector3 playerDir;
     Vector3 startingPos;
-    private Coroutine roamCoroutine; // Reference to the roam coroutine
-    private Coroutine currentCoroutine; // Reference to the currently running coroutine
     float angleToPlayer;
     float stoppingDistOrig;
     private Collider[] colliders;
@@ -93,11 +91,11 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             if (playerInRange && !canSeePlayer())
             {
-                StartOrRestartCoroutine(roam()); // Start or restart the roam coroutine
+                StartCoroutine(roam()); // Start or restart the roam coroutine
             }
             else if (!playerInRange)
             {
-                StartOrRestartCoroutine(roam()); // Start or restart the roam coroutine
+                StartCoroutine(roam()); // Start or restart the roam coroutine
             }
         }
 
@@ -107,46 +105,30 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 
-    void StartOrRestartCoroutine(IEnumerator coroutine)
-    {
-        // Stop the currently running coroutine (if any)
-        if (currentCoroutine != null)
-        {
-            StopCoroutine(currentCoroutine);
-        }
-
-        // Start or restart the new coroutine and store its reference
-        currentCoroutine = StartCoroutine(coroutine);
-    }
-
     IEnumerator roam()
     {
-        while (true)  // infinite loop
+        // Check if agent is enabled
+        if (!agent.enabled)
         {
-            // Check if agent is enabled AND is on the NavMesh
-            if (agent.isActiveAndEnabled && agent.isOnNavMesh)
-            {
-                if (!destinationChosen && agent.remainingDistance < 2f)
-                {
-                    destinationChosen = true;
-                    agent.stoppingDistance = 0;
-                    yield return new WaitForSeconds(roamPauseTimer);
+            yield break; // Exit if agent is disabled
+        }
 
-                    Vector3 randomPos = Random.insideUnitSphere * roamDist;
-                    randomPos += startingPos;
+        if (!destinationChosen && agent.remainingDistance < 0.05f)
+        {
+            destinationChosen = true;
+            agent.stoppingDistance = 0;
+            yield return new WaitForSeconds(roamPauseTimer);
 
-                    NavMeshHit hit;
-                    NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
-                    agent.SetDestination(hit.position);
+            Vector3 randomPos = Random.insideUnitSphere * roamDist;
+            randomPos += startingPos;
 
-                    destinationChosen = false;
-                }
-            }
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+            agent.SetDestination(hit.position);
 
-            yield return null; // Wait for the next frame
+            destinationChosen = false;
         }
     }
-
 
     bool canSeePlayer()
     {
@@ -259,16 +241,6 @@ public class enemyAI : MonoBehaviour, IDamage
             anim.SetTrigger("Die");
             aud.Stop();
             StartCoroutine(DelayedDestroy());
-        }
-    }
-
-    private void StopRoaming()
-    {
-        // Check if the coroutine is running before stopping it
-        if (roamCoroutine != null)
-        {
-            StopCoroutine(roamCoroutine);
-            roamCoroutine = null; // Reset the reference
         }
     }
 

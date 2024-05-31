@@ -55,6 +55,12 @@ public class bossBMAI : MonoBehaviour, IDamage
     bool isDead = false; // Flag to track if the boss is dead
     private cameraController cameraController; // Reference to the camera controller
 
+    // Damage Threshold to deal with stunlock
+    private float lastDamageTime = 0f;  // When the last damage was taken
+    private int damageThreshold = 10; // Minimum damage to trigger "Damage" animation
+    private int damageAccumulated = 0; // Accumulated damage within the time window
+    private float damageWindow = 1f; // Time window (in seconds) to accumulate damage
+
     // Event to notify the spawner when the boss dies
     public delegate void BossDeathEventHandler();
     public event BossDeathEventHandler OnBossDeath;
@@ -214,11 +220,21 @@ public class bossBMAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
-        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
-        anim.SetTrigger("Damage");
-        StartCoroutine(flashRed());
-        //enemyAnim.SetTrigger("damage");
-        agent.SetDestination(gameManager.instance.player.transform.position);
+
+        // Update damage accumulation and time
+        damageAccumulated += amount;
+        lastDamageTime = Time.time;
+
+        // Check if damage threshold is met
+        if (damageAccumulated >= damageThreshold)
+        {
+            // Reset damage accumulation
+            damageAccumulated = 0;
+            aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
+            anim.SetTrigger("Damage");
+            StartCoroutine(flashRed());
+            agent.SetDestination(gameManager.instance.player.transform.position);
+        }
 
         if (HP <= 0)
         {
