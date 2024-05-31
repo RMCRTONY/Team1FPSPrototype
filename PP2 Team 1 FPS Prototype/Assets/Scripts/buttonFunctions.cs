@@ -44,6 +44,20 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnpaused();
     }
 
+    public void Replay()
+    {
+        aud.PlayOneShot(audClick, audClickVol);
+        StartCoroutine(ReplayWithDelay());
+    }
+
+    IEnumerator ReplayWithDelay()
+    {
+        yield return new WaitWhile(() => aud.isPlaying);
+        SceneManager.LoadScene(1);
+        gameManager.instance.player.SendMessage("clearInventory");
+        gameManager.instance.stateUnpaused();
+    }
+
     public void Options()
     {
         aud.PlayOneShot(audClick, audClickVol);

@@ -67,7 +67,7 @@ public class JumpRaycast : MonoBehaviour
             // no reset jumps on dash
             playerVel = Vector3.zero;
         }
-        else if (grounded && playerVel.y < 0) // grounded and not accelerating
+        else if ((grounded || controller.isGrounded) && playerVel.y < 0) // grounded and not accelerating
         {
             jumpTimes = 0;
             playerVel = Vector3.zero;

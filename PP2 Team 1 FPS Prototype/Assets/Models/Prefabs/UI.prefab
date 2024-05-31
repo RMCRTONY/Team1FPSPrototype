@@ -23973,7 +23973,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restart
+  m_text: Replay
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -24055,7 +24055,7 @@ GameObject:
   - component: {fileID: 1947385904473865058}
   - component: {fileID: 1920565078462184609}
   m_Layer: 5
-  m_Name: Restart
+  m_Name: Replay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24165,7 +24165,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6981635731868674754}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: Restart
+        m_MethodName: Replay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26513,7 +26513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6065130771968732814, guid: 43f77bcc0f54ef44baff25e4e4c8f0c7, type: 3}
       propertyPath: m_text
-      value: Back
+      value: RMB
       objectReference: {fileID: 0}
     - target: {fileID: 7198727001864028107, guid: 43f77bcc0f54ef44baff25e4e4c8f0c7, type: 3}
       propertyPath: m_Name
