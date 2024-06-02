@@ -343,10 +343,46 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 4294967295
-  shakeDuration: 0
+  shakeDuration: 1.5
   curve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0008468628
+      value: 0.0038108826
+      inSlope: 6.2376795
+      outSlope: 6.2376795
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.09320977
+      value: 0.5799411
+      inSlope: -4.2775216
+      outSlope: -4.2775216
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.074679345
+    - serializedVersion: 3
+      time: 0.4835867
+      value: 0.8248708
+      inSlope: -2.6572173
+      outSlope: -2.6572173
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.11985125
+    - serializedVersion: 3
+      time: 1.0042725
+      value: 0.0038108826
+      inSlope: -1.5768818
+      outSlope: -1.5768818
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

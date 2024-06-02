@@ -18,6 +18,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     [SerializeField] Collider weaponCol;
     [SerializeField] Collider smashCol;
     [SerializeField] Slider healthBar;
+    [SerializeField] GameObject smashEffect;
     //[SerializeField] private cameraController cameraController;  // Reference to the camera controller
 
     [Header("---------- Enemy Stats ----------")]
@@ -75,6 +76,7 @@ public class bossBMAI : MonoBehaviour, IDamage
         colliders = GetComponentsInChildren<Collider>(); // Get all colliders on the boss
         // Find the camera controller component in the scene
         cameraController = FindObjectOfType<cameraController>();
+        smashEffect.SetActive(false);  // Initially hide the effect
         if (cameraController == null)
         {
             //Debug.LogError("No Camera Controller found in the scene!");
@@ -293,6 +295,9 @@ public class bossBMAI : MonoBehaviour, IDamage
         isAttacking = true;
         SetAttackerName();
         anim.SetTrigger("Smash");
+        // Position effect at the collider's position on the ground
+        smashEffect.transform.position = new Vector3(smashCol.transform.position.x, 0.01f, smashCol.transform.position.z);
+        smashEffect.SetActive(true);
         yield return new WaitForSeconds(smashRate);
         isAttacking = false;
     }
@@ -329,10 +334,12 @@ public class bossBMAI : MonoBehaviour, IDamage
     {
         smashCol.enabled = false;
         cameraController.StartCoroutine("Shaking");
+        smashEffect.SetActive(false);
     }
 
     IEnumerator DelayedDestroy()
     {
+        smashEffect.SetActive(false);
         yield return new WaitForSeconds(5f); // Initial delay
         //Debug.Log("Delayed Destroy");
         // Disable NavMeshAgent and animator
