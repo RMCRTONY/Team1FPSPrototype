@@ -73,6 +73,11 @@ public class InventorySystem : MonoBehaviour
 
     }
 
+    public void AddToInventory(Item item, int num)
+    {
+        inventory.AddItem(item.item, item.item.signature, num);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         // if tigger is locked object
