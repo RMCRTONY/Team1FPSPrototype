@@ -452,6 +452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dragon Boss Room
       objectReference: {fileID: 0}
+    - target: {fileID: 4008539729277305263, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 75.13
+      objectReference: {fileID: 0}
     - target: {fileID: 4162031236988762640, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -491,6 +495,22 @@ PrefabInstance:
     - target: {fileID: 4162031236988762640, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686162168706452116, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 61.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029776647592612657, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 105.12999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853436924698534523, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 85.12999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8574742997436074122, guid: 47183dd89113ea34d8aa39df7600eb91, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 95.130005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
