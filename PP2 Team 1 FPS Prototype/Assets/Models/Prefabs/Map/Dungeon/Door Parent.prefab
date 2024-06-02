@@ -486,6 +486,7 @@ GameObject:
   - component: {fileID: 8498627211791839567}
   - component: {fileID: 6016631112775659839}
   - component: {fileID: 6989719169028384171}
+  - component: {fileID: 6369437602808785899}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -612,3 +613,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6369437602808785899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208177897509758875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f55efd7f3ca8641a68bae4cb71a51b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 6659bc11d9063374c8199b33f8875900, type: 2}
