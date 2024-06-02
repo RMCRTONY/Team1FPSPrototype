@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] InventoryObject inventory;
     [Range(1, 5)][SerializeField] float pickupRange;
     public ItemObject bustedKey;
+    bool itemInRange;
     private void Update()
     {
         if (!gameManager.instance.isPaused) // can't do nun
@@ -15,6 +17,23 @@ public class InventorySystem : MonoBehaviour
             {
                 PickUp();
             }
+            if (itemInRange)
+            {
+                PromptPlayerToInteract();
+            }
+        }
+    }
+
+    private void PromptPlayerToInteract()
+    {
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hit, pickupRange) && hit.collider.GetComponent<Item>())
+        {
+            gameManager.instance.interactPrompt.SetActive(true); // "hey, press e to do thing"
+            gameManager.instance.interactPromptWasActive = true;
+        }else
+        {
+            gameManager.instance.interactPrompt.SetActive(false); // "hey, press e to do thing"
+            gameManager.instance.interactPromptWasActive = false;
         }
     }
 
@@ -65,6 +84,7 @@ public class InventorySystem : MonoBehaviour
                     inventory.AddItem(item.item, item.item.signature, 1);
                     gameManager.instance.interactPrompt.SetActive(false); // stop telling the player to pick up something they already have
                     gameManager.instance.interactPromptWasActive = false;
+                    itemInRange = false;
                     item.gameObject.SetActive(false); // deactivate rather than destroy??
                     gameManager.instance.updateGameGoal(0);
                 }
@@ -102,8 +122,7 @@ public class InventorySystem : MonoBehaviour
         }
         else if (other.GetComponent<Item>()) // display interact prompt
         {
-            gameManager.instance.interactPrompt.SetActive(true); // "hey, press e to do thing"
-            gameManager.instance.interactPromptWasActive = true;
+            itemInRange = true;
         }
 }
 
@@ -116,6 +135,7 @@ public class InventorySystem : MonoBehaviour
         }
         if (gameManager.instance.interactPrompt.activeInHierarchy) // telling the player to pick the thing up at all
         {
+            itemInRange = false;
             gameManager.instance.interactPrompt.SetActive(false); // deactivate
             gameManager.instance.interactPromptWasActive = false;
         }

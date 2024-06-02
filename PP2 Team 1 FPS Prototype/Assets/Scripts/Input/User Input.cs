@@ -94,4 +94,9 @@ public class UserInput : MonoBehaviour
         _sprintAction = _playerInput.actions["Sprint"];
         _menuOpenCloseAction = _playerInput.actions["MenuOpenClose"];
     }
+
+    public string GetInteractBinding()
+    {
+        return _interactAction.GetBindingDisplayString(InputBinding.MaskByGroup("Keyboard"));
+    }
 }
