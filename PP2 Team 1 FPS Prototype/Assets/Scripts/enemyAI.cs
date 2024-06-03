@@ -107,6 +107,14 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             StartCoroutine(burning());
         }
+
+        if (!canSeePlayer() && agent.enabled)
+        {
+            if (Vector3.Distance(transform.position, lastKnownPlayerPosition) > 1f)
+            {
+                agent.SetDestination(lastKnownPlayerPosition);
+            }
+        }
     }
 
     IEnumerator roam()
