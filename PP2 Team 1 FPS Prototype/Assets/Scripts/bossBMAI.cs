@@ -306,7 +306,7 @@ public class bossBMAI : MonoBehaviour, IDamage
         SetAttackerName();
         anim.SetTrigger("Smash");
         // Position effect at the collider's position on the ground
-        smashEffect.transform.position = new Vector3(smashCol.transform.position.x, 0.01f, smashCol.transform.position.z);
+        //smashEffect.transform.position = new Vector3(smashCol.transform.position.x, 0.01f, smashCol.transform.position.z);
         smashEffect.SetActive(true);
         yield return new WaitForSeconds(smashRate);
         isAttacking = false;
