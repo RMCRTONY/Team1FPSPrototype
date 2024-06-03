@@ -55,12 +55,13 @@ public class bossBMAI : MonoBehaviour, IDamage
     private Collider[] colliders;
     bool isDead = false; // Flag to track if the boss is dead
     private cameraController cameraController; // Reference to the camera controller
+    private Vector3 lastKnownPlayerPosition; // Store last known player position
 
     // Damage Threshold to deal with stunlock
     private float lastDamageTime = 0f;  // When the last damage was taken
     private int damageThreshold = 10; // Minimum damage to trigger "Damage" animation
     private int damageAccumulated = 0; // Accumulated damage within the time window
-    private float damageWindow = 1f; // Time window (in seconds) to accumulate damage
+    //private float damageWindow = 1f; // Time window (in seconds) to accumulate damage
 
     // Event to notify the spawner when the boss dies
     public delegate void BossDeathEventHandler();
@@ -119,6 +120,14 @@ public class bossBMAI : MonoBehaviour, IDamage
         else if (!playerInRange)
         {
             StartCoroutine(roam());
+        }
+
+        if (!canSeePlayer() && agent.enabled)
+        {
+            if (Vector3.Distance(transform.position, lastKnownPlayerPosition) > 1f)
+            {
+                agent.SetDestination(lastKnownPlayerPosition);
+            }
         }
     }
 
@@ -187,7 +196,7 @@ public class bossBMAI : MonoBehaviour, IDamage
                 {
                     faceTarget();
                 }
-
+                lastKnownPlayerPosition = gameManager.instance.player.transform.position; // Update last known position
                 return true;
             }
         }
@@ -222,6 +231,7 @@ public class bossBMAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
+        StartCoroutine(flashRed());
 
         // Update damage accumulation and time
         damageAccumulated += amount;
@@ -234,7 +244,7 @@ public class bossBMAI : MonoBehaviour, IDamage
             damageAccumulated = 0;
             aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
             anim.SetTrigger("Damage");
-            StartCoroutine(flashRed());
+            
             agent.SetDestination(gameManager.instance.player.transform.position);
         }
 

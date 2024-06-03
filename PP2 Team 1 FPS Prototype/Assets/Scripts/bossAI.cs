@@ -105,6 +105,14 @@ public class bossAI : MonoBehaviour, IDamage
                 StartCoroutine(roam()); // Start or restart the roam coroutine
             }
         }
+
+        if (!canSeePlayer() && agent.enabled)
+        {
+            if (Vector3.Distance(transform.position, lastKnownPlayerPosition) > 1f)
+            {
+                agent.SetDestination(lastKnownPlayerPosition);
+            }
+        }
     }
 
     IEnumerator roam()
@@ -145,7 +153,7 @@ public class bossAI : MonoBehaviour, IDamage
                     else
                     {
                         // Handle failure to find a valid position after several attempts
-                        Debug.Log("No valid position found after several attempts. Returning to start.");
+                        //Debug.Log("No valid position found after several attempts. Returning to start.");
                         agent.SetDestination(startingPos);  // Fallback to starting position
                     }
 

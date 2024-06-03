@@ -598,10 +598,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7310719677199571193, guid: 442682e7a8746da478a0914f8cf3d9f8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8203153817471485711, guid: 442682e7a8746da478a0914f8cf3d9f8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -619,12 +615,8 @@ PrefabInstance:
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 9185461791058454149, guid: 442682e7a8746da478a0914f8cf3d9f8, type: 3}
-      propertyPath: m_BaseOffset
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9185461791058454149, guid: 442682e7a8746da478a0914f8cf3d9f8, type: 3}
       propertyPath: m_StoppingDistance
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
