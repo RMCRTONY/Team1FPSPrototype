@@ -39,6 +39,10 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("---------- Audio ----------")]
     [SerializeField] AudioClip[] audHurt;
     [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip[] audRoam;
+    [Range(0, 1)][SerializeField] float audRoamVol;
+    [SerializeField] AudioClip[] audAttack;
+    [Range(0, 1)][SerializeField] float audAttackVol;
 
     public bool isAttacking;
     bool playerInRange;
@@ -122,6 +126,8 @@ public class enemyAI : MonoBehaviour, IDamage
             Vector3 randomPos = Random.insideUnitSphere * roamDist;
             randomPos += startingPos;
 
+            aud.PlayOneShot(audRoam[Random.Range(0, audRoam.Length)], audRoamVol);
+
             NavMeshHit hit;
             NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
             agent.SetDestination(hit.position);
@@ -151,7 +157,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if (!isAttacking)
                 {
-                    if(distanceToPlayer <= meleeAttackRange) //&& bullet == null)
+                    if (distanceToPlayer <= meleeAttackRange) //&& bullet == null)
                     {
                         StartCoroutine(melee());
                     }
@@ -264,6 +270,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator shoot()
     {
         isAttacking = true;
+        aud.PlayOneShot(audAttack[Random.Range(0, audAttack.Length)], audAttackVol);
         faceTarget();
         agent.isStopped = true;
         SetAttackerName();
@@ -276,6 +283,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator melee()
     {
         isAttacking = true;
+        aud.PlayOneShot(audAttack[Random.Range(0, audAttack.Length)], audAttackVol);
         SetAttackerName();
         anim.SetTrigger("Melee");
         yield return new WaitForSeconds(swingRate);

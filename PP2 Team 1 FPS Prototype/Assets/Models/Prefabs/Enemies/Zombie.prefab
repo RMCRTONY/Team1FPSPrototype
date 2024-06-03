@@ -627,6 +627,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d4d7d6f556077124aa07061727b6a1cd, type: 3}
   - {fileID: 8300000, guid: cf9b9a6d34f81d14b8be932b9033732b, type: 3}
   audHurtVol: 0.4
+  audRoam:
+  - {fileID: 8300000, guid: cf9b9a6d34f81d14b8be932b9033732b, type: 3}
+  audRoamVol: 0.2
+  audAttack:
+  - {fileID: 8300000, guid: ad867b174ceee56459f7b095ec1af69b, type: 3}
+  - {fileID: 8300000, guid: d4d7d6f556077124aa07061727b6a1cd, type: 3}
+  audAttackVol: 0.3
   isAttacking: 0
 --- !u!195 &7188316208001104504
 NavMeshAgent:

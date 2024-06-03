@@ -691,6 +691,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 502023a33258d664b840dcb915f22dfa, type: 3}
   - {fileID: 8300000, guid: 09356f78cbefb5f4fa5627e210b2e1e9, type: 3}
   audHurtVol: 0.5
+  audRoam:
+  - {fileID: 8300000, guid: 9ec5648594a120b48b02cfc084572dbb, type: 3}
+  - {fileID: 8300000, guid: b0ac9edfc022d4c45992c2d9d8527fd1, type: 3}
+  - {fileID: 8300000, guid: fd3786df4aaa0374386106372f3e479b, type: 3}
+  audRoamVol: 0.1
+  audAttack:
+  - {fileID: 8300000, guid: a6b1c63b8a53f58478a250e2e88f8cff, type: 3}
+  - {fileID: 8300000, guid: bd65b085e03a4884b885e346f3df04fd, type: 3}
+  - {fileID: 8300000, guid: 5bd9a5abc2c595a44ad9e6ecaedac791, type: 3}
+  audAttackVol: 0.3
   isAttacking: 0
 --- !u!95 &1617229008846193083
 Animator:
